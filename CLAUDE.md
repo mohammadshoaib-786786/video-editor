@@ -9,7 +9,7 @@ are generated locally.
 
 - `kit/` — shared design system, symlinked into every project as `kit/`.
   - `pixel-crew.css` tokens + atoms (cards, titles, step header, captions); `carousel.css` the editorial slide variant.
-  - `sprites.js` pixel robots, pixel props, line icons, glyphs, presenter avatar, doodles, speed lines; `Sprites.hydrate()` fills `data-icon`, `data-bot`, `data-burst`, `data-face`, `data-presenter`, `data-barcode`.
+  - `sprites.js` pixel robots, pixel props, line icons, glyphs, presenter avatar (`look: "tee"` generic, `look: "suit"` the owner's cartoon; set `window.AVATAR = { look: "suit" }` before `Sprites.hydrate()`), doodles, speed lines; `Sprites.hydrate()` fills `data-icon`, `data-bot`, `data-burst`, `data-face`, `data-presenter`, `data-barcode`.
   - `motion.js` `Reel.create()` → one paused GSAP timeline plus helpers (`pop`, `rise`, `slide`, `slam`, `swap`, `flip`, `grow`, `type`, `count`, `tick`, `bob`, `wobble`, `blink`, `pulse`, `cuts`, `captions`, `cue`) and `R.at(scene, line)` / `R.word(scene, line, word)` voice timing.
   - `vendor/` (generated) fonts + GSAP copied by `scripts/setup.mjs`.
 - `projects/<name>/` — one composition each.

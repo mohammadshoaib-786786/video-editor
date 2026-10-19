@@ -74,8 +74,9 @@ index.html + scenes.js (GSAP, timed to words) ◄──────────�
 - Your own voice: record `build/voice.wav`, run `python3 scripts/voice.py <project> --from-wav`
   (timings are estimated; adjust in `timing.json` if needed).
 - Your own music: `build/music-override.wav`.
-- Your own avatar: replace the cartoon presenter (`[data-presenter]`, `Sprites.face()`)
-  with your image.
+- Your own avatar: the kit has two cartoon hosts, `tee` (generic) and `suit` (drawn from
+  the owner's photo; preview in `projects/avatar-preview`). Pick one per project with
+  `window.AVATAR = { look: "suit" }`, or replace `[data-presenter]` with any image.
 
 ## Styles
 

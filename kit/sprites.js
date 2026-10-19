@@ -279,8 +279,112 @@
   }
 
   // ---------- presenter (replace with your own avatar PNG/SVG any time) ----------
-  // Flat cartoon creator: black tee, raised right arm pointing up.
+  // Two looks share one skeleton (same canvas, joints and class names, so the
+  // reel's arm wobble / blink keep working):
+  //   "tee"  flat cartoon creator: black tee, spiky hair
+  //   "suit" navy suit, white shirt, charcoal tie, wavy swept-back hair
+  // Pick per call (`presenter({ look: "suit" })`) or for a whole project with
+  // `window.AVATAR = { look: "suit", ... }` before Sprites.hydrate().
   function presenter(opts = {}) {
+    const o = { ...(window.AVATAR || {}), ...opts };
+    return o.look === "suit" ? presenterSuit(o) : presenterTee(o);
+  }
+
+  function presenterSuit(opts) {
+    const skin = opts.skin || "#d8a487";
+    const skinShade = shade(skin, 0.14);
+    const hair = opts.hair || "#1a1619";
+    const hairHi = opts.hairHighlight || "#3b3439";
+    const suit = opts.suit || "#253163";
+    const suitShade = shade(suit, 0.3);
+    const lapel = tint(suit, 0.1);
+    const tie = opts.tie || "#3b3a40";
+    const shirt = "#fbfbfd";
+    const s = `stroke="${INK}" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"`;
+    const thin = `stroke="${INK}" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"`;
+    return `<svg viewBox="${opts.viewBox || "0 0 420 1000"}" preserveAspectRatio="${opts.viewBox ? "xMidYMin slice" : "xMidYMid meet"}" xmlns="http://www.w3.org/2000/svg">
+  <g class="p-legs">
+    <path d="M150 640 L146 900 L198 900 L206 700 L214 700 L222 900 L274 900 L270 640 Z" fill="${suit}" ${s}/>
+    <path d="M206 704 L206 760" stroke="${suitShade}" stroke-width="5"/>
+    <path d="M126 904 h78 q12 0 12 14 v10 q0 8-10 8 h-88 q-12 0-12-11 q0-21 20-21z" fill="#1e1b20" ${s}/>
+    <path d="M216 904 h78 q20 0 20 21 q0 11-12 11 h-88 q-10 0-10-8 v-10 q0-14 12-14z" fill="#1e1b20" ${s}/>
+    <path d="M136 914 h40 M240 914 h40" stroke="#4a4550" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g class="p-arm-down">
+    <path d="M128 452 Q106 532 108 616" fill="none" stroke="${INK}" stroke-width="50" stroke-linecap="round"/>
+    <path d="M128 452 Q106 532 108 616" fill="none" stroke="${suit}" stroke-width="36" stroke-linecap="round"/>
+    <path d="M108 620 L108 636" stroke="${INK}" stroke-width="44" stroke-linecap="round"/>
+    <path d="M108 620 L108 636" stroke="${shirt}" stroke-width="30" stroke-linecap="round"/>
+    <circle cx="109" cy="656" r="22" fill="${skin}" ${s}/>
+  </g>
+  <g class="p-body">
+    <path d="M150 410 Q210 394 270 410 L300 440 L294 524 L276 526 L280 676 L140 676 L144 526 L126 524 L120 440 Z" fill="${suit}" ${s}/>
+    <path d="M176 402 L244 402 L232 566 L188 566 Z" fill="${shirt}" ${thin}/>
+    <path d="M200 440 L220 440 L227 548 L210 566 L193 548 Z" fill="${tie}" ${thin}/>
+    <path d="M199 424 L221 424 L224 444 L196 444 Z" fill="${tie}" ${thin}/>
+    <path d="M180 398 L210 428 L198 448 L172 412 Z" fill="${shirt}" ${thin}/>
+    <path d="M240 398 L210 428 L222 448 L248 412 Z" fill="${shirt}" ${thin}/>
+    <path d="M172 410 L208 566 L194 574 L152 480 L166 448 Z" fill="${lapel}" ${thin}/>
+    <path d="M248 410 L212 566 L226 574 L268 480 L254 448 Z" fill="${lapel}" ${thin}/>
+    <path d="M140 660 L210 640 L280 660" fill="none" stroke="${suitShade}" stroke-width="5"/>
+    <circle cx="210" cy="600" r="6" fill="${suitShade}" stroke="${INK}" stroke-width="3"/>
+    <path d="M240 486 L266 478 L268 498 L242 506 Z" fill="${shirt}" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M236 504 L276 494" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g class="p-head">
+    <g fill="${hair}" stroke="${INK}" stroke-width="6" stroke-linejoin="round">
+      <path d="M314 232 C 340 240, 356 260, 354 288 C 342 272, 326 268, 308 270 Z"/>
+      <path d="M132 236 C 108 244, 96 264, 100 290 C 110 274, 126 268, 142 270 Z"/>
+    </g>
+    <g fill="none" stroke-linecap="round">
+      <path d="M194 114 C 190 102, 196 94, 208 90" stroke="${INK}" stroke-width="12"/>
+      <path d="M194 114 C 190 102, 196 94, 208 90" stroke="${hair}" stroke-width="4"/>
+      <path d="M266 106 C 276 98, 288 98, 298 104" stroke="${INK}" stroke-width="12"/>
+      <path d="M266 106 C 276 98, 288 98, 298 104" stroke="${hair}" stroke-width="4"/>
+    </g>
+    <path d="M132 296 C 118 288, 114 268, 120 252 C 110 226, 114 196, 130 176 C 136 140, 168 116, 204 110 C 236 92, 284 98, 306 128 C 326 146, 334 176, 328 204 C 334 226, 330 250, 316 266 C 322 280, 314 292, 300 290 L 286 240 L 140 240 C 140 262, 140 282, 132 296 Z" fill="${hair}" ${s}/>
+    <rect x="193" y="350" width="34" height="54" fill="${skinShade}" ${s}/>
+    <ellipse cx="143" cy="284" rx="13" ry="21" fill="${skin}" ${s}/>
+    <ellipse cx="277" cy="284" rx="13" ry="21" fill="${skin}" ${s}/>
+    <path d="M146 236 Q146 182 210 178 Q274 182 274 236 L274 300 Q270 372 210 388 Q150 372 146 300 Z" fill="${skin}" ${s}/>
+    <path d="M142 266 C 136 240, 140 214, 158 198 C 176 210, 198 212, 222 202 C 246 192, 266 198, 278 220 C 284 236, 286 252, 284 268 L 300 262 C 318 236, 322 200, 306 172 C 290 142, 254 128, 218 132 C 184 134, 156 148, 144 172 C 134 196, 134 236, 142 266 Z" fill="${hair}" ${s}/>
+    <path d="M160 200 C 148 220, 152 244, 142 266" fill="none" stroke="${INK}" stroke-width="18" stroke-linecap="round"/>
+    <path d="M160 200 C 148 220, 152 244, 142 266" fill="none" stroke="${hair}" stroke-width="8" stroke-linecap="round"/>
+    <g fill="none" stroke="${hairHi}" stroke-linecap="round">
+      <path d="M170 186 C 196 160, 236 152, 272 166" stroke-width="7"/>
+      <path d="M188 136 C 222 120, 268 122, 298 146" stroke-width="6"/>
+      <path d="M302 186 C 314 204, 318 226, 312 246" stroke-width="5"/>
+    </g>
+    <g class="p-face">
+      <path d="M162 246 Q180 238 198 244" fill="none" stroke="${INK}" stroke-width="10" stroke-linecap="round"/>
+      <path d="M222 244 Q240 238 258 246" fill="none" stroke="${INK}" stroke-width="10" stroke-linecap="round"/>
+      <g class="p-eyes" style="transform-origin:210px 274px">
+        <path d="M168 273 Q182 263 196 273" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
+        <path d="M224 273 Q238 263 252 273" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="182" cy="276" rx="8" ry="9.5" fill="#22160f"/>
+        <ellipse cx="238" cy="276" rx="8" ry="9.5" fill="#22160f"/>
+        <circle cx="185" cy="272" r="3" fill="#fff"/>
+        <circle cx="241" cy="272" r="3" fill="#fff"/>
+      </g>
+      <path d="M212 270 Q207 292 204 302 Q211 307 219 302" fill="none" stroke="${INK}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path class="p-mouth" d="M192 332 Q210 343 230 332 Q211 338 192 332 Z" fill="#b8676a" stroke="${INK}" stroke-width="5" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <g class="p-arm-up" style="transform-origin:280px 440px">
+    <path d="M282 446 Q326 370 334 278" fill="none" stroke="${INK}" stroke-width="50" stroke-linecap="round"/>
+    <path d="M282 446 Q326 370 334 278" fill="none" stroke="${suit}" stroke-width="36" stroke-linecap="round"/>
+    <path d="M335 270 L337 256" stroke="${INK}" stroke-width="44" stroke-linecap="round"/>
+    <path d="M335 270 L337 256" stroke="${shirt}" stroke-width="30" stroke-linecap="round"/>
+    <g class="p-hand">
+      <rect x="314" y="196" width="50" height="58" rx="18" fill="${skin}" ${s}/>
+      <rect x="332" y="142" width="20" height="72" rx="10" fill="${skin}" ${s}/>
+      <path d="M318 226 h-10" ${s}/>
+    </g>
+  </g>
+</svg>`;
+  }
+
+  function presenterTee(opts) {
     const skin = opts.skin || "#e8b48e";
     const skinShade = shade(skin, 0.12);
     const hair = opts.hair || "#1c1b20";
