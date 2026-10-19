@@ -211,6 +211,13 @@
           tl.set(el, { opacity: 0 }, 0);
           const t = s.start;
           const prev = sceneEls[i - 1];
+          if (o.style === "soft") {
+            // calm cut: outgoing drifts up and fades, incoming rises in
+            tl.to(prev, { y: -40, opacity: 0, duration: 0.32, ease: "power2.in" }, t - 0.3);
+            tl.fromTo(el, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out", immediateRender: false }, t - 0.08);
+            if (o.sfx !== false) R.cue(t - 0.25, "whoosh", o.gain ?? 0.35);
+            return;
+          }
           tl.to(prev, { scale: 1.22, filter: "blur(16px)", opacity: 0, duration: dur * 0.8, ease: "power2.in" }, t - dur * 0.55);
           tl.fromTo(el, { scale: 0.86, filter: "blur(14px)", opacity: 0 }, { scale: 1, filter: "blur(0px)", opacity: 1, duration: dur, ease: "power3.out", immediateRender: false }, t - dur * 0.3);
           if (lines) {
@@ -226,7 +233,14 @@
       captions(container, o = {}) {
         const all = [];
         timing.scenes.forEach((s) => s.lines.forEach((l) => all.push(l)));
-        container.innerHTML = all.map((l, i) => `<div class="cap" data-i="${i}">${escapeHtml(o.clean === false ? l.text : cleanCaption(l.text))}</div>`).join("");
+        // o.wrap puts the text in a <span> so a brand can style it as a pill
+        container.innerHTML = all
+          .map((l, i) => {
+            const raw = o.clean === false ? l.text : o.clean === "light" ? lightCaption(l.text) : cleanCaption(l.text);
+            const text = escapeHtml(raw);
+            return `<div class="cap" data-i="${i}">${o.wrap ? `<span>${text}</span>` : text}</div>`;
+          })
+          .join("");
         const caps = container.querySelectorAll(".cap");
         all.forEach((l, i) => {
           const el = caps[i];
@@ -253,6 +267,11 @@
   function cleanCaption(text) {
     // captions drop sentence punctuation, like the reference style
     return text.replace(/[.,!?;:]+$/g, "").replace(/[.,;:]+(\s)/g, "$1");
+  }
+
+  // calmer styles keep inner commas and question marks, drop only end stops
+  function lightCaption(text) {
+    return text.replace(/[.,;:]+$/g, "");
   }
 
   function escapeHtml(s) {

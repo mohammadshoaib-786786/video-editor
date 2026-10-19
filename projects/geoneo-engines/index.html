@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <title>Geoneo — The engine changes</title>
+    <link rel="stylesheet" href="kit/fonts.css" />
+    <link rel="stylesheet" href="kit/vendor/fonts/noto-sans-sc-500.css" />
+    <link rel="stylesheet" href="kit/pixel-crew.css" />
+    <link rel="stylesheet" href="kit/brands/geoneo/brand.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="kit/vendor/gsap.min.js"></script>
+    <script src="kit/sprites.js"></script>
+    <script src="kit/brand.js"></script>
+    <script src="kit/brands/geoneo/logo.js"></script>
+    <script src="kit/motion.js"></script>
+    <script src="build/timing.js"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1350" data-fps="30" data-duration="34.23">
+      <audio id="soundtrack" src="build/mix.wav" data-start="0" data-duration="34.23" data-volume="1"></audio>
+
+      <!-- 1 · hook -->
+      <section class="scene" id="s-hook">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker kick">The headline, every few months</div>
+        <h1 class="geo-h1 abs" id="h-title">
+          <div>Every new AI engine</div>
+          <div><em>&ldquo;kills&rdquo;</em> the old</div>
+          <div>visibility playbook.</div>
+        </h1>
+        <span class="abs" id="h-alleged">(allegedly)</span>
+        <div class="geo-card" id="h-book">
+          <div class="geo-kicker">The old way</div>
+          <h4>Visibility playbook</h4>
+          <div class="skel-rows"><span class="geo-skel" style="width: 92%"></span><span class="geo-skel" style="width: 74%"></span><span class="geo-skel" style="width: 84%"></span></div>
+          <div class="tags"><span class="geo-chip">keywords</span><span class="geo-chip">links</span><span class="geo-chip">rankings</span></div>
+        </div>
+        <div class="abs" id="h-rip">R.I.P.</div>
+        <div class="abs" id="h-host"><div class="flip" data-presenter></div></div>
+      </section>
+
+      <!-- 2 · the parade of engines -->
+      <section class="scene" id="s-parade">
+        <div class="geo-bg is-white"></div>
+        <div class="geo-kicker kick">&ldquo;This one changes everything&rdquo;</div>
+        <div class="grid" id="p-grid"></div>
+      </section>
+
+      <!-- 3 · the turn -->
+      <section class="scene" id="s-turn">
+        <div class="geo-bg"></div>
+        <h1 class="geo-h1 abs" id="t-a">The engine changes.</h1>
+        <div class="geo-card" id="t-slot">
+          <div id="t-roll"></div>
+          <i class="fade top"></i><i class="fade bot"></i>
+        </div>
+        <h1 class="geo-h1 abs" id="t-b">The question it answers <em>doesn&rsquo;t.</em></h1>
+        <div class="geo-card" id="t-q">
+          <span class="geo-ic"><i data-icon="user" data-stroke="2.2"></i></span>
+          <p>&ldquo;Who should I trust with this, and what will it cost me?&rdquo;</p>
+          <span class="geo-chip is-teal pin">same question</span>
+        </div>
+      </section>
+
+      <!-- 4 · what hasn't changed -->
+      <section class="scene" id="s-const">
+        <div class="geo-bg is-white"></div>
+        <div class="geo-kicker is-teal kick">Still true</div>
+        <h2 class="geo-h2 abs" id="c-title">What hasn&rsquo;t changed</h2>
+        <div class="geo-card row" style="top: 300px"><span class="geo-ic"><i data-icon="chat" data-stroke="2.2"></i></span><p>Buyers ask a question before they buy</p><span class="ok"><i data-icon="check" data-stroke="3"></i></span></div>
+        <div class="geo-card row" style="top: 470px"><span class="geo-ic"><i data-icon="search" data-stroke="2.2"></i></span><p>Every engine needs facts it can check</p><span class="ok"><i data-icon="check" data-stroke="3"></i></span></div>
+        <div class="geo-card row" style="top: 640px"><span class="geo-ic"><i data-icon="list" data-stroke="2.2"></i></span><p>Pricing, licensing and eligibility decide who gets named</p><span class="ok"><i data-icon="check" data-stroke="3"></i></span></div>
+        <div class="geo-card row is-warn" style="top: 810px"><span class="geo-ic"><i data-icon="file" data-stroke="2.2"></i></span><p>Most brands publish those facts in ways machines can&rsquo;t read</p><span class="ok"><i data-icon="x" data-stroke="3"></i></span></div>
+      </section>
+
+      <!-- 5 · what changes: where, and in which language -->
+      <section class="scene" id="s-change">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker is-teal kick">What changes</div>
+        <h2 class="geo-h2 abs" id="x-title"><div>Where buyers ask.</div><div>And in which <em>language.</em></div></h2>
+        <div class="geo-card ans" id="x-en" style="left: 64px">
+          <div class="hd"><span class="geo-chip"><i class="robot" data-engine="0"></i>ChatGPT</span><span class="lang">EN</span></div>
+          <div class="ask" id="x-en-q"></div>
+          <div class="lbl">ANSWER</div>
+          <div class="item reveal"><span class="dot"></span><span class="geo-skel"></span></div>
+          <div class="item is-you reveal"><span class="dot"></span>Your brand<span style="margin-left: auto; font: 500 18px var(--geo-data); color: #15803d">named</span></div>
+          <div class="item reveal"><span class="dot"></span><span class="geo-skel"></span></div>
+        </div>
+        <div class="geo-card ans" id="x-zh" style="left: 556px">
+          <div class="hd"><span class="geo-chip"><i class="robot" data-engine="5"></i>DeepSeek</span><span class="lang zh">中文</span></div>
+          <div class="ask zh" id="x-zh-q"></div>
+          <div class="lbl">ANSWER</div>
+          <div class="item reveal"><span class="dot"></span><span class="geo-skel"></span></div>
+          <div class="item reveal"><span class="dot"></span><span class="geo-skel"></span></div>
+          <div class="item is-missing reveal"><span class="dot"></span>Your brand &middot; not mentioned</div>
+        </div>
+      </section>
+
+      <!-- 6 · the job -->
+      <section class="scene" id="s-job">
+        <div class="geo-bg is-white"></div>
+        <div class="geo-kicker is-teal kick">The job</div>
+        <h2 class="geo-h2 abs" id="j-a">Don&rsquo;t <s>chase every engine<i></i></s>.</h2>
+        <h2 class="geo-h2 abs" id="j-b">Make your facts easy to <em>verify.</em></h2>
+        <svg id="j-lines" viewBox="0 0 1080 1350"></svg>
+        <div id="j-chips"></div>
+        <div class="geo-card" id="j-facts">
+          <div class="geo-kicker">Your facts</div>
+          <div class="fact">Pricing<span>dated &middot; public</span></div>
+          <div class="fact">Licensing<span>dated &middot; public</span></div>
+          <div class="fact">Eligibility<span>dated &middot; public</span></div>
+          <div class="fact">Fees<span>dated &middot; public</span></div>
+          <div class="seal"><i data-icon="check" data-stroke="2.6"></i>Easy to verify</div>
+        </div>
+      </section>
+
+      <!-- 7 · the question -->
+      <section class="scene" id="s-ask">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker is-teal kick">One question</div>
+        <h1 class="geo-h1 abs" id="a-title">
+          <div>Which engine would</div>
+          <div><em>surprise you most</em></div>
+          <div>if you checked it today?</div>
+        </h1>
+        <div id="a-chips"></div>
+        <div class="abs" id="a-host" data-presenter></div>
+        <div class="abs" id="a-sign"><span class="geo-logo" data-logo></span><span>geoneo.ai</span></div>
+      </section>
+
+      <span class="geo-logo" id="logo" data-logo></span>
+      <i id="progress"></i>
+      <div class="captions geo-captions" id="captions"></div>
+    </div>
+    <script src="scenes.js"></script>
+    <script>
+      // build once fonts and the host image are in, then register
+      Promise.all([document.fonts.ready, window.AVATAR_READY]).then(() => {
+        const R = window.buildReel();
+        window.__timelines["main"] = R.tl;
+      });
+    </script>
+  </body>
+</html>

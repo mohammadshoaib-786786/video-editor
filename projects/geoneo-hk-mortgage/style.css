@@ -1,0 +1,522 @@
+/* Geoneo carousel — "Decades of expertise. Zero AI visibility." (1080×1350)
+   Brand atoms: kit/brands/geoneo/brand.css. */
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--geo-cloud);
+  color: var(--geo-text);
+  font-family: var(--geo-body);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+}
+
+.abs {
+  position: absolute;
+}
+
+/* chrome */
+.top {
+  position: absolute;
+  left: 72px;
+  right: 72px;
+  top: 64px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top .geo-logo {
+  height: 42px;
+}
+.top .geo-kicker {
+  font-size: 19px;
+}
+.foot {
+  position: absolute;
+  left: 72px;
+  right: 72px;
+  bottom: 54px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 500 18px var(--geo-data);
+  color: var(--geo-text-2);
+  white-space: nowrap;
+}
+.foot .handle {
+  color: var(--geo-teal);
+}
+.kick {
+  position: absolute;
+  left: 72px;
+  top: 172px;
+}
+.ttl {
+  position: absolute;
+  left: 72px;
+  right: 72px;
+  top: 214px;
+}
+.lede {
+  position: absolute;
+  left: 72px;
+  right: 72px;
+}
+.swipe {
+  position: absolute;
+  right: 72px;
+  bottom: 120px;
+  font: 500 22px var(--geo-data);
+  color: var(--geo-teal);
+}
+
+/* cover */
+.cover-scale {
+  left: 72px;
+  top: 760px;
+  width: 936px;
+  height: 330px;
+  padding: 40px 48px;
+}
+
+/* the mini scale (cover + contrast) and the main chart share these marks */
+.track {
+  position: absolute;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--geo-border);
+}
+.band {
+  position: absolute;
+  height: 34px;
+  border-radius: 4px;
+  background: var(--geo-blue);
+}
+.dot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--geo-surface);
+}
+.dot.is-lead {
+  background: var(--geo-teal);
+}
+.dot.is-zero {
+  background: var(--geo-text-2);
+}
+.rule {
+  position: absolute;
+  width: 2px;
+  background: var(--geo-text);
+}
+.val {
+  position: absolute;
+  font: 600 26px var(--geo-data);
+  color: var(--geo-text);
+  white-space: nowrap;
+}
+.val.is-lead {
+  color: var(--geo-teal);
+}
+.lab {
+  position: absolute;
+  font: 500 20px var(--geo-data);
+  color: var(--geo-text-2);
+  white-space: nowrap;
+}
+.rowlab {
+  position: absolute;
+  font: 600 26px var(--geo-head);
+  color: var(--geo-text);
+  white-space: nowrap;
+}
+.rowlab small {
+  display: block;
+  margin-top: 4px;
+  font: 500 18px var(--geo-data);
+  color: var(--geo-text-2);
+}
+
+/* scan: four stat tiles */
+.tiles {
+  position: absolute;
+  left: 72px;
+  top: 470px;
+  width: 936px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.tile {
+  position: relative;
+  height: 250px;
+  padding: 34px 38px;
+}
+.tile b {
+  display: block;
+  font: 600 108px/1 var(--geo-data);
+  letter-spacing: -0.04em;
+  color: var(--geo-teal);
+}
+.tile b small {
+  font-size: 54px;
+  color: var(--geo-text-2);
+}
+.tile span {
+  display: block;
+  margin-top: 22px;
+  font: 600 30px var(--geo-head);
+  letter-spacing: -0.01em;
+}
+.tile .robots {
+  position: absolute;
+  right: 30px;
+  top: 34px;
+  display: grid;
+  grid-template-columns: repeat(3, 44px);
+  gap: 10px;
+}
+.tile .robots .sprite {
+  width: 42px;
+  height: 30px;
+}
+
+/* chart card */
+.chart {
+  left: 72px;
+  top: 470px;
+  width: 936px;
+  height: 620px;
+}
+
+/* contrast */
+.half {
+  top: 420px;
+  width: 456px;
+  height: 690px;
+  padding: 40px 40px;
+}
+.half .who {
+  font: 600 22px var(--geo-data);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--geo-text-2);
+}
+.half .big {
+  margin-top: 22px;
+  font: 600 150px/0.95 var(--geo-data);
+  letter-spacing: -0.05em;
+}
+.half .big.is-lead {
+  color: var(--geo-teal);
+}
+.half .big.is-zero {
+  color: var(--geo-text);
+}
+.half p {
+  margin: 26px 0 0;
+  font: 600 32px/1.25 var(--geo-head);
+  letter-spacing: -0.015em;
+}
+.cells {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+}
+.cells .r {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+.cells i {
+  height: 26px;
+  border-radius: 6px;
+  border: 2px solid var(--geo-border);
+  background: var(--geo-surface);
+}
+.cells .lab {
+  position: static;
+  display: block;
+  margin-bottom: 6px;
+}
+.meter {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  bottom: 60px;
+  height: 90px;
+}
+
+/* paradox */
+.assets {
+  position: absolute;
+  left: 72px;
+  top: 560px;
+  width: 936px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.asset {
+  position: relative;
+  height: 210px;
+  padding: 30px 30px;
+}
+.asset .geo-ic {
+  width: 72px;
+  height: 72px;
+}
+.asset .geo-ic .icon {
+  width: 40px;
+  height: 40px;
+}
+.asset b {
+  display: block;
+  margin-top: 22px;
+  font: 700 32px var(--geo-head);
+  letter-spacing: -0.02em;
+}
+.asset .ok {
+  position: absolute;
+  right: 26px;
+  top: 30px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--geo-teal);
+  color: #fff;
+}
+.asset .ok .icon {
+  width: 24px;
+  height: 24px;
+}
+.lost {
+  left: 72px;
+  top: 820px;
+  width: 936px;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 0 44px;
+  border: 2.5px dashed var(--geo-grey);
+  background: transparent;
+  box-shadow: none;
+}
+.lost .sprite {
+  width: 112px;
+  height: 80px;
+  flex: none;
+}
+.lost p {
+  margin: 0;
+  font: 600 34px/1.25 var(--geo-head);
+  letter-spacing: -0.015em;
+}
+.lost p em {
+  font-style: normal;
+  color: var(--geo-teal);
+}
+
+/* why */
+.col {
+  top: 470px;
+  width: 456px;
+  height: 520px;
+  padding: 34px 34px;
+}
+.col h5 {
+  margin: 0 0 22px;
+  font: 600 20px var(--geo-data);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--geo-text-2);
+}
+.col .it {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 100px;
+  border-bottom: 1.5px solid var(--geo-border);
+  font: 600 30px var(--geo-head);
+  letter-spacing: -0.015em;
+}
+.col .it:last-child {
+  border-bottom: none;
+}
+.col .it .geo-ic {
+  width: 64px;
+  height: 64px;
+}
+.col .it .geo-ic .icon {
+  width: 34px;
+  height: 34px;
+}
+.col.is-empty {
+  border: 2.5px dashed var(--geo-grey);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+}
+.col.is-empty .it {
+  color: var(--geo-text-2);
+}
+.col.is-empty .ghost {
+  flex: 1;
+  height: 16px;
+  border-radius: 8px;
+  background: var(--geo-border);
+}
+.verdict {
+  left: 72px;
+  top: 1020px;
+  width: 936px;
+  font: 600 32px/1.3 var(--geo-head);
+  letter-spacing: -0.015em;
+}
+.verdict em {
+  font-style: normal;
+  color: var(--geo-teal);
+}
+
+/* meaning */
+.eq {
+  left: 72px;
+  top: 520px;
+  width: 936px;
+}
+.eq .line {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  height: 120px;
+  border-bottom: 1.5px solid var(--geo-border);
+  font: 600 40px var(--geo-head);
+  letter-spacing: -0.02em;
+}
+.eq .line:last-child {
+  border-bottom: none;
+}
+.eq .line b {
+  width: 150px;
+  font: 600 52px var(--geo-data);
+  color: var(--geo-text);
+  letter-spacing: -0.04em;
+}
+.eq .line .op {
+  width: 60px;
+  font: 600 52px var(--geo-data);
+  color: var(--geo-text-2);
+  text-align: center;
+}
+.eq .line.is-yes .op,
+.eq .line.is-yes span {
+  color: var(--geo-teal);
+}
+
+/* todo */
+.steps {
+  position: absolute;
+  left: 72px;
+  top: 440px;
+  width: 936px;
+}
+.todo-step {
+  position: relative;
+  min-height: 190px;
+  margin-bottom: 22px;
+  padding: 30px 36px 30px 128px;
+}
+.todo-step .geo-ic {
+  position: absolute;
+  left: 34px;
+  top: 32px;
+  width: 70px;
+  height: 70px;
+}
+.todo-step .geo-ic .icon {
+  width: 38px;
+  height: 38px;
+}
+.todo-step b {
+  display: block;
+  font: 700 34px/1.2 var(--geo-head);
+  letter-spacing: -0.02em;
+}
+.todo-step span {
+  display: block;
+  margin-top: 10px;
+  font: 400 26px/1.4 var(--geo-body);
+  color: var(--geo-text-2);
+}
+.todo-step .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.todo-step .chips .geo-chip {
+  font-size: 20px;
+  padding: 8px 16px;
+}
+
+/* ask */
+.ask-q {
+  position: absolute;
+  left: 72px;
+  right: 72px;
+  top: 214px;
+  --size: 76px;
+}
+.ask-q div {
+  margin-bottom: 4px;
+}
+.choice {
+  top: 640px;
+  width: 300px;
+  height: 150px;
+  padding: 26px 28px;
+}
+.choice .geo-kicker {
+  font-size: 18px;
+}
+.choice b {
+  display: block;
+  margin-top: 12px;
+  font: 700 30px/1.15 var(--geo-head);
+  letter-spacing: -0.02em;
+}
+.host {
+  position: absolute;
+  left: 470px;
+  top: 820px;
+  width: 560px;
+}
+.host .flip {
+  transform: scaleX(-1);
+}
+.sign {
+  position: absolute;
+  left: 72px;
+  top: 1110px;
+}
+.sign .geo-logo {
+  height: 50px;
+}
+.sign span {
+  display: block;
+  margin-top: 10px;
+  font: 500 24px var(--geo-data);
+  color: var(--geo-teal);
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html
+  lang="en"
+  data-composition-variables='[{"id":"slide","type":"number","label":"Slide","default":1,"min":1,"max":9,"step":1}]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <title>Geoneo — Hong Kong mortgages, AI visibility</title>
+    <link rel="stylesheet" href="kit/fonts.css" />
+    <link rel="stylesheet" href="kit/pixel-crew.css" />
+    <link rel="stylesheet" href="kit/brands/geoneo/brand.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="kit/vendor/gsap.min.js"></script>
+    <script src="kit/sprites.js"></script>
+    <script src="kit/brand.js"></script>
+    <script src="kit/brands/geoneo/logo.js"></script>
+    <script src="kit/motion.js"></script>
+    <script src="slides.js"></script>
+    <script src="slide.js"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1350" data-fps="30" data-duration="1">
+      <div class="slide" id="slide"></div>
+    </div>
+    <script>
+      const fonts = ["700 72px 'Inter Tight'", "600 30px 'Inter Tight'", "600 26px 'IBM Plex Mono'", "500 22px 'IBM Plex Mono'", "400 26px Inter"].map((f) => document.fonts.load(f));
+      Promise.all([...fonts, window.AVATAR_READY]).then(() => {
+        const R = window.buildSlide(document.getElementById("slide"));
+        window.__timelines["main"] = R.tl;
+      });
+    </script>
+  </body>
+</html>

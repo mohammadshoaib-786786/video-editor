@@ -6,7 +6,7 @@
 //   node scripts/setup.mjs            # vendor files + link every project
 //   node scripts/setup.mjs --copy     # copy the kit instead of symlinking
 
-import { cpSync, existsSync, lstatSync, mkdirSync, readdirSync, rmSync, symlinkSync } from "node:fs";
+import { cpSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,6 +26,8 @@ const files = [
     `@fontsource/jetbrains-mono/files/jetbrains-mono-latin-${w}-normal.woff2`,
     `fonts/jetbrains-mono-latin-${w}-normal.woff2`,
   ]),
+  ...[500, 600, 700, 800].map((w) => [`@fontsource/inter-tight/files/inter-tight-latin-${w}-normal.woff2`, `fonts/inter-tight-latin-${w}-normal.woff2`]),
+  ...[400, 500, 600, 700].map((w) => [`@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-${w}-normal.woff2`, `fonts/ibm-plex-mono-latin-${w}-normal.woff2`]),
 ];
 
 mkdirSync(join(VENDOR, "fonts"), { recursive: true });
@@ -36,6 +38,19 @@ for (const [src, dest] of files) {
     process.exit(1);
   }
   cpSync(from, join(VENDOR, dest));
+}
+
+// Simplified Chinese (Noto Sans SC 500): fontsource splits it into unicode-range
+// chunks; copy them all with a rewritten stylesheet and the browser loads only
+// the chunks a page actually uses.
+const scDir = join(NM, "@fontsource/noto-sans-sc");
+if (existsSync(scDir)) {
+  mkdirSync(join(VENDOR, "fonts", "noto-sc"), { recursive: true });
+  const css = readFileSync(join(scDir, "500.css"), "utf8").replace(/url\(\.\/files\/([^)]+)\)/g, (_, f) => {
+    if (f.endsWith(".woff2")) cpSync(join(scDir, "files", f), join(VENDOR, "fonts", "noto-sc", f));
+    return `url(noto-sc/${f})`;
+  });
+  writeFileSync(join(VENDOR, "fonts", "noto-sans-sc-500.css"), css.replace(/,\s*url\(noto-sc\/[^)]+\.woff\) format\('woff'\)/g, ""));
 }
 
 const projectsDir = join(ROOT, "projects");

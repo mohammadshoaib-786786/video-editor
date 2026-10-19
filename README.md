@@ -14,6 +14,8 @@ employees", chunky offset-shadow cards, word-synced captions.
 | --- | --- | --- |
 | Reel, 9:16, 38.6 s, voice + music + SFX | `projects/ai-delivery-team` | `samples/ai-delivery-team.mp4` |
 | Carousel, 4:5, 10 slides | `projects/ai-meta-ads-team` | `samples/ai-meta-ads-team/slide-01…10.png` and `.mp4` |
+| Geoneo LinkedIn reel, 4:5, 34 s | `projects/geoneo-engines` | `samples/geoneo-engines.mp4` + `.srt` |
+| Geoneo LinkedIn carousel, 4:5, 9 slides | `projects/geoneo-hk-mortgage` | `samples/geoneo-hk-mortgage/geoneo-hk-mortgage.pdf` + PNGs |
 
 Brand placeholders (`@yourhandle`, "Your brand", approver "You") are set in
 `projects/*/script.json` and `projects/*/slides.js`.
@@ -25,6 +27,13 @@ Reel, one frame per second:
 Carousel:
 
 ![Carousel slides](samples/ai-meta-ads-team-overview.jpg)
+
+Geoneo reel ("The engine changes") and carousel ("Decades of expertise. Zero AI visibility."),
+built on the client brand layer in `kit/brands/geoneo/`:
+
+![Geoneo reel](samples/geoneo-engines-contact-sheet.jpg)
+
+![Geoneo carousel](samples/geoneo-hk-mortgage-overview.jpg)
 
 ## Quick start
 
@@ -73,7 +82,10 @@ index.html + scenes.js (GSAP, timed to words) ◄──────────�
 - Sound effects are emitted by the same helpers that animate, so they can't drift.
 - Your own voice: record `build/voice.wav`, run `python3 scripts/voice.py <project> --from-wav`
   (timings are estimated; adjust in `timing.json` if needed).
-- Your own music: `build/music-override.wav`.
+- Your own music: `build/music-override.wav`. Built-in styles: `"chiptune"` or `"ambient"` (`music.style` in `script.json`).
+- Captions also land in `build/captions.srt` for platforms that take a subtitle file (LinkedIn, YouTube).
+- Client brands live in `kit/brands/<client>/` (tokens, atoms, logo); carousels export a
+  LinkedIn-ready PDF with `node scripts/carousel.mjs projects/<carousel> --png --pdf`.
 - Your host: your cartoon in `kit/avatars/` is the default for every reel and carousel
   (set in `kit/brand.js`; preview in `projects/avatar-preview`). Swap the PNGs to change it.
   Drawn fallbacks: `Sprites.presenter({ look: "tee" | "suit" })`.

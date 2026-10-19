@@ -165,6 +165,51 @@ def chiptune(total, bpm=120, seed=4, calm=()):
     return out / (np.max(np.abs(out)) or 1)
 
 
+def ambient(total, bpm=84, seed=7):
+    """Calm bed for corporate/LinkedIn pieces: soft pad chords, a gentle
+    sine pluck on 8ths, a low pulse and a whisper of shaker. No snare."""
+    beat = 60 / bpm
+    bar = beat * 4
+    out = np.zeros(int((total + 3) * SR))
+    prog = [[53, 57, 60, 64], [57, 60, 64, 67], [48, 52, 55, 59], [55, 59, 62, 65]]  # Fmaj7 Am7 Cmaj7 G7sus-ish
+    shaker = fft_filter(noise(0.06, seed), lo=6000) * np.exp(-np.linspace(0, 9, int(0.06 * SR)))
+    n_bars = int(np.ceil(total / bar)) + 1
+    for b in range(n_bars):
+        t0 = b * bar
+        chord = prog[b % 4]
+        # pad: detuned sines with slow swell
+        d = bar * 1.05
+        tt = t_axis(d)
+        pad = np.zeros_like(tt)
+        for m in chord:
+            f = note_hz(m)
+            pad += np.sin(2 * np.pi * f * tt) + 0.6 * np.sin(2 * np.pi * f * 1.003 * tt) + 0.25 * tri(f / 2, d)
+        pad *= env_adsr(len(tt), 0.6, 0.4, 0.75, 0.6)
+        place(out, pad, t0, 0.05)
+        # pluck: arpeggio on 8ths, one octave up, quick decay
+        for i in range(8):
+            m = chord[[0, 2, 1, 3, 2, 1, 3, 2][i]] + 12
+            dd = beat * 0.9
+            tp = t_axis(dd)
+            pl = np.sin(2 * np.pi * note_hz(m) * tp) * np.exp(-tp * 7)
+            place(out, pl, t0 + i * beat / 2, 0.06 if i % 2 == 0 else 0.04)
+        # low pulse on 1 and 3
+        for i in (0, 2):
+            dd = beat * 0.8
+            tp = t_axis(dd)
+            place(out, np.sin(2 * np.pi * note_hz(chord[0] - 24) * tp) * np.exp(-tp * 4), t0 + i * beat, 0.22)
+        for i in range(8):
+            if i % 2:
+                place(out, shaker, t0 + i * beat / 2, 0.05)
+    out = out[: int(total * SR)]
+    out = fft_filter(out, lo=30, hi=7000)
+    fade = int(1.5 * SR)
+    out[-fade:] *= np.linspace(1, 0, fade) ** 2
+    fin = int(0.8 * SR)
+    out[:fin] *= np.linspace(0, 1, fin)
+    return out / (np.max(np.abs(out)) or 1)
+
+
 # ---------------------------------------------------------------- SFX
 def sfx(kind, seed=0):
     if kind == "whoosh":
@@ -282,8 +327,11 @@ def main():
         music[-fade:] *= np.linspace(1, 0, fade)
         music /= np.max(np.abs(music)) or 1
     elif not args.no_music:
-        calm = [(s["start"], s["end"]) for s in timing["scenes"] if s["id"] in mcfg.get("calmScenes", [])]
-        music = chiptune(total, mcfg.get("bpm", 120), mcfg.get("seed", 4), calm)
+        if mcfg.get("style") == "ambient":
+            music = ambient(total, mcfg.get("bpm", 84), mcfg.get("seed", 7))
+        else:
+            calm = [(s["start"], s["end"]) for s in timing["scenes"] if s["id"] in mcfg.get("calmScenes", [])]
+            music = chiptune(total, mcfg.get("bpm", 120), mcfg.get("seed", 4), calm)
     sf.write(build / "music.wav", (music * 0.8).astype(np.float32), SR)
 
     fx = np.zeros(n)
@@ -291,7 +339,7 @@ def main():
     cues = json.loads(cues_path.read_text()) if cues_path.exists() else []
     for i, c in enumerate(cues):
         clip = sfx(c["type"], seed=i)
-        place(fx, clip, c["t"], c.get("gain", 1.0) * 0.55)
+        place(fx, clip, c["t"], c.get("gain", 1.0) * 0.55 * spec.get("sfx", {}).get("level", 1.0))
 
     level = mcfg.get("level", 0.16)
     mix = voice * 1.0 + music * level * duck_curve(voice) + fx

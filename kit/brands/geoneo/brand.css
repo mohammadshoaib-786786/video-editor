@@ -1,0 +1,174 @@
+/* Geoneo brand layer (use with kit/fonts.css + kit/pixel-crew.css).
+   From the Geoneo posts branding guide:
+   - grounds: Cloud White #F8FAFB / Surface #FFFFFF, never navy or charcoal
+   - Geo Teal #0E7C86: major text accents, data metrics, key callouts
+   - Grey #B8B8B8 as a core neutral; AI Blue #67D6F2 only for charts/icons
+   - Midnight #111315 very rarely
+   - headlines: Neue Haas Grotesk (Inter Tight stands in until the licensed
+     files are added), body Inter, data and numbers IBM Plex Mono */
+
+:root {
+  --geo-teal: #0e7c86;
+  --geo-teal-soft: #e4f2f3;
+  --geo-grey: #b8b8b8;
+  --geo-blue: #67d6f2;
+  --geo-midnight: #111315;
+  --geo-cloud: #f8fafb;
+  --geo-surface: #ffffff;
+  --geo-text: #16191c;
+  --geo-text-2: #6b7280;
+  --geo-border: #e7ecef;
+  --geo-success: #22c55e;
+  --geo-warning: #f59e0b;
+  --geo-warning-soft: #fef3dc;
+
+  --geo-head: "Inter Tight", "Inter", sans-serif;
+  --geo-body: "Inter", sans-serif;
+  --geo-data: "IBM Plex Mono", monospace;
+  --geo-zh: "Noto Sans SC", sans-serif;
+}
+
+.geo-bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--geo-cloud);
+  background-image: radial-gradient(var(--geo-border) 2px, transparent 2px);
+  background-size: 36px 36px;
+  background-position: 18px 18px;
+}
+
+.geo-bg.is-white {
+  background-color: var(--geo-surface);
+}
+
+.geo-card {
+  position: absolute;
+  background: var(--geo-surface);
+  border: 1.5px solid var(--geo-border);
+  border-radius: 22px;
+  box-shadow:
+    0 1px 0 rgba(17, 19, 21, 0.03),
+    0 14px 34px rgba(17, 19, 21, 0.07);
+}
+
+.geo-kicker {
+  font: 500 22px var(--geo-data);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--geo-text-2);
+  white-space: nowrap;
+}
+
+.geo-kicker.is-teal {
+  color: var(--geo-teal);
+}
+
+.geo-h1,
+.geo-h2 {
+  margin: 0;
+  font-family: var(--geo-head);
+  font-weight: 700;
+  color: var(--geo-text);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.geo-h1 {
+  font-size: var(--size, 92px);
+}
+
+.geo-h2 {
+  font-size: var(--size, 64px);
+  line-height: 1.06;
+}
+
+.geo-h1 em,
+.geo-h2 em {
+  font-style: normal;
+  color: var(--geo-teal);
+}
+
+.geo-sub {
+  font: 500 32px/1.35 var(--geo-head);
+  color: var(--geo-text-2);
+  letter-spacing: -0.01em;
+}
+
+.geo-body {
+  font: 400 28px/1.45 var(--geo-body);
+  color: var(--geo-text);
+}
+
+.geo-data {
+  font-family: var(--geo-data);
+}
+
+.geo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border: 1.5px solid var(--geo-border);
+  border-radius: 999px;
+  background: var(--geo-surface);
+  font: 500 22px var(--geo-data);
+  color: var(--geo-text);
+  white-space: nowrap;
+}
+
+.geo-chip.is-teal {
+  border-color: var(--geo-teal);
+  color: var(--geo-teal);
+  background: var(--geo-teal-soft);
+}
+
+.geo-chip.is-warn {
+  border-color: var(--geo-warning);
+  color: #a86506;
+  background: var(--geo-warning-soft);
+}
+
+.geo-logo {
+  display: block;
+  color: var(--geo-text);
+}
+
+.geo-logo svg {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+.geo-ic {
+  display: grid;
+  place-items: center;
+  flex: none;
+  border-radius: 14px;
+  background: var(--geo-teal-soft);
+  color: var(--geo-teal);
+}
+
+.geo-skel {
+  display: block;
+  height: 14px;
+  border-radius: 7px;
+  background: var(--geo-border);
+}
+
+/* calm caption pill (Reel.captions({ wrap: true })) */
+.geo-captions .cap {
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  font: 600 38px var(--geo-body);
+  letter-spacing: -0.01em;
+  color: var(--geo-text);
+}
+
+.geo-captions .cap span {
+  display: inline-block;
+  padding: 12px 28px 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1.5px solid var(--geo-border);
+  box-shadow: 0 10px 26px rgba(17, 19, 21, 0.08);
+}

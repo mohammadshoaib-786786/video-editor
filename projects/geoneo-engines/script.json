@@ -1,0 +1,105 @@
+{
+  "title": "The engine changes. The question doesn't.",
+  "format": {
+    "width": 1080,
+    "height": 1350,
+    "fps": 30,
+    "platform": "LinkedIn feed, 4:5"
+  },
+  "brand": {
+    "name": "Geoneo",
+    "handle": "geoneo.ai"
+  },
+  "voice": {
+    "engine": "kokoro",
+    "voice": "am_michael",
+    "speed": 1.35,
+    "sceneGap": 0.15,
+    "leadIn": 0.14,
+    "tail": 1.7,
+    "sentencePause": 0.16,
+    "clausePause": 0.05,
+    "say": {
+      "Qwen": "Kwen",
+      "Kimi": "Keemi"
+    }
+  },
+  "music": {
+    "style": "ambient",
+    "bpm": 84,
+    "seed": 7,
+    "level": 0.14
+  },
+  "sfx": {
+    "level": 0.45
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "lines": [
+        "Every new AI engine",
+        "“kills” the old",
+        "visibility playbook."
+      ]
+    },
+    {
+      "id": "parade",
+      "lines": [
+        "ChatGPT,",
+        "Perplexity,",
+        "AI Overviews,",
+        "Gemini,",
+        "Copilot.",
+        "DeepSeek,",
+        "Qwen, Kimi.",
+        "Next month, another."
+      ]
+    },
+    {
+      "id": "turn",
+      "lines": [
+        "The engine changes.",
+        "The question it answers",
+        "doesn't."
+      ]
+    },
+    {
+      "id": "constants",
+      "lines": [
+        "Buyers still ask first.",
+        "Engines still check facts.",
+        "Pricing, licensing, eligibility",
+        "still decide.",
+        "Most brands publish them",
+        "where machines can't read."
+      ]
+    },
+    {
+      "id": "change",
+      "lines": [
+        "What changes:",
+        "where buyers ask,",
+        "and in which language.",
+        "Found in English on ChatGPT,",
+        "missing in Chinese on DeepSeek."
+      ]
+    },
+    {
+      "id": "job",
+      "lines": [
+        "So don't chase engines.",
+        "Make your facts",
+        "easy to verify,",
+        "everywhere."
+      ]
+    },
+    {
+      "id": "ask",
+      "lines": [
+        "Which engine would",
+        "surprise you most",
+        "if you checked it today?"
+      ]
+    }
+  ]
+}

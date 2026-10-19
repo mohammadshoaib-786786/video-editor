@@ -139,6 +139,28 @@ def align_words(timings, text_words, phonemize):
     return out
 
 
+def respell(word, say):
+    """Swap a word for its spoken spelling, keeping surrounding punctuation."""
+    m = re.match(r"^(\W*)(.*?)(\W*)$", word)
+    core = m.group(2)
+    return m.group(1) + say.get(core, core) + m.group(3) if core in say else word
+
+
+def write_srt(path: Path, scenes, total):
+    """Caption file for platforms that take uploaded subtitles (LinkedIn, YouTube)."""
+    lines = [l for sc in scenes for l in sc["lines"]]
+
+    def ts(sec):
+        ms = int(round(sec * 1000))
+        return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
+
+    out = []
+    for i, l in enumerate(lines):
+        end = lines[i + 1]["start"] - 0.05 if i + 1 < len(lines) else min(total, l["end"] + 1.0)
+        out.append(f"{i + 1}\n{ts(l['start'])} --> {ts(max(end, l['end']))}\n{l['text']}\n")
+    path.write_text("\n".join(out))
+
+
 def stamp_duration(index_html: Path, total: float):
     if not index_html.exists():
         return
@@ -167,6 +189,9 @@ def main():
     voice = args.voice or vcfg.get("voice", "am_michael")
     speed = args.speed or vcfg.get("speed", 1.1)
     gap = vcfg.get("sceneGap", 0.15)
+    say = vcfg.get("say", {})
+    sent_pause = vcfg.get("sentencePause", 0.25)
+    clause_pause = vcfg.get("clausePause", 0.1)
     lead = vcfg.get("leadIn", 0.12)
     tail = vcfg.get("tail", 1.0)
     build = proj / "build"
@@ -181,9 +206,12 @@ def main():
         text = " ".join(lines)
         text_words = text.split()
         if k:
-            audio, sr, timings = k.create_timed(text, voice=voice, speed=speed)
+            # voice.say respells words for the TTS only ({"Qwen": "Kwen"}); captions
+            # keep the written form and timings still map word for word
+            spoken = " ".join(respell(w, say) for w in text_words)
+            audio, sr, timings = k.create_timed(spoken, voice=voice, speed=speed, sentence_pause=sent_pause, clause_pause=clause_pause)
             assert sr == SR
-            words = words_from_timings(timings, text_words, lambda w: k.tokenizer.phonemize(w, "en-us"))
+            words = words_from_timings(timings, text_words, lambda w: k.tokenizer.phonemize(respell(w, say), "en-us"))
         else:
             # rough reading-speed layout for an external recording
             dur = 0.36 * len(text_words) / speed
@@ -226,6 +254,7 @@ def main():
     timing = {"total": total, "fps": spec.get("format", {}).get("fps", 30), "voice": voice, "brand": spec.get("brand", {}), "scenes": scenes}
     (build / "timing.json").write_text(json.dumps(timing, indent=1))
     (build / "timing.js").write_text("window.TIMING = " + json.dumps(timing) + ";\n")
+    write_srt(build / "captions.srt", scenes, total)
     stamp_duration(proj / "index.html", total)
     print(f"voice: {voice} @ {speed}x · total {total:.2f}s → {build / 'timing.json'}")
 

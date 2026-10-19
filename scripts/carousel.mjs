@@ -4,10 +4,12 @@
 //   node scripts/carousel.mjs projects/ai-meta-ads-team            # PNG + MP4
 //   node scripts/carousel.mjs projects/ai-meta-ads-team --png      # stills only
 //   node scripts/carousel.mjs projects/ai-meta-ads-team --slides 1,2 --at 5.5
+//   node scripts/carousel.mjs projects/geoneo-hk-mortgage --png --pdf   # LinkedIn document
 //
 // The project is one HyperFrames composition (index.html) with a `slide`
 // variable; slides.js holds the content (window.DECK.slides).
-import { mkdirSync, readFileSync } from "node:fs";
+import { mkdirSync, readFileSync, rmSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { basename, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import vm from "node:vm";
@@ -21,6 +23,7 @@ const opt = (name, dflt) => {
   return i >= 0 && args[i + 1] && !args[i + 1].startsWith("--") ? args[i + 1] : dflt;
 };
 const pngOnly = args.includes("--png");
+const wantPdf = args.includes("--pdf");
 const at = +opt("at", 5.6);
 const outDir = opt("out", join(ROOT, "renders", basename(proj)));
 mkdirSync(outDir, { recursive: true });
@@ -51,10 +54,25 @@ try {
     const file = join(outDir, `slide-${pad(n)}.png`);
     await page.screenshot({ path: file, clip: { x: 0, y: 0, width: 1080, height: 1350 } });
     console.log(`png  ${file}`);
+    if (wantPdf) {
+      // vector page, same pixels: text stays sharp when LinkedIn readers zoom
+      await page.pdf({ path: join(outDir, `.page-${pad(n)}.pdf`), width: "1080px", height: "1350px", printBackground: true, pageRanges: "1" });
+    }
   }
   if (errors.length) console.error("page errors:\n  " + errors.join("\n  "));
 } finally {
   await browser.close();
+}
+
+// ---- one PDF for LinkedIn's document post ----
+if (wantPdf) {
+  const pages = pick.map((n) => join(outDir, `.page-${pad(n)}.pdf`));
+  const out = join(outDir, `${basename(proj)}.pdf`);
+  const py = "import sys\nfrom pypdf import PdfWriter\nw = PdfWriter()\nfor p in sys.argv[2:]:\n    w.append(p)\nw.write(sys.argv[1])\n";
+  const r = spawnSync("python3", ["-c", py, out, ...pages], { stdio: "inherit" });
+  pages.forEach((p) => rmSync(p, { force: true }));
+  if (r.status !== 0) process.exit(r.status ?? 1);
+  console.log(`pdf  ${out}`);
 }
 
 // ---- animated MP4 per slide (HyperFrames, `slide` variable) ----
