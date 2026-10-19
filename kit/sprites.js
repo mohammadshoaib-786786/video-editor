@@ -287,7 +287,22 @@
   // `window.AVATAR = { look: "suit", ... }` before Sprites.hydrate().
   function presenter(opts = {}) {
     const o = { ...(window.AVATAR || {}), ...opts };
+    if (o.image && !o.look) return presenterImage(o);
     return o.look === "suit" ? presenterSuit(o) : presenterTee(o);
+  }
+
+  // An image host (kit/brand.js → window.AVATAR.image) with blink lids on top.
+  // The wrapper keeps the image's aspect ratio; size it by width.
+  function presenterImage(o) {
+    const [w, h] = o.size || [1000, 1000];
+    const lids = (o.eyes || [])
+      .map(
+        ([x, y, rx, ry]) =>
+          `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${o.skin || "#f6c296"}"/>` +
+          `<path d="M${x - rx} ${y + 4} Q${x} ${y + ry * 0.5} ${x + rx} ${y + 4}" fill="none" stroke="${INK}" stroke-width="8" stroke-linecap="round"/>`,
+      )
+      .join("");
+    return `<div class="p-image" style="position:relative;width:100%;aspect-ratio:${w}/${h}"><img src="${o.image}" alt="" style="display:block;width:100%;height:100%"/><svg viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;width:100%;height:100%"><g class="p-eyes" data-lids="" style="opacity:0">${lids}</g></svg></div>`;
   }
 
   function presenterSuit(opts) {
@@ -442,6 +457,8 @@
 
   // head-and-shoulders crop for avatar circles
   function face(opts = {}) {
+    const o = { ...(window.AVATAR || {}), ...opts };
+    if (o.face && !o.look) return `<img src="${o.face}" alt="" style="display:block;width:100%;height:100%;object-fit:cover"/>`;
     return presenter({ ...opts, viewBox: "70 92 280 300" });
   }
 
@@ -529,7 +546,10 @@
       el.classList.add("icon");
     });
     root.querySelectorAll("[data-face]").forEach((el) => (el.innerHTML = face()));
-    root.querySelectorAll("[data-presenter]").forEach((el) => (el.innerHTML = presenter()));
+    root.querySelectorAll("[data-presenter]").forEach((el) => {
+      el.innerHTML = presenter();
+      el.classList.toggle("is-img", !!el.querySelector(".p-image"));
+    });
     root.querySelectorAll("[data-barcode]").forEach((el) => (el.innerHTML = barcode(+el.dataset.barcode || 1)));
     root.querySelectorAll(".doodles[data-seed]").forEach((el) => {
       const box = el.parentElement.getBoundingClientRect();

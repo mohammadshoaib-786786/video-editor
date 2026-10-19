@@ -9,7 +9,8 @@ are generated locally.
 
 - `kit/` — shared design system, symlinked into every project as `kit/`.
   - `pixel-crew.css` tokens + atoms (cards, titles, step header, captions); `carousel.css` the editorial slide variant.
-  - `sprites.js` pixel robots, pixel props, line icons, glyphs, presenter avatar (`look: "tee"` generic, `look: "suit"` the owner's cartoon; set `window.AVATAR = { look: "suit" }` before `Sprites.hydrate()`), doodles, speed lines; `Sprites.hydrate()` fills `data-icon`, `data-bot`, `data-burst`, `data-face`, `data-presenter`, `data-barcode`.
+  - `brand.js` brand defaults; **the host is the owner's cartoon** (`kit/avatars/host.png` waist-up, `host-face.png` for avatar circles) with blink lids. Load it after `sprites.js` in every composition and build after `window.AVATAR_READY` resolves.
+  - `sprites.js` pixel robots, pixel props, line icons, glyphs, presenter (image host from `window.AVATAR`, or drawn looks `tee` / `suit` via `presenter({ look })`), doodles, speed lines; `Sprites.hydrate()` fills `data-icon`, `data-bot`, `data-burst`, `data-face`, `data-presenter`, `data-barcode`.
   - `motion.js` `Reel.create()` → one paused GSAP timeline plus helpers (`pop`, `rise`, `slide`, `slam`, `swap`, `flip`, `grow`, `type`, `count`, `tick`, `bob`, `wobble`, `blink`, `pulse`, `cuts`, `captions`, `cue`) and `R.at(scene, line)` / `R.word(scene, line, word)` voice timing.
   - `vendor/` (generated) fonts + GSAP copied by `scripts/setup.mjs`.
 - `projects/<name>/` — one composition each.
@@ -44,3 +45,4 @@ at them before rendering.
 - Root `data-duration` is read from static HTML: `voice.py` stamps it; don't hand-edit it in reels.
 - Keep content out of Instagram's UI: top ~150 px, bottom ~330 px, right ~110 px below y=1050.
 - Captions: 2–4 words per line in `script.json`, punctuation is dropped on screen.
+- Always use the owner's cartoon host (`kit/brand.js`); don't draw a new character unless asked. The image host has no separate arm, so arm wobble is skipped automatically; bob, blink and slide it in instead.

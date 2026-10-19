@@ -1,7 +1,8 @@
 // Choreography for "My AI Client Delivery Team".
 // Every beat is pinned to the voiceover through R.at(scene, line) / R.word(...),
 // so re-recording or re-timing the voice re-flows the whole video.
-(function () {
+// index.html calls buildReel() once fonts and the host image are ready.
+window.buildReel = function () {
   const T = window.TIMING;
   const brand = T.brand || {};
   const $ = (s) => document.querySelector(s);
@@ -321,4 +322,5 @@
 
   R.captions($("#captions"));
   R.register();
-})();
+  return R;
+};

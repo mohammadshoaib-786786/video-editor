@@ -74,9 +74,9 @@ index.html + scenes.js (GSAP, timed to words) ◄──────────�
 - Your own voice: record `build/voice.wav`, run `python3 scripts/voice.py <project> --from-wav`
   (timings are estimated; adjust in `timing.json` if needed).
 - Your own music: `build/music-override.wav`.
-- Your own avatar: the kit has two cartoon hosts, `tee` (generic) and `suit` (drawn from
-  the owner's photo; preview in `projects/avatar-preview`). Pick one per project with
-  `window.AVATAR = { look: "suit" }`, or replace `[data-presenter]` with any image.
+- Your host: your cartoon in `kit/avatars/` is the default for every reel and carousel
+  (set in `kit/brand.js`; preview in `projects/avatar-preview`). Swap the PNGs to change it.
+  Drawn fallbacks: `Sprites.presenter({ look: "tee" | "suit" })`.
 
 ## Styles
 

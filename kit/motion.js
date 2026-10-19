@@ -175,14 +175,22 @@
         return R;
       },
       wobble(target, t0, t1, o = {}) {
+        if (!gsap.utils.toArray(target).length) return R; // e.g. no separate arm on an image host
         const period = o.period ?? 0.9;
         const reps = Math.max(0, Math.floor((t1 - t0) / period) - 1);
         const origin = o.svgOrigin ? { svgOrigin: o.svgOrigin } : o.origin ? { transformOrigin: o.origin } : {};
         tl.fromTo(target, { rotation: -(o.deg ?? 3), ...origin }, { rotation: o.deg ?? 3, ...origin, duration: period / 2, ease: "sine.inOut", yoyo: true, repeat: reps * 2 + 1, immediateRender: false }, t0);
         return R;
       },
+      // drawn eyes squash shut; image hosts fade eyelids (data-lids) in and out
       blink(eyes, times) {
-        for (const t of times) tl.to(eyes, { scaleY: 0.1, transformOrigin: "50% 50%", duration: 0.06, yoyo: true, repeat: 1, ease: "none" }, t);
+        const els = gsap.utils.toArray(eyes);
+        const lids = els.filter((e) => e.hasAttribute("data-lids"));
+        const open = els.filter((e) => !e.hasAttribute("data-lids"));
+        for (const t of times) {
+          if (open.length) tl.to(open, { scaleY: 0.1, transformOrigin: "50% 50%", duration: 0.06, yoyo: true, repeat: 1, ease: "none" }, t);
+          if (lids.length) tl.to(lids, { opacity: 1, duration: 0.04, yoyo: true, repeat: 1, repeatDelay: 0.05, ease: "none" }, t);
+        }
         return R;
       },
       pulse(target, t, o = {}) {

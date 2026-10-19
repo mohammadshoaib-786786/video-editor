@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="kit/vendor/gsap.min.js"></script>
     <script src="kit/sprites.js"></script>
+    <script src="kit/brand.js"></script>
     <script src="kit/motion.js"></script>
     <script src="build/timing.js"></script>
   </head>
@@ -329,7 +330,11 @@
     </div>
     <script src="scenes.js"></script>
     <script>
-      window.__timelines["main"] = window.__reel.timeline;
+      // build once fonts and the host image are in, then register
+      Promise.all([document.fonts.ready, window.AVATAR_READY]).then(() => {
+        const R = window.buildReel();
+        window.__timelines["main"] = R.tl;
+      });
     </script>
   </body>
 </html>

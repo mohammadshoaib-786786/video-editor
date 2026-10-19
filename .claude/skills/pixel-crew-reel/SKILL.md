@@ -54,4 +54,4 @@ touching edges, elements under Instagram's UI, captions out of sync.
 
 - Voice: `script.json → voice.voice` (`am_michael`, `am_puck`, `am_fenrir`, `af_heart`, `bf_emma`, …) or record your own to `build/voice.wav` and run `voice.py --from-wav`.
 - Music: drop a track at `build/music-override.wav`.
-- Avatar: replace `Sprites.presenter()` output (or the `[data-presenter]` element) with an `<img>` of the creator's cartoon.
+- Host: the owner's cartoon (`kit/brand.js`, `kit/avatars/`) is used automatically by `[data-presenter]` and `[data-face]`; size image hosts by width (`.is-img`), it's waist-up. Don't draw a different character unless asked.

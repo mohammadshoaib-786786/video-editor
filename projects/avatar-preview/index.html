@@ -15,10 +15,9 @@
       }
       .full {
         position: absolute;
-        left: 30px;
-        top: 150px;
-        width: 500px;
-        height: 1190px;
+        left: 20px;
+        top: 560px;
+        width: 760px;
       }
       .ring {
         position: absolute;
@@ -50,9 +49,9 @@
       }
       .profile {
         position: absolute;
-        left: 560px;
-        top: 760px;
-        width: 470px;
+        left: 470px;
+        top: 250px;
+        width: 560px;
         height: 150px;
         display: flex;
         align-items: center;
@@ -79,9 +78,9 @@
       }
       .yes {
         position: absolute;
-        left: 560px;
-        top: 960px;
-        width: 470px;
+        left: 470px;
+        top: 440px;
+        width: 560px;
         height: 170px;
         display: flex;
         align-items: center;
@@ -101,15 +100,16 @@
     </style>
     <script src="kit/vendor/gsap.min.js"></script>
     <script src="kit/sprites.js"></script>
+    <script src="kit/brand.js"></script>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1350" data-duration="2">
       <div class="bg is-paper"><div class="doodles" data-seed="12" data-count="10"></div></div>
       <h1 class="title" style="position: absolute; left: 0; right: 0; top: 56px; --size: 84px; --accent: var(--r1)">Your cartoon</h1>
       <div class="full" id="full"></div>
-      <span class="label" style="left: 640px; top: 210px">Avatar</span>
-      <div class="ring" style="left: 640px; top: 260px"><div id="ring"></div></div>
-      <span class="label" style="left: 560px; top: 712px">In the reels</span>
+      <span class="label" style="left: 120px; top: 210px">Avatar</span>
+      <div class="ring" style="left: 120px; top: 260px; width: 260px; height: 260px"><div id="ring"></div></div>
+      <span class="label" style="left: 470px; top: 210px">In the reels</span>
       <div class="card profile" style="--accent: var(--cobalt)"><div class="face" id="pf"></div><b>@yourhandle</b></div>
       <div class="card yes" style="--accent: var(--ink)">
         <div class="face" id="ap" style="width: 110px; height: 110px; border-radius: 50%; border: 5px solid var(--ink); overflow: hidden; background: #c9d4fb; flex: none"></div>
@@ -117,13 +117,15 @@
       </div>
     </div>
     <script>
-      window.AVATAR = { look: "suit" };
-      document.getElementById("full").innerHTML = Sprites.presenter();
-      ["ring", "pf", "ap"].forEach((id) => (document.getElementById(id).innerHTML = Sprites.face()));
-      Sprites.hydrate(document);
-      const tl = gsap.timeline({ paused: true });
-      tl.to("#full", { y: -4, duration: 2 }, 0);
-      window.__timelines["main"] = tl;
+      // shows the brand host from kit/brand.js (window.AVATAR)
+      window.AVATAR_READY.then(() => {
+        document.getElementById("full").innerHTML = Sprites.presenter();
+        ["ring", "pf", "ap"].forEach((id) => (document.getElementById(id).innerHTML = Sprites.face()));
+        Sprites.hydrate(document);
+        const tl = gsap.timeline({ paused: true });
+        tl.to("#full", { y: -4, duration: 2 }, 0);
+        window.__timelines["main"] = tl;
+      });
     </script>
   </body>
 </html>

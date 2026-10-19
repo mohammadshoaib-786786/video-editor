@@ -1585,3 +1585,17 @@
   height: 100%;
   transform: scaleX(-1);
 }
+
+/* image host (kit/brand.js): waist-up, so it sits lower and larger */
+#i-presenter.is-img {
+  left: -40px;
+  top: 1170px;
+  width: 980px;
+  height: auto;
+}
+#c-presenter:has(.is-img) {
+  left: 470px;
+  top: 1262px;
+  width: 640px;
+  height: auto;
+}
