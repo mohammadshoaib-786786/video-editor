@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>My AI Client Delivery Team</title>
+    <link rel="stylesheet" href="kit/fonts.css" />
+    <link rel="stylesheet" href="kit/pixel-crew.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="kit/vendor/gsap.min.js"></script>
+    <script src="kit/sprites.js"></script>
+    <script src="kit/motion.js"></script>
+    <script src="build/timing.js"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-fps="30" data-duration="38.56">
+      <audio id="soundtrack" src="build/mix.wav" data-start="0" data-duration="38.56" data-volume="1"></audio>
+
+      <div id="stage">
+      <!-- 1 · intro: the team -->
+      <section class="scene" id="s-intro">
+        <div class="bg is-paper"><div class="doodles" data-seed="3"></div></div>
+        <div id="i-titles">
+          <div class="title is-sub" id="i-sub">My AI client</div>
+          <div class="title" id="i-main" style="--accent: var(--r1)">Delivery team</div>
+          <div class="title" id="i-seven" style="--accent: var(--r1)">7 employees</div>
+        </div>
+        <div class="card abs" id="i-card">
+          <div class="win-head">
+            <span class="dots"><i></i><i></i><i></i></span><span class="grow">Delivery team</span>
+          </div>
+          <span class="tag" id="i-count">4 employees</span>
+          <span class="tag" id="i-allai">All AI</span>
+          <svg id="i-tree" viewBox="0 0 870 640"></svg>
+          <div class="cc-pill"><i data-burst></i>claude-code</div>
+          <div class="crew" id="i-crew"></div>
+        </div>
+        <div class="stamp abs" id="i-stamp">0 humans</div>
+        <div id="i-presenter" data-presenter></div>
+      </section>
+
+      <!-- 2 · onboarder -->
+      <section class="scene" id="s-onb">
+        <div class="bg is-peri"><div class="doodles" data-seed="5" data-count="10"></div></div>
+        <div class="head">
+          <div class="step" data-step="1" data-label="INTAKE"></div>
+          <h1 class="title" style="--size: 150px">Onboarder</h1>
+        </div>
+        <div class="card abs" id="o-q">
+          <div class="win-head">
+            <i class="mini-bot" data-bot="r1"></i><span class="grow">Kickoff questions</span>
+            <span class="tagbox"><span class="tag" id="o-new">New client</span><span class="tag" id="o-acme">For Acme</span></span>
+          </div>
+          <div class="q-rows">
+            <div class="q-row"><span class="check"><i data-icon="check" data-stroke="4"></i></span><span class="qn">Q1</span><span class="skel"></span><span class="qt" id="o-q1"></span></div>
+            <div class="q-row"><span class="check"><i data-icon="check" data-stroke="4"></i></span><span class="qn">Q2</span><span class="skel"></span><span class="qt" id="o-q2"></span></div>
+            <div class="q-row"><span class="check"><i data-icon="check" data-stroke="4"></i></span><span class="qn">Q3</span><span class="skel"></span><span class="qt" id="o-q3"></span></div>
+          </div>
+        </div>
+        <div class="card abs" id="o-logins">
+          <div class="win-head"><i data-icon="key"></i>Logins</div>
+          <div class="logins">
+            <div class="login"><i data-icon="key"></i><span class="nm">Hosting</span><span class="check"><i data-icon="check" data-stroke="4"></i></span></div>
+            <div class="login"><i data-icon="key"></i><span class="nm">Domain</span><span class="check"><i data-icon="check" data-stroke="4"></i></span></div>
+            <div class="login"><i data-icon="key"></i><span class="nm">Analytics</span><span class="check"><i data-icon="check" data-stroke="4"></i></span></div>
+          </div>
+        </div>
+        <div class="card abs" id="o-folder">
+          <div class="win-head">Project folder</div>
+          <div class="folder-body">
+            <span id="o-empty">empty</span>
+            <div id="o-files">
+              <span class="glow"></span>
+              <svg class="folder" viewBox="0 0 120 96"><path d="M6 18a8 8 0 0 1 8-8h30l10 12h52a8 8 0 0 1 8 8v52a8 8 0 0 1-8 8H14a8 8 0 0 1-8-8z" fill="#f4c34a" stroke="#0e0f17" stroke-width="6" stroke-linejoin="round" /><path d="M6 34h108" stroke="#0e0f17" stroke-width="5" /></svg>
+              <span class="chip"><i data-icon="file"></i>brief.md</span>
+              <span class="chip"><i data-icon="folder"></i>assets/</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 · project manager -->
+      <section class="scene" id="s-pm">
+        <div class="bg is-paper"><div class="doodles" data-seed="9" data-count="12"></div></div>
+        <div class="head">
+          <div class="step" data-step="2" data-label="PLAN"></div>
+          <h1 class="title" style="--size: 106px">Project manager</h1>
+        </div>
+        <div class="card abs" id="p-plan">
+          <div class="win-head"><i class="mini-bot" data-bot="r2"></i>Plan · Acme site<span class="tag">4 weeks</span></div>
+          <div class="gantt" id="p-gantt"></div>
+        </div>
+        <div class="card abs" id="p-scope">
+          <div class="win-head"><i data-icon="file"></i>scope.md</div>
+          <div class="sec"><h4>## Goals</h4><span class="skel" style="width: 90%"></span><span class="skel" style="width: 64%"></span></div>
+          <div class="sec"><h4>## Deliverables</h4><span class="skel" style="width: 84%"></span><span class="skel" style="width: 72%"></span></div>
+          <div class="sec"><h4>## Timeline</h4><span class="skel" style="width: 78%"></span><span class="skel" style="width: 50%"></span></div>
+        </div>
+      </section>
+
+      <!-- 4 · builder -->
+      <section class="scene" id="s-build">
+        <div class="bg is-cobalt">
+          <svg class="blueprint" viewBox="0 0 1080 1920" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="4">
+            <circle cx="540" cy="860" r="430" stroke-dasharray="18 22" />
+            <circle cx="900" cy="1330" r="80" />
+            <circle cx="160" cy="420" r="46" />
+            <circle cx="980" cy="560" r="26" />
+            <path d="M80 1500 h220 M80 1530 h140" stroke-dasharray="10 12" />
+          </svg>
+        </div>
+        <div class="head">
+          <div class="step" data-step="3" data-label="BUILD"></div>
+          <h1 class="title">Builder</h1>
+        </div>
+        <div class="card abs" id="b-term">
+          <div class="win-head">
+            <span class="dots"><i></i><i></i><i></i></span><i data-burst></i>Claude Code
+            <span class="tag" id="b-working">Working...</span>
+          </div>
+          <span class="tag" id="b-done">Done ✓</span>
+          <div class="term-body">
+            <div class="prompt"><span class="caret">›</span><span id="b-typed"></span></div>
+            <div class="term-out">
+              <div id="b-o1"><span class="ok">✓</span> site/index.tsx</div>
+              <div id="b-o2"><span class="ok">✓</span> flows/lead-intake.json</div>
+              <div id="b-o3"><span class="ok">✓</span> posts/week-1.md</div>
+            </div>
+          </div>
+          <i id="b-bot" data-bot="r3"></i>
+        </div>
+        <div class="slot" style="left: 110px"><div class="slot-card" id="b-site">
+          <span class="pill">Site</span>
+          <div class="mini-site">
+            <div class="bar3"><i></i><i></i><i></i></div>
+            <div class="banner">Acme</div>
+            <span class="skel" style="width: 92%"></span><span class="skel" style="width: 64%"></span>
+            <span class="btn-gold">Book a call</span>
+          </div>
+        </div></div>
+        <div class="slot" style="left: 410px"><div class="slot-card" id="b-auto">
+          <span class="pill">Automation</span>
+          <svg class="flow" viewBox="0 0 230 260" fill="none" stroke="#0e0f17" stroke-width="5" stroke-linejoin="round">
+            <path d="M62 66 C 120 66, 150 96, 160 128" />
+            <path d="M160 168 C 150 210, 110 214, 70 210" />
+            <rect x="26" y="34" width="64" height="64" rx="14" fill="#f4b62c" />
+            <circle cx="166" cy="148" r="34" fill="#f7d3c4" />
+            <rect x="30" y="184" width="54" height="54" rx="12" fill="#1e4ff2" />
+          </svg>
+          <i data-burst style="position: absolute; left: 143px; top: 165px; width: 46px; height: 46px"></i>
+        </div></div>
+        <div class="slot" style="left: 710px"><div class="slot-card" id="b-post">
+          <span class="pill">Content</span>
+          <div class="post-img"><i data-icon="image"></i></div>
+          <div class="post-meta">
+            <span class="skel" style="width: 90%"></span><span class="skel" style="width: 58%"></span>
+            <div class="likes"><i data-icon="heart"></i>1.2k</div>
+          </div>
+        </div></div>
+      </section>
+
+      <!-- 5 · QA reviewer -->
+      <section class="scene" id="s-qa">
+        <div class="bg is-lav"><div class="doodles" data-seed="21" data-count="12"></div></div>
+        <div class="head">
+          <div class="step" data-step="4" data-label="CHECK"></div>
+          <h1 class="title" style="--size: 128px">QA reviewer</h1>
+        </div>
+        <div class="card abs" id="q-brief">
+          <div class="win-head"><i data-icon="file"></i>brief.md<i class="mini-bot" data-bot="r4"></i></div>
+          <div class="qa-rows">
+            <div class="qa-row"><span class="bgfill"></span><span class="check"><i data-icon="check" data-stroke="4"></i></span><span>Mobile ready</span></div>
+            <div class="qa-row"><span class="bgfill"></span><span class="check"><i data-icon="check" data-stroke="4"></i></span><span>Booking form</span></div>
+            <div class="qa-row"><span class="bgfill"></span><span class="check"><i data-icon="check" data-stroke="4"></i></span><span>Brand colours</span></div>
+          </div>
+        </div>
+        <div class="abs" id="q-swap"><i data-icon="refresh" data-stroke="3"></i></div>
+        <div class="card abs" id="q-site">
+          <div class="win-head"><span class="dots"><i></i><i></i><i></i></span>acme-site</div>
+          <div class="site-body">
+            <div class="banner">Acme</div>
+            <span class="skel" style="width: 88%"></span><span class="skel" style="width: 60%"></span>
+            <span class="btn-gold">Book a call</span>
+          </div>
+          <svg class="abs" id="q-bug" viewBox="0 0 44 44"><circle cx="22" cy="24" r="15" fill="#e4483f" stroke="#0e0f17" stroke-width="4" /><path d="M22 9v30M8 16l6 4M36 16l-6 4M6 28h8M30 28h8" stroke="#0e0f17" stroke-width="3.5" stroke-linecap="round" /></svg>
+          <i class="abs" id="q-glass" data-icon="search" data-stroke="2.2"></i>
+        </div>
+        <div class="card abs" id="q-lock">
+          <svg class="lk" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="#f4b62c" stroke="#0e0f17" stroke-width="2" /><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="#0e0f17" stroke-width="2" /><circle cx="12" cy="15.5" r="1.4" fill="#0e0f17" /></svg>
+          <div class="meta"><span>Client view</span><b>Locked</b></div>
+          <i class="toggle"></i>
+        </div>
+        <div class="stamp abs" id="q-pass">Pass</div>
+      </section>
+
+      <!-- 6 · reporter -->
+      <section class="scene" id="s-rep">
+        <div class="bg is-paper"><div class="doodles" data-seed="31" data-count="12"></div></div>
+        <div class="head">
+          <div class="step" data-step="5" data-label="REPORT"></div>
+          <h1 class="title" style="--size: 150px">Reporter</h1>
+        </div>
+        <div class="abs" id="r-back"></div>
+        <div class="card abs" id="r-letter">
+          <div class="to">To: Acme · Friday</div>
+          <h3>Weekly update</h3>
+          <div id="r-draft">Draft</div>
+          <div class="rep-h">Shipped</div>
+          <div class="rep-row"><span class="check"><i data-icon="check" data-stroke="4"></i></span>Homepage design</div>
+          <div class="rep-row"><span class="check"><i data-icon="check" data-stroke="4"></i></span>Lead intake flow</div>
+          <div class="rep-row"><span class="check"><i data-icon="check" data-stroke="4"></i></span>Week-1 posts</div>
+          <div class="rep-h is-next">Next</div>
+          <div class="rep-row is-next"><span class="check"></span>Ads launch</div>
+        </div>
+        <svg class="abs" id="r-front" viewBox="0 0 840 470">
+          <path d="M5 175 L420 330 L835 175 L835 450 Q835 465 820 465 L20 465 Q5 465 5 450 Z" fill="#f2e3c2" stroke="#0e0f17" stroke-width="10" stroke-linejoin="round" />
+          <path d="M5 465 L330 290 M835 465 L510 290" stroke="#0e0f17" stroke-width="6" opacity="0.35" />
+        </svg>
+        <i class="abs" id="r-seal" data-bot="r5"></i>
+      </section>
+
+      <!-- 7 · support agent -->
+      <section class="scene" id="s-sup">
+        <div class="bg is-peri"><div class="doodles" data-seed="41" data-count="10"></div></div>
+        <div class="head">
+          <div class="step" data-step="6" data-label="SUPPORT"></div>
+          <h1 class="title" style="--size: 114px">Support agent</h1>
+        </div>
+        <div class="card abs" id="u-chat">
+          <div class="win-head"><span class="dots"><i></i><i></i><i></i></span>Acme · support<i class="mini-bot" data-bot="r6"></i></div>
+          <div class="avatar abs" id="u-av"><i data-icon="user"></i></div>
+          <div class="bubble" id="u-q">Can we move launch to Friday?</div>
+          <div class="bubble" id="u-typing">• • •</div>
+          <div class="bubble" id="u-a">Yes, Friday works. QA wraps Thursday, so we're on track.</div>
+          <div class="abs" id="u-chips"><span class="chip"><i data-icon="file"></i>brief.md</span><span class="chip"><i data-icon="file"></i>plan.md</span></div>
+          <span class="pill abs" id="u-draft">Draft · waiting for your OK</span>
+        </div>
+        <div class="abs" id="u-label">Project docs</div>
+        <div class="doc" style="left: 132px"><div class="nm"><i data-icon="file"></i>brief.md</div><span class="skel" style="width: 92%"><i></i></span><span class="skel" style="width: 70%"><i></i></span><span class="skel" style="width: 82%"><i></i></span></div>
+        <div class="doc" style="left: 422px"><div class="nm"><i data-icon="file"></i>plan.md</div><span class="skel" style="width: 86%"><i></i></span><span class="skel" style="width: 92%"><i></i></span><span class="skel" style="width: 60%"><i></i></span></div>
+        <div class="doc" style="left: 712px"><div class="nm"><i data-icon="file"></i>notes.md</div><span class="skel" style="width: 76%"><i></i></span><span class="skel" style="width: 90%"><i></i></span><span class="skel" style="width: 66%"><i></i></span></div>
+        <i class="abs" id="u-glass" data-icon="search" data-stroke="2.2"></i>
+      </section>
+
+      <!-- 8 · account manager -->
+      <section class="scene" id="s-am">
+        <div class="bg is-paper"><div class="doodles" data-seed="51" data-count="12"></div></div>
+        <div class="head">
+          <div class="step" data-step="7" data-label="RETAIN"></div>
+          <h1 class="title" style="--size: 96px">Account manager</h1>
+        </div>
+        <div class="card abs" id="a-cal">
+          <div class="calhead">Check-ins · Acme</div>
+          <div class="days" id="a-days"></div>
+        </div>
+        <div class="abs" id="a-sticker"><i data-icon="calendar"></i>Check-in</div>
+        <div class="abs" id="a-slot"></div>
+        <div class="card abs" id="a-renew">
+          <span>Contract</span><b>Renewal</b>
+          <span class="skel" style="width: 86%"></span><span class="skel" style="width: 66%"></span><span class="skel" style="width: 74%"></span>
+          <div id="a-badge"><i data-icon="refresh" data-stroke="3"></i></div>
+        </div>
+        <i class="abs" id="a-bot" data-bot="r7"></i>
+        <div class="card abs" id="a-next">
+          <div><span>Next project</span><b>Acme · Phase 2</b></div>
+          <div class="sw"><i></i></div>
+        </div>
+      </section>
+
+      <!-- 9 · approval gate -->
+      <section class="scene" id="s-gate">
+        <div class="bg is-cobalt">
+          <svg class="blueprint" viewBox="0 0 1080 1920" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="4">
+            <circle cx="540" cy="900" r="460" stroke-dasharray="18 22" />
+            <circle cx="140" cy="1260" r="60" />
+            <circle cx="960" cy="380" r="34" />
+          </svg>
+        </div>
+        <h1 class="title" id="g-t1">Nothing goes out</h1>
+        <h1 class="title" id="g-t2">Until I approve</h1>
+        <div class="card abs" id="g-client">
+          <div class="ib"><i data-icon="inbox"></i></div>
+          <div><span>Client</span><b>Acme</b></div>
+          <div class="state"><em id="g-empty">empty</em><em id="g-delivered">7 delivered</em></div>
+        </div>
+        <i class="post" style="left: 80px"></i>
+        <i class="post" style="left: 966px"></i>
+        <div class="abs" id="g-bar"></div>
+        <div class="abs" id="g-needs"><span class="pill"><i data-icon="lock"></i>Needs yes</span></div>
+        <div class="tiles" id="g-tiles"></div>
+        <div class="abs" id="g-ring"></div>
+        <div class="card abs" id="g-appr">
+          <div class="face" data-face></div>
+          <div><span>Approver</span><b id="g-name">You</b></div>
+          <div id="g-yes"><div class="btn">YES</div><div class="btn-on">YES</div></div>
+        </div>
+      </section>
+
+      <!-- 10 · call to action -->
+      <section class="scene" id="s-cta">
+        <div class="bg is-lav"><div class="doodles" data-seed="61" data-count="12"></div></div>
+        <div class="card abs" id="c-profile">
+          <div class="ring"><div class="face" data-face></div></div>
+          <div id="c-handle">@yourhandle</div>
+          <div id="c-follow"><div class="on">Follow</div><div class="done">Following</div></div>
+        </div>
+        <h1 class="title" id="c-word">Comment</h1>
+        <div class="card abs" id="c-input">
+          <span class="sun"></span>
+          <div id="c-text"><span id="c-typed"></span><span id="c-caret"></span><span id="c-placeholder">Add a comment...</span></div>
+          <span id="c-post">Post</span>
+        </div>
+        <div class="card abs" id="c-comment">
+          <span class="sun"></span>
+          <div><div class="who">you · just now</div><b id="c-word2">DELIVER</b></div>
+          <i id="c-heart" data-icon="heart" data-stroke="2"></i>
+        </div>
+        <div class="card abs" id="c-dm">
+          <div class="dm-h"><i data-icon="mail"></i>In your DMs</div>
+          <div class="dm-row" id="c-bots"></div>
+          <div class="dm-row" id="c-prompts"><i data-burst></i><span class="gap"></span>+ every prompt</div>
+        </div>
+        <div id="c-presenter"><div class="flip" data-presenter></div></div>
+      </section>
+
+      </div>
+      <div id="lines"></div>
+      <div class="captions" id="captions"></div>
+    </div>
+    <script src="scenes.js"></script>
+    <script>
+      window.__timelines["main"] = window.__reel.timeline;
+    </script>
+  </body>
+</html>

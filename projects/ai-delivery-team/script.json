@@ -1,0 +1,60 @@
+{
+  "title": "My AI Client Delivery Team",
+  "format": { "width": 1080, "height": 1920, "fps": 30 },
+  "brand": {
+    "handle": "@yourhandle",
+    "approver": "You",
+    "keyword": "DELIVER"
+  },
+  "voice": {
+    "engine": "kokoro",
+    "voice": "am_michael",
+    "speed": 1.35,
+    "sceneGap": 0.1,
+    "leadIn": 0.12,
+    "tail": 1.1
+  },
+  "music": { "style": "chiptune", "bpm": 120, "seed": 4, "level": 0.16 },
+  "scenes": [
+    {
+      "id": "intro",
+      "lines": ["This is my AI", "client delivery team.", "Seven employees,", "and none of them", "are human."]
+    },
+    {
+      "id": "onboarder",
+      "lines": ["The Onboarder sends the", "kickoff questions,", "collects the logins", "and sets up the", "project folder."]
+    },
+    {
+      "id": "pm",
+      "lines": ["The Project Manager turns", "the scope into milestones,", "tasks", "and deadlines."]
+    },
+    {
+      "id": "builder",
+      "lines": ["The Builder does the", "actual work in Claude", "Code.", "Sites,", "automations,", "content."]
+    },
+    {
+      "id": "qa",
+      "lines": ["The QA Reviewer tests", "every deliverable against", "the brief before the", "client ever sees it."]
+    },
+    {
+      "id": "reporter",
+      "lines": ["The Reporter writes the", "weekly update.", "What shipped", "and what's next."]
+    },
+    {
+      "id": "support",
+      "lines": ["The Support Agent drafts", "every client answer from", "the project docs."]
+    },
+    {
+      "id": "account",
+      "lines": ["And the Account Manager", "handles the check-ins,", "the renewals", "and the next project."]
+    },
+    {
+      "id": "gate",
+      "lines": ["Nothing goes out until", "I approve it.", "My only job is", "saying yes."]
+    },
+    {
+      "id": "cta",
+      "lines": ["Comment deliver", "and I'll send you", "the whole team and", "every prompt."]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+node_modules/
+.cache/
+kit/vendor/
+projects/*/kit
+projects/*/.hyperframes/
+projects/*/build/
+renders/
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Kit gallery</title>
+    <script src="kit/vendor/gsap.min.js"></script>
+    <script src="kit/sprites.js"></script>
+    <link rel="stylesheet" href="kit/fonts.css" />
+    <link rel="stylesheet" href="kit/pixel-crew.css" />
+    <style>
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      .sheet {
+        position: absolute;
+        inset: 0;
+        padding: 70px 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 26px;
+        align-items: flex-end;
+      }
+      .robot {
+        width: 128px;
+        height: 104px;
+      }
+      .flat {
+        width: 140px;
+        height: 100px;
+      }
+      .ic {
+        width: 64px;
+        height: 64px;
+        padding: 10px;
+        border: 4px solid var(--ink);
+        border-radius: 14px;
+        background: #fff;
+      }
+      .presenter {
+        position: absolute;
+        right: 40px;
+        bottom: 40px;
+        width: 420px;
+        height: 1000px;
+      }
+      .burst {
+        width: 90px;
+        height: 90px;
+      }
+      h2 {
+        margin: 0;
+        font: 800 26px var(--f-mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-2);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="2">
+      <div class="bg is-paper"><div class="doodles" id="doodles"></div></div>
+      <div class="sheet">
+        <h1 class="title" style="--accent: var(--r1); --size: 110px">Kit gallery</h1>
+        <div class="step" style="--accent: var(--r3)">
+          <span class="count">3/7</span>
+          <span class="track"><i class="done"></i><i class="done"></i><i class="now"></i><i></i><i></i><i></i><i></i></span>
+          <span class="label">BUILD</span>
+        </div>
+        <h2>crew robots</h2>
+        <div class="row" id="crew"></div>
+        <h2>flat robots</h2>
+        <div class="row" id="flat"></div>
+        <h2>icons</h2>
+        <div class="row" id="icons" style="max-width: 600px"></div>
+        <div class="row"><div class="burst" id="burst"></div><span class="pill is-ink">claude-code</span><span class="pill">INTAKE</span></div>
+      </div>
+      <div class="presenter" id="presenter"></div>
+    </div>
+    <script>
+      const cs = ["--r1", "--r2", "--r3", "--r4", "--r5", "--r6", "--r7"].map((v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim());
+      document.getElementById("crew").innerHTML = cs.map((c) => `<div class="sprite robot">${Sprites.robot(c)}</div>`).join("");
+      document.getElementById("flat").innerHTML = cs.map((c) => `<div class="sprite flat">${Sprites.robot(c, { variant: "flat" })}</div>`).join("");
+      const names = ["check", "key", "lock", "folder", "file", "mail", "calendar", "heart", "search", "user", "inbox", "code", "chat", "refresh", "question", "target", "clock", "hash", "pen", "rocket", "chart", "sliders", "image", "megaphone", "bolt", "dollar", "users", "sparkle"];
+      document.getElementById("icons").innerHTML = names.map((n) => `<span class="icon ic">${Sprites.icon(n)}</span>`).join("");
+      document.getElementById("burst").innerHTML = Sprites.burst();
+      document.getElementById("presenter").innerHTML = Sprites.presenter();
+      Sprites.doodles(document.getElementById("doodles"), 11, 16);
+      const tl = gsap.timeline({ paused: true });
+      tl.to("#presenter", { y: -6, duration: 2 }, 0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

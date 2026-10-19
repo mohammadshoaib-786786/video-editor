@@ -1,0 +1,48 @@
+/* Local font faces. Files are copied into kit/vendor/fonts by scripts/setup.mjs
+   (renders never touch the network). */
+@font-face {
+  font-family: "Inter";
+  src: url("vendor/fonts/inter-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Archivo Black";
+  src: url("vendor/fonts/archivo-black-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("vendor/fonts/nunito-latin-800-normal.woff2") format("woff2");
+  font-weight: 800;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("vendor/fonts/nunito-latin-900-normal.woff2") format("woff2");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("vendor/fonts/caveat-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("vendor/fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("vendor/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("vendor/fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("vendor/fonts/jetbrains-mono-latin-800-normal.woff2") format("woff2");
+  font-weight: 800;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "video-editor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agent-first studio for viral explainer reels and carousels, rendered with HyperFrames",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "postinstall": "node scripts/setup.mjs",
+    "build": "node scripts/build.mjs",
+    "carousel": "node scripts/carousel.mjs",
+    "new": "node scripts/new.mjs",
+    "hf": "node scripts/hf.mjs",
+    "lint": "node scripts/hf.mjs lint"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "5.3.0",
+    "@fontsource/archivo-black": "5.3.0",
+    "@fontsource/caveat": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@fontsource/nunito": "5.3.0",
+    "gsap": "3.15.0",
+    "hyperframes": "0.8.171",
+    "puppeteer-core": "25.14.0"
+  }
+}
