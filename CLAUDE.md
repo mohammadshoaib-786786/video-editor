@@ -5,6 +5,20 @@ and Instagram carousels. Compositions are HTML + GSAP rendered to MP4 by
 [HyperFrames](https://github.com/heygen-com/hyperframes); voice, music and SFX
 are generated locally.
 
+## Accounts (who each video is for)
+
+Two accounts. If a request doesn't say which one, ask. The host (the owner's
+cartoon, `kit/brand.js`) appears on both.
+
+| Account | Handle | Look | Sample |
+| --- | --- | --- | --- |
+| Praxcia | `@sho.praxcia` | Pixel Crew (`kit/pixel-crew.css`, pixel robots, chiptune, keyword CTA) | `projects/ai-delivery-team` |
+| Geoneo | `geoneo.ai` | Geoneo brand layer (`kit/brands/geoneo/`), calm, no sales pitch, LinkedIn 4:5 | `projects/geoneo-engines`, `projects/geoneo-hk-mortgage` |
+
+Keep them apart: no Pixel Crew colours, fonts or handle in Geoneo work, and no
+Geoneo branding in Praxcia work. `projects/ai-meta-ads-team` is a capability
+sample from the original references and doesn't belong to either account.
+
 ## Map
 
 - `kit/` — shared design system, symlinked into every project as `kit/`.
@@ -20,7 +34,6 @@ are generated locally.
     - `music.style`: `"chiptune"` (default) or `"ambient"` (calm B2B); `sfx.level` scales every effect.
   - Carousel: `slides.js` (content), `slide.js` (layouts + motion), `index.html` (template with a `slide` variable).
 - `scripts/` — `build.mjs` (pipeline), `voice.py`, `cues.mjs`, `soundtrack.py`, `carousel.mjs`, `new.mjs`, `hf.mjs` (HyperFrames CLI with the local browser), `setup.mjs`, `get-models.sh`.
-- Client work: `projects/geoneo-engines` (LinkedIn reel, 4:5) and `projects/geoneo-hk-mortgage` (LinkedIn document carousel).
 - `docs/` — `STYLES.md` (what the seven reference repos + three.js offer), `REFERENCE-BREAKDOWN.md` (why the sample reel works).
 
 ## Commands

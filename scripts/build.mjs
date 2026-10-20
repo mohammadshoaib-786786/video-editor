@@ -13,7 +13,7 @@
 //   4. soundtrack   chiptune bed + SFX + voice → build/mix.wav
 //   5. render       HyperFrames → renders/<project>.mp4
 import { spawnSync } from "node:child_process";
-import { mkdirSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, join, resolve } from "node:path";
 import { hf, ROOT } from "./lib/env.mjs";
 
@@ -44,6 +44,12 @@ if (!flag("no-voice")) {
   if (opt("voice")) vargs.push("--voice", opt("voice"));
   if (opt("speed")) vargs.push("--speed", opt("speed"));
   run("voice", "python3", vargs);
+} else if (existsSync(join(proj, "build", "timing.json"))) {
+  // keep the voice, but take brand details (handle, keyword) from script.json
+  const timing = JSON.parse(readFileSync(join(proj, "build", "timing.json"), "utf8"));
+  timing.brand = JSON.parse(readFileSync(join(proj, "script.json"), "utf8")).brand || {};
+  writeFileSync(join(proj, "build", "timing.json"), JSON.stringify(timing, null, 1));
+  writeFileSync(join(proj, "build", "timing.js"), `window.TIMING = ${JSON.stringify(timing)};\n`);
 }
 run("cues", "node", [join(ROOT, "scripts/cues.mjs"), proj]);
 run("soundtrack", "python3", [join(ROOT, "scripts/soundtrack.py"), proj]);

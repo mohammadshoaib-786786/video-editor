@@ -19,7 +19,7 @@ Shape that works: **hook (≤5 s) → N identical beats (~3.5 s each) → payoff
 - CTA: "Comment KEYWORD and I'll send you …" (keyword in `brand.keyword`).
 - Write `lines` as 2–4-word caption phrases; each line becomes one caption.
 - Aim for 30–45 s total; voice speed 1.3–1.4 keeps Kokoro near 3.5 words/s.
-- Ask the user for brand handle / approver name / keyword if unknown; otherwise keep the `@yourhandle` placeholders and say so.
+- Pixel Crew is the Praxcia account's look: handle `@sho.praxcia` (already set in the sample's `script.json`). Geoneo reels use `kit/brands/geoneo/` instead (see `projects/geoneo-engines`). Ask for the approver name / keyword if unknown.
 
 ## 2 · Scaffold
 

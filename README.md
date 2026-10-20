@@ -12,13 +12,18 @@ employees", chunky offset-shadow cards, word-synced captions.
 
 | | Project | Output |
 | --- | --- | --- |
-| Reel, 9:16, 38.6 s, voice + music + SFX | `projects/ai-delivery-team` | `samples/ai-delivery-team.mp4` |
-| Carousel, 4:5, 10 slides | `projects/ai-meta-ads-team` | `samples/ai-meta-ads-team/slide-01…10.png` and `.mp4` |
-| Geoneo LinkedIn reel, 4:5, 34 s | `projects/geoneo-engines` | `samples/geoneo-engines.mp4` + `.srt` |
-| Geoneo LinkedIn carousel, 4:5, 9 slides | `projects/geoneo-hk-mortgage` | `samples/geoneo-hk-mortgage/geoneo-hk-mortgage.pdf` + PNGs |
+| | Account | Project | Output |
+| --- | --- | --- | --- |
+| Reel, 9:16, 38.6 s, voice + music + SFX | Praxcia (`@sho.praxcia`) | `projects/ai-delivery-team` | `samples/ai-delivery-team.mp4` |
+| Carousel, 4:5, 10 slides | (capability sample) | `projects/ai-meta-ads-team` | `samples/ai-meta-ads-team/slide-01…10.png` and `.mp4` |
+| LinkedIn reel, 4:5, 34 s | Geoneo (`geoneo.ai`) | `projects/geoneo-engines` | `samples/geoneo-engines.mp4` + `.srt` |
+| LinkedIn carousel, 4:5, 9 slides | Geoneo (`geoneo.ai`) | `projects/geoneo-hk-mortgage` | `samples/geoneo-hk-mortgage/geoneo-hk-mortgage.pdf` + PNGs |
 
-Brand placeholders (`@yourhandle`, "Your brand", approver "You") are set in
-`projects/*/script.json` and `projects/*/slides.js`.
+Two accounts: **Praxcia** (`@sho.praxcia`, Pixel Crew look) and **Geoneo**
+(`geoneo.ai`, its own brand layer). Your cartoon host appears on both. Handles
+are set in `projects/*/script.json` and `projects/*/slides.js`; the committed
+`samples/ai-delivery-team.mp4` still shows the old `@yourhandle` placeholder
+until it is re-rendered.
 
 Reel, one frame per second:
 
