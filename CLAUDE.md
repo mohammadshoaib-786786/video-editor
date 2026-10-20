@@ -31,7 +31,7 @@ sample from the original references and doesn't belong to either account.
 - `projects/<name>/` — one composition each.
   - Reel: `script.json` (lines per scene, voice, brand), `index.html` (markup), `style.css` (placement), `scenes.js` (choreography), `build/` (generated voice, timing, cues, mix, `captions.srt`).
     - `voice`: `speed` (1.35 is the owner's usual), `sentencePause` / `clausePause` (seconds after `.?!` / `,;:`), `say` (respellings, e.g. `{ "Qwen": "Kwen" }`).
-    - `music.style`: `"chiptune"` (default) or `"ambient"` (calm B2B); `sfx.level` scales every effect.
+    - `music.style`: `"chiptune"` (default) or `"ambient"` (calm B2B); `music.seed` picks the chiptune's chord progression and arp pattern, `music.bpm` its tempo; `sfx.level` scales every effect.
   - Carousel: `slides.js` (content), `slide.js` (layouts + motion), `index.html` (template with a `slide` variable).
 - `scripts/` — `build.mjs` (pipeline), `voice.py`, `cues.mjs`, `soundtrack.py`, `carousel.mjs`, `new.mjs`, `hf.mjs` (HyperFrames CLI with the local browser), `setup.mjs`, `get-models.sh`.
 - `docs/` — `STYLES.md` (what the seven reference repos + three.js offer), `REFERENCE-BREAKDOWN.md` (why the sample reel works).

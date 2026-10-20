@@ -27,6 +27,19 @@
   inset: -10%;
 }
 
+/* each employee's scene is tinted to its robot's colour (--tint); the two
+   dark scenes (builder, approval) use a deep shade of theirs */
+.bg.is-tint {
+  --bg: color-mix(in srgb, var(--tint) 17%, #fff);
+  --grid: color-mix(in srgb, var(--tint) 10%, transparent);
+  --doodle: color-mix(in srgb, var(--tint) 30%, transparent);
+}
+.bg.is-deep {
+  --bg: color-mix(in oklch, var(--tint) 50%, var(--ink));
+  --grid: rgba(255, 255, 255, 0.07);
+  --doodle: rgba(255, 255, 255, 0.16);
+}
+
 .abs {
   position: absolute;
 }
@@ -236,7 +249,7 @@
   right: 0;
   top: 0;
 }
-#o-acme {
+#o-client {
   color: var(--cobalt);
   opacity: 0;
 }

@@ -14,7 +14,7 @@
     "leadIn": 0.12,
     "tail": 1.1
   },
-  "music": { "style": "chiptune", "bpm": 120, "seed": 4, "level": 0.16 },
+  "music": { "style": "chiptune", "bpm": 128, "seed": 1, "level": 0.16 },
   "scenes": [
     {
       "id": "intro",

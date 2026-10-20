@@ -134,7 +134,7 @@ window.buildReel = function () {
     const s = S("onboarder");
     const q = ["What's the goal?", "Who is it for?", "Brand assets?"];
     const t1 = R.at("onboarder", 1);
-    R.swap("#o-new", "#o-acme", t1 - 0.1, { dist: 20 });
+    R.swap("#o-new", "#o-client", t1 - 0.1, { dist: 20 });
     q.forEach((txt, i) => {
       const t = t1 + i * 0.28;
       const row = $$("#o-q .q-row")[i];
@@ -172,7 +172,7 @@ window.buildReel = function () {
   // ---- 4 · builder ------------------------------------------------------
   {
     const s = S("builder");
-    R.type("#b-typed", "build acme: the site, the lead flow and this week's posts", s.start + 0.1, { cps: 62 });
+    R.type("#b-typed", "build praxcia: the site, the lead flow and this week's posts", s.start + 0.1, { cps: 62 });
     tl.to("#b-working", { opacity: 0.35, duration: 0.25, yoyo: true, repeat: 7, ease: "none" }, s.start + 0.2);
     const outs = ["#b-o1", "#b-o2", "#b-o3"];
     const slots = ["#b-site", "#b-auto", "#b-post"];

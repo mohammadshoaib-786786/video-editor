@@ -99,13 +99,26 @@ def noise(dur, seed):
 
 
 # ---------------------------------------------------------------- music
-CHORDS = {  # midi roots + triad, C major I–V–vi–IV
+CHORDS = {  # midi triads in C major
     "C": [60, 64, 67],
     "G": [55, 59, 62],
     "Am": [57, 60, 64],
     "F": [53, 57, 60],
+    "Em": [52, 55, 59],
 }
-PROG = ["C", "G", "Am", "F"]
+PROGS = [  # the seed picks one progression and one arp pattern
+    ["C", "G", "Am", "F"],  # I–V–vi–IV
+    ["Am", "F", "C", "G"],  # vi–IV–I–V
+    ["C", "Am", "F", "G"],  # I–vi–IV–V
+    ["F", "G", "Em", "Am"],  # IV–V–iii–vi
+    ["C", "Em", "F", "G"],  # I–iii–IV–V
+]
+ARPS = [  # indices into the chord over two octaves (0–2 low, 3–5 high)
+    [0, 1, 2, 3, 4, 5, 4, 2],  # climb
+    [0, 1, 2, 3, 4, 3, 2, 1],  # up and down
+    [0, 2, 1, 3, 2, 4, 3, 5],  # broken
+    [0, 3, 1, 3, 2, 3, 1, 3],  # pedal on the high root
+]
 
 
 def chiptune(total, bpm=120, seed=4, calm=()):
@@ -115,6 +128,8 @@ def chiptune(total, bpm=120, seed=4, calm=()):
     bar = beat * 4
     out = np.zeros(int((total + 2) * SR))
     rng = np.random.default_rng(seed)
+    prog = PROGS[rng.integers(len(PROGS))]
+    arp = ARPS[rng.integers(len(ARPS))]
     kick = np.sin(2 * np.pi * np.cumsum(np.linspace(150, 45, int(0.16 * SR))) / SR) * np.exp(-np.linspace(0, 6, int(0.16 * SR)))
     snare_n = fft_filter(noise(0.14, seed + 1), lo=1200, hi=7000) * np.exp(-np.linspace(0, 7, int(0.14 * SR)))
     snare_t = np.sin(2 * np.pi * 185 * t_axis(0.14)) * np.exp(-np.linspace(0, 10, int(0.14 * SR)))
@@ -127,19 +142,19 @@ def chiptune(total, bpm=120, seed=4, calm=()):
     n_bars = int(np.ceil(total / bar)) + 1
     for b in range(n_bars):
         t0 = b * bar
-        chord = CHORDS[PROG[b % 4]]
+        chord = CHORDS[prog[b % 4]]
         # bass: root on 8ths, octave bounce
         for i in range(8):
             t = t0 + i * beat / 2
             m = chord[0] - 24 + (12 if i % 2 else 0)
             place(out, tri(note_hz(m), beat / 2 * 0.9) * env_adsr(int(beat / 2 * 0.9 * SR), 0.003, 0.04, 0.7, 0.03), t, 0.32)
         # arp: 16ths, up pattern over two octaves
-        seq = chord + [c + 12 for c in chord] + [chord[1] + 12, chord[2]]
+        tones = chord + [c + 12 for c in chord]
         for i in range(16):
             t = t0 + i * beat / 4
             if in_calm(t):
                 continue
-            m = seq[i % len(seq)] + 12
+            m = tones[arp[i % len(arp)]] + 12
             d = beat / 4 * 0.8
             place(out, pulse(note_hz(m), d, 0.25) * env_adsr(int(d * SR), 0.002, 0.03, 0.4, 0.02), t, 0.075)
         # drums

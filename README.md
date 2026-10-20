@@ -21,9 +21,9 @@ employees", chunky offset-shadow cards, word-synced captions.
 
 Two accounts: **Praxcia** (`@sho.praxcia`, Pixel Crew look) and **Geoneo**
 (`geoneo.ai`, its own brand layer). Your cartoon host appears on both. Handles
-are set in `projects/*/script.json` and `projects/*/slides.js`; the committed
-`samples/ai-delivery-team.mp4` still shows the old `@yourhandle` placeholder
-until it is re-rendered.
+are set in `projects/*/script.json` and `projects/*/slides.js`. The Praxcia reel
+is our own cut of the reference: Praxcia as the client, each employee scene
+tinted to its robot's colour, and its own chiptune (`music.seed`).
 
 Reel, one frame per second:
 

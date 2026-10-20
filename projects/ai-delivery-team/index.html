@@ -42,7 +42,7 @@
 
       <!-- 2 · onboarder -->
       <section class="scene" id="s-onb">
-        <div class="bg is-peri"><div class="doodles" data-seed="5" data-count="10"></div></div>
+        <div class="bg is-tint" style="--tint: var(--r1)"><div class="doodles" data-seed="105" data-count="10"></div></div>
         <div class="head">
           <div class="step" data-step="1" data-label="INTAKE"></div>
           <h1 class="title" style="--size: 150px">Onboarder</h1>
@@ -50,7 +50,7 @@
         <div class="card abs" id="o-q">
           <div class="win-head">
             <i class="mini-bot" data-bot="r1"></i><span class="grow">Kickoff questions</span>
-            <span class="tagbox"><span class="tag" id="o-new">New client</span><span class="tag" id="o-acme">For Acme</span></span>
+            <span class="tagbox"><span class="tag" id="o-new">New client</span><span class="tag" id="o-client">For Praxcia</span></span>
           </div>
           <div class="q-rows">
             <div class="q-row"><span class="check"><i data-icon="check" data-stroke="4"></i></span><span class="qn">Q1</span><span class="skel"></span><span class="qt" id="o-q1"></span></div>
@@ -82,13 +82,13 @@
 
       <!-- 3 · project manager -->
       <section class="scene" id="s-pm">
-        <div class="bg is-paper"><div class="doodles" data-seed="9" data-count="12"></div></div>
+        <div class="bg is-tint" style="--tint: var(--r2)"><div class="doodles" data-seed="109" data-count="12"></div></div>
         <div class="head">
           <div class="step" data-step="2" data-label="PLAN"></div>
           <h1 class="title" style="--size: 106px">Project manager</h1>
         </div>
         <div class="card abs" id="p-plan">
-          <div class="win-head"><i class="mini-bot" data-bot="r2"></i>Plan · Acme site<span class="tag">4 weeks</span></div>
+          <div class="win-head"><i class="mini-bot" data-bot="r2"></i>Plan · Praxcia site<span class="tag">4 weeks</span></div>
           <div class="gantt" id="p-gantt"></div>
         </div>
         <div class="card abs" id="p-scope">
@@ -101,7 +101,7 @@
 
       <!-- 4 · builder -->
       <section class="scene" id="s-build">
-        <div class="bg is-cobalt">
+        <div class="bg is-deep" style="--tint: var(--r3)">
           <svg class="blueprint" viewBox="0 0 1080 1920" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="4">
             <circle cx="540" cy="860" r="430" stroke-dasharray="18 22" />
             <circle cx="900" cy="1330" r="80" />
@@ -134,7 +134,7 @@
           <span class="pill">Site</span>
           <div class="mini-site">
             <div class="bar3"><i></i><i></i><i></i></div>
-            <div class="banner">Acme</div>
+            <div class="banner">Praxcia</div>
             <span class="skel" style="width: 92%"></span><span class="skel" style="width: 64%"></span>
             <span class="btn-gold">Book a call</span>
           </div>
@@ -162,7 +162,7 @@
 
       <!-- 5 · QA reviewer -->
       <section class="scene" id="s-qa">
-        <div class="bg is-lav"><div class="doodles" data-seed="21" data-count="12"></div></div>
+        <div class="bg is-tint" style="--tint: var(--r4)"><div class="doodles" data-seed="121" data-count="12"></div></div>
         <div class="head">
           <div class="step" data-step="4" data-label="CHECK"></div>
           <h1 class="title" style="--size: 128px">QA reviewer</h1>
@@ -177,9 +177,9 @@
         </div>
         <div class="abs" id="q-swap"><i data-icon="refresh" data-stroke="3"></i></div>
         <div class="card abs" id="q-site">
-          <div class="win-head"><span class="dots"><i></i><i></i><i></i></span>acme-site</div>
+          <div class="win-head"><span class="dots"><i></i><i></i><i></i></span>praxcia-site</div>
           <div class="site-body">
-            <div class="banner">Acme</div>
+            <div class="banner">Praxcia</div>
             <span class="skel" style="width: 88%"></span><span class="skel" style="width: 60%"></span>
             <span class="btn-gold">Book a call</span>
           </div>
@@ -196,14 +196,14 @@
 
       <!-- 6 · reporter -->
       <section class="scene" id="s-rep">
-        <div class="bg is-paper"><div class="doodles" data-seed="31" data-count="12"></div></div>
+        <div class="bg is-tint" style="--tint: var(--r5)"><div class="doodles" data-seed="131" data-count="12"></div></div>
         <div class="head">
           <div class="step" data-step="5" data-label="REPORT"></div>
           <h1 class="title" style="--size: 150px">Reporter</h1>
         </div>
         <div class="abs" id="r-back"></div>
         <div class="card abs" id="r-letter">
-          <div class="to">To: Acme · Friday</div>
+          <div class="to">To: Praxcia · Friday</div>
           <h3>Weekly update</h3>
           <div id="r-draft">Draft</div>
           <div class="rep-h">Shipped</div>
@@ -222,13 +222,13 @@
 
       <!-- 7 · support agent -->
       <section class="scene" id="s-sup">
-        <div class="bg is-peri"><div class="doodles" data-seed="41" data-count="10"></div></div>
+        <div class="bg is-tint" style="--tint: var(--r6)"><div class="doodles" data-seed="141" data-count="10"></div></div>
         <div class="head">
           <div class="step" data-step="6" data-label="SUPPORT"></div>
           <h1 class="title" style="--size: 114px">Support agent</h1>
         </div>
         <div class="card abs" id="u-chat">
-          <div class="win-head"><span class="dots"><i></i><i></i><i></i></span>Acme · support<i class="mini-bot" data-bot="r6"></i></div>
+          <div class="win-head"><span class="dots"><i></i><i></i><i></i></span>Praxcia · support<i class="mini-bot" data-bot="r6"></i></div>
           <div class="avatar abs" id="u-av"><i data-icon="user"></i></div>
           <div class="bubble" id="u-q">Can we move launch to Friday?</div>
           <div class="bubble" id="u-typing">• • •</div>
@@ -245,13 +245,13 @@
 
       <!-- 8 · account manager -->
       <section class="scene" id="s-am">
-        <div class="bg is-paper"><div class="doodles" data-seed="51" data-count="12"></div></div>
+        <div class="bg is-tint" style="--tint: var(--r7)"><div class="doodles" data-seed="151" data-count="12"></div></div>
         <div class="head">
           <div class="step" data-step="7" data-label="RETAIN"></div>
           <h1 class="title" style="--size: 96px">Account manager</h1>
         </div>
         <div class="card abs" id="a-cal">
-          <div class="calhead">Check-ins · Acme</div>
+          <div class="calhead">Check-ins · Praxcia</div>
           <div class="days" id="a-days"></div>
         </div>
         <div class="abs" id="a-sticker"><i data-icon="calendar"></i>Check-in</div>
@@ -263,14 +263,14 @@
         </div>
         <i class="abs" id="a-bot" data-bot="r7"></i>
         <div class="card abs" id="a-next">
-          <div><span>Next project</span><b>Acme · Phase 2</b></div>
+          <div><span>Next project</span><b>Praxcia · Phase 2</b></div>
           <div class="sw"><i></i></div>
         </div>
       </section>
 
       <!-- 9 · approval gate -->
       <section class="scene" id="s-gate">
-        <div class="bg is-cobalt">
+        <div class="bg is-deep" style="--tint: var(--r4)">
           <svg class="blueprint" viewBox="0 0 1080 1920" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="4">
             <circle cx="540" cy="900" r="460" stroke-dasharray="18 22" />
             <circle cx="140" cy="1260" r="60" />
@@ -281,7 +281,7 @@
         <h1 class="title" id="g-t2">Until I approve</h1>
         <div class="card abs" id="g-client">
           <div class="ib"><i data-icon="inbox"></i></div>
-          <div><span>Client</span><b>Acme</b></div>
+          <div><span>Client</span><b>Praxcia</b></div>
           <div class="state"><em id="g-empty">empty</em><em id="g-delivered">7 delivered</em></div>
         </div>
         <i class="post" style="left: 80px"></i>
