@@ -12,7 +12,7 @@ cartoon, `kit/brand.js`) appears on both.
 
 | Account | Handle | Look | Sample |
 | --- | --- | --- | --- |
-| Praxcia | `@sho.praxcia` | Pixel Crew (`kit/pixel-crew.css`, pixel robots, chiptune, keyword CTA) | `projects/ai-delivery-team` |
+| Praxcia | `@sho.praxcia` | Pixel Crew (`kit/pixel-crew.css`, pixel robots, chiptune, keyword CTA); employee scenes/slides tinted to their robot's colour | `projects/ai-delivery-team` (reel), `projects/praxcia-delivery-team` (carousel) |
 | Geoneo | `geoneo.ai` | Geoneo brand layer (`kit/brands/geoneo/`), calm, no sales pitch, LinkedIn 4:5 | `projects/geoneo-engines`, `projects/geoneo-hk-mortgage` |
 
 Keep them apart: no Pixel Crew colours, fonts or handle in Geoneo work, and no

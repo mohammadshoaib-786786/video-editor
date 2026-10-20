@@ -15,6 +15,7 @@ employees", chunky offset-shadow cards, word-synced captions.
 | | Account | Project | Output |
 | --- | --- | --- | --- |
 | Reel, 9:16, 38.6 s, voice + music + SFX | Praxcia (`@sho.praxcia`) | `projects/ai-delivery-team` | `samples/ai-delivery-team.mp4` |
+| Carousel, 4:5, 10 slides | Praxcia (`@sho.praxcia`) | `projects/praxcia-delivery-team` | `samples/praxcia-delivery-team/slide-01…10.png` and `.mp4` |
 | Carousel, 4:5, 10 slides | (capability sample) | `projects/ai-meta-ads-team` | `samples/ai-meta-ads-team/slide-01…10.png` and `.mp4` |
 | LinkedIn reel, 4:5, 34 s | Geoneo (`geoneo.ai`) | `projects/geoneo-engines` | `samples/geoneo-engines.mp4` + `.srt` |
 | LinkedIn carousel, 4:5, 9 slides | Geoneo (`geoneo.ai`) | `projects/geoneo-hk-mortgage` | `samples/geoneo-hk-mortgage/geoneo-hk-mortgage.pdf` + PNGs |
@@ -29,7 +30,11 @@ Reel, one frame per second:
 
 ![Reel contact sheet](samples/ai-delivery-team-contact-sheet.jpg)
 
-Carousel:
+Praxcia carousel (the reel's team as 10 slides):
+
+![Praxcia carousel](samples/praxcia-delivery-team-overview.jpg)
+
+Carousel capability sample:
 
 ![Carousel slides](samples/ai-meta-ads-team-overview.jpg)
 

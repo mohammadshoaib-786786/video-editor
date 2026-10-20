@@ -5,7 +5,7 @@ description: Make an Instagram carousel (4:5, 1080×1350, up to 10 slides) in th
 
 # Pixel Crew carousel
 
-Sample: `projects/ai-meta-ads-team`. Content lives in `slides.js`
+Samples: `projects/praxcia-delivery-team` (Praxcia, employee slides tinted to their robot's colour) and `projects/ai-meta-ads-team`. Content lives in `slides.js`
 (`window.DECK`); layouts and motion in `slide.js`; styles in `kit/carousel.css`.
 
 ## Steps
