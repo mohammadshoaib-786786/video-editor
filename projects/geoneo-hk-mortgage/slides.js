@@ -16,6 +16,6 @@ window.DECK = {
     { type: "why" },
     { type: "meaning" },
     { type: "todo" },
-    { type: "ask" },
+    { type: "cta", kicker: "Over to you", keyword: "SCAN", offer: "for a free GEO scan.", sub: "See where AI engines mention your brand, and where they don't." },
   ],
 };

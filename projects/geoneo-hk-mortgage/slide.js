@@ -58,7 +58,7 @@
       <p class="geo-sub lede" style="top:600px;max-width:880px">What we found when we scanned Hong Kong&rsquo;s mortgage sector for AI visibility.</p>
       <div class="geo-card cover-scale">
         <div class="geo-kicker">AI visibility score, out of 100</div>
-        ${scale(S, { x0: 300, w: 520, labX: 0, lineTop: 50, axis: false, rows: [
+        ${scale(S, { x0: 340, w: 500, labX: 48, lineTop: 50, axis: false, rows: [
           { y: 150, label: "Retail banks", kind: "banks" },
           { y: 240, label: "Specialist brokers", kind: "zero" },
         ] })}
@@ -88,8 +88,8 @@
         <div style="position:absolute;left:40px;top:0;right:40px;bottom:0">
           ${scale(S, { x0: 290, w: 560, labX: 0, lineTop: 70, axis: true, rows: [
             { y: 200, label: `${S.banks} retail banks`, sub: `${S.banksLow} to ${S.banksHigh}`, kind: "banks" },
-            { y: 320, label: "Specialist broker", sub: "unnamed", kind: "zero" },
-            { y: 420, label: "Specialist broker", sub: "unnamed", kind: "zero" },
+            { y: 320, label: "Specialist broker A", kind: "zero" },
+            { y: 420, label: "Specialist broker B", kind: "zero" },
           ] })}
         </div>
         <div class="lab" style="left:40px;bottom:30px;font-size:18px">Scores across ${S.questions} shared buyer questions and ${S.engines} AI engines.</div>
@@ -176,12 +176,12 @@
       </div>
       ${foot(D)}`,
 
-    ask: (D) => `
+    cta: (D, S, s) => `
       ${top(D)}
-      <div class="geo-kicker is-teal kick">Over to you</div>
-      <h2 class="geo-h2 ask-q" style="--size:68px"><div>Which is harder for your team:</div><div><em>creating new content,</em> or making what you already know readable for AI?</div></h2>
-      <div class="geo-card choice abs" style="left:72px"><div class="geo-kicker">Option A</div><b>Creating new content</b></div>
-      <div class="geo-card choice abs" style="left:396px"><div class="geo-kicker">Option B</div><b>Making what we know readable</b></div>
+      <div class="geo-kicker is-teal kick">${esc(s.kicker)}</div>
+      <h1 class="geo-h1 cta-t"><div>Comment <em>&ldquo;${esc(s.keyword)}&rdquo;</em></div><div>${esc(s.offer)}</div></h1>
+      <div class="geo-card cbox abs"><span class="face" data-face></span><span class="kw">${esc(s.keyword)}</span><span class="send">${ic("send", 2.4)}</span></div>
+      <p class="geo-sub lede" style="top:690px;max-width:620px">${esc(s.sub)}</p>
       <div class="host"><div class="flip" data-presenter></div></div>
       <div class="sign"><span class="geo-logo">${window.GEONEO_LOGO}</span><span>${esc(D.brand.handle)}</span></div>`,
   };
