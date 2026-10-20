@@ -17,7 +17,7 @@ employees", chunky offset-shadow cards, word-synced captions.
 | Reel, 9:16, 38.6 s, voice + music + SFX | Praxcia (`@sho.praxcia`) | `projects/ai-delivery-team` | `samples/ai-delivery-team.mp4` |
 | Carousel, 4:5, 10 slides | Praxcia (`@sho.praxcia`) | `projects/praxcia-delivery-team` | `samples/praxcia-delivery-team/slide-01…10.png` and `.mp4` |
 | Carousel, 4:5, 10 slides | (capability sample) | `projects/ai-meta-ads-team` | `samples/ai-meta-ads-team/slide-01…10.png` and `.mp4` |
-| LinkedIn reel, 4:5, 34 s | Geoneo (`geoneo.ai`) | `projects/geoneo-engines` | `samples/geoneo-engines.mp4` + `.srt` |
+| LinkedIn reel, 4:5, 34 s | Geoneo (`geoneo.ai`) | `projects/geoneo-engines` (+ `projects/geoneo-engines-thumb`) | `samples/geoneo-engines.mp4` + `.srt` + `geoneo-engines-thumbnail.png` |
 | LinkedIn carousel, 4:5, 9 slides | Geoneo (`geoneo.ai`) | `projects/geoneo-hk-mortgage` | `samples/geoneo-hk-mortgage/geoneo-hk-mortgage.pdf` + PNGs |
 
 Two accounts: **Praxcia** (`@sho.praxcia`, Pixel Crew look) and **Geoneo**

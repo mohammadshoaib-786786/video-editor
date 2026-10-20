@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <title>Geoneo — The engine changes (thumbnail)</title>
+    <link rel="stylesheet" href="kit/fonts.css" />
+    <link rel="stylesheet" href="kit/pixel-crew.css" />
+    <link rel="stylesheet" href="kit/brands/geoneo/brand.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="kit/vendor/gsap.min.js"></script>
+    <script src="kit/sprites.js"></script>
+    <script src="kit/brand.js"></script>
+    <script src="kit/brands/geoneo/logo.js"></script>
+    <script src="kit/motion.js"></script>
+    <script src="slides.js"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1350" data-fps="30" data-duration="1">
+      <div class="geo-bg"></div>
+      <span class="geo-logo" id="logo" data-logo></span>
+      <div class="geo-kicker" id="kick">The headline, every few months</div>
+      <h1 class="geo-h1" id="title">
+        <div>Every new AI engine</div>
+        <div><em>&ldquo;kills&rdquo;</em> the old</div>
+        <div>visibility playbook.</div>
+      </h1>
+      <span id="alleged">(allegedly)</span>
+      <div id="chips"></div>
+      <div class="geo-card" id="book">
+        <div class="geo-kicker">The old way</div>
+        <h4>Visibility playbook</h4>
+        <div class="skel-rows"><span class="geo-skel" style="width: 92%"></span><span class="geo-skel" style="width: 74%"></span><span class="geo-skel" style="width: 84%"></span></div>
+        <div class="tags"><span class="geo-chip">keywords</span><span class="geo-chip">links</span><span class="geo-chip">rankings</span></div>
+      </div>
+      <div id="rip">R.I.P.</div>
+      <div id="host"><div class="flip" data-presenter></div></div>
+    </div>
+    <script>
+      // the engines from the reel's parade, same robot colours
+      const css = getComputedStyle(document.documentElement);
+      const C = { teal: css.getPropertyValue("--geo-teal").trim(), blue: css.getPropertyValue("--geo-blue").trim(), grey: css.getPropertyValue("--geo-grey").trim() };
+      const ENGINES = [["ChatGPT", "teal"], ["Perplexity", "blue"], ["AI Overviews", "grey"], ["Gemini", "teal"], ["Copilot", "blue"], ["DeepSeek", "grey"], ["Qwen", "teal"], ["Kimi", "blue"]];
+      document.getElementById("chips").innerHTML =
+        ENGINES.map(([name, c]) => `<span class="geo-chip"><span class="robot">${Sprites.robot(C[c], { variant: "flat", px: 3 })}</span>${name}</span>`).join("") +
+        `<span class="geo-chip is-next">Next month?</span>`;
+      document.querySelectorAll("[data-logo]").forEach((el) => (el.innerHTML = window.GEONEO_LOGO));
+      Sprites.hydrate(document);
+      const fonts = ["700 96px 'Inter Tight'", "500 22px 'IBM Plex Mono'", "500 22px Inter"].map((f) => document.fonts.load(f));
+      Promise.all([...fonts, window.AVATAR_READY]).then(() => {
+        const R = Reel.create({ timing: { total: 1, scenes: [] } });
+        R.register();
+        window.__timelines["main"] = R.tl;
+      });
+    </script>
+  </body>
+</html>
