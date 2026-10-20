@@ -132,7 +132,7 @@ window.buildReel = function () {
   // ---- 2 · onboarder ----------------------------------------------------
   {
     const s = S("onboarder");
-    const q = ["What's the goal?", "Who is it for?", "Brand assets?"];
+    const q = ["Who's the buyer?", "What's the offer?", "Any deadlines?"];
     const t1 = R.at("onboarder", 1);
     R.swap("#o-new", "#o-client", t1 - 0.1, { dist: 20 });
     q.forEach((txt, i) => {
