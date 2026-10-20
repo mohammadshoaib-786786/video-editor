@@ -16,6 +16,12 @@
   inset: 0;
 }
 
+/* flat cards on one Cloud White ground: soft drop shadows read as a grey
+   haze in the PNGs and the PDF */
+.geo-card {
+  box-shadow: none;
+}
+
 .abs {
   position: absolute;
 }

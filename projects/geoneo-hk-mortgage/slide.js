@@ -82,7 +82,7 @@
     chart: (D, S) => `
       ${top(D)}
       <div class="geo-kicker is-teal kick">The results</div>
-      <h2 class="geo-h2 ttl" style="--size:72px">Every bank showed up. Neither broker did.</h2>
+      <h2 class="geo-h2 ttl" style="--size:72px">Every bank tested showed up. Neither broker did.</h2>
       <div class="geo-card chart abs">
         <div class="geo-kicker" style="position:absolute;left:40px;top:36px">AI visibility score, out of 100</div>
         <div style="position:absolute;left:40px;top:0;right:40px;bottom:0">
@@ -190,7 +190,7 @@
     const D = window.DECK;
     const n = Math.min(Math.max(1, slideNumber()), D.slides.length);
     const s = D.slides[n - 1];
-    root.innerHTML = `<div class="geo-bg${n % 2 ? "" : " is-white"}"></div>` + L[s.type](D, D.scan, s);
+    root.innerHTML = `<div class="geo-bg"></div>` + L[s.type](D, D.scan, s);
     Sprites.hydrate(root);
     const R = Reel.create({ timing: { total: 1, scenes: [] } });
     R.register();
