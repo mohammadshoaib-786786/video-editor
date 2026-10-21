@@ -1,0 +1,107 @@
+{
+  "title": "引擎在变，问题没变（The engine changes, Chinese cut）",
+  "format": {
+    "width": 1080,
+    "height": 1440,
+    "fps": 30,
+    "platform": "RedNote (Xiaohongshu) feed, 3:4"
+  },
+  "brand": {
+    "name": "Geoneo",
+    "handle": "geoneo.ai"
+  },
+  "voice": {
+    "engine": "kokoro",
+    "lang": "zh",
+    "voice": "zm_yunyang",
+    "speed": 1.25,
+    "sceneGap": 0.15,
+    "leadIn": 0.14,
+    "tail": 1.7,
+    "sentencePause": 0.16,
+    "clausePause": 0.05,
+    "say": {
+      "Kimi": "Keemi",
+      "Copilot": "Co-pilot",
+      "DeepSeek": "Deep Seek"
+    }
+  },
+  "music": {
+    "style": "ambient",
+    "bpm": 84,
+    "seed": 7,
+    "level": 0.14
+  },
+  "sfx": {
+    "level": 0.45
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "lines": [
+        "每出一个新的AI引擎，",
+        "旧的可见度打法，",
+        "就要被“终结”一次。"
+      ]
+    },
+    {
+      "id": "parade",
+      "lines": [
+        "ChatGPT，",
+        "Perplexity，",
+        "AI概览，",
+        "Gemini，",
+        "Copilot，",
+        "DeepSeek，",
+        "通义千问，Kimi。",
+        "下个月，还会有新的。"
+      ]
+    },
+    {
+      "id": "turn",
+      "lines": [
+        "引擎一直在变，",
+        "它要回答的问题，",
+        "却没变。"
+      ]
+    },
+    {
+      "id": "constants",
+      "lines": [
+        "客户，还是先提问；",
+        "引擎，还是要核实事实；",
+        "价格、牌照、资格，",
+        "依然决定谁被推荐。",
+        "可多数品牌的这些信息，",
+        "机器读不懂。"
+      ]
+    },
+    {
+      "id": "change",
+      "lines": [
+        "变的是：",
+        "客户在哪里问，",
+        "用什么语言问。",
+        "用英文问ChatGPT，找得到你；",
+        "用中文问DeepSeek，却找不到。"
+      ]
+    },
+    {
+      "id": "job",
+      "lines": [
+        "所以，别再追着引擎跑。",
+        "让你的事实，",
+        "在任何地方，",
+        "都容易被核实。"
+      ]
+    },
+    {
+      "id": "ask",
+      "lines": [
+        "如果今天就去查，",
+        "哪个引擎",
+        "最会让你意外？"
+      ]
+    }
+  ]
+}

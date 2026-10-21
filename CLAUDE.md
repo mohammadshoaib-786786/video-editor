@@ -13,7 +13,7 @@ cartoon, `kit/brand.js`) appears on both.
 | Account | Handle | Look | Sample |
 | --- | --- | --- | --- |
 | Praxcia | `@sho.praxcia` | Pixel Crew (`kit/pixel-crew.css`, pixel robots, chiptune, keyword CTA); employee scenes/slides tinted to their robot's colour | `projects/ai-delivery-team` (reel), `projects/praxcia-delivery-team` (carousel) |
-| Geoneo | `geoneo.ai` | Geoneo brand layer (`kit/brands/geoneo/`), calm, no sales pitch, LinkedIn 4:5 | `projects/geoneo-engines` (+ `-thumb`, its LinkedIn thumbnail), `projects/geoneo-hk-mortgage` |
+| Geoneo | `geoneo.ai` | Geoneo brand layer (`kit/brands/geoneo/`), calm, no sales pitch, LinkedIn 4:5 | `projects/geoneo-engines` (+ `-thumb`, its LinkedIn thumbnail), `projects/geoneo-hk-mortgage`; RedNote: `projects/geoneo-engines-zh` (+ `-zh-cover`) |
 
 Keep them apart: no Pixel Crew colours, fonts or handle in Geoneo work, and no
 Geoneo branding in Praxcia work. `projects/ai-meta-ads-team` is a capability
@@ -31,6 +31,7 @@ sample from the original references and doesn't belong to either account.
 - `projects/<name>/` — one composition each.
   - Reel: `script.json` (lines per scene, voice, brand), `index.html` (markup), `style.css` (placement), `scenes.js` (choreography), `build/` (generated voice, timing, cues, mix, `captions.srt`).
     - `voice`: `speed` (1.35 is the owner's usual), `sentencePause` / `clausePause` (seconds after `.?!` / `,;:`), `say` (respellings, e.g. `{ "Qwen": "Kwen" }`).
+    - Chinese: `"lang": "zh"` with a `zm_*`/`zf_*` voice (`zm_yunyang` reads cleanest). Write lines in natural Chinese, no spaces; jieba splits words for `R.word()` (look words up by their characters, e.g. `R.word("hook", 2, "终结")`). Latin words (engine names) go through the English phonemizer, respelled by `say`. Avoid a soft initial like 买家 opening a scene; `voice.py` already gives each scene a run-up.
     - `music.style`: `"chiptune"` (default) or `"ambient"` (calm B2B); `music.seed` picks the chiptune's chord progression and arp pattern, `music.bpm` its tempo; `sfx.level` scales every effect.
   - Carousel: `slides.js` (content), `slide.js` (layouts + motion), `index.html` (template with a `slide` variable).
 - `scripts/` — `build.mjs` (pipeline), `voice.py`, `cues.mjs`, `soundtrack.py`, `carousel.mjs`, `new.mjs`, `hf.mjs` (HyperFrames CLI with the local browser), `setup.mjs`, `get-models.sh`.
@@ -45,6 +46,7 @@ node scripts/build.mjs projects/<reel> --no-voice --no-render --snap 1,6,12   # 
 node scripts/carousel.mjs projects/<carousel>      # renders/<carousel>/slide-NN.png + .mp4
 node scripts/carousel.mjs projects/<carousel> --png --pdf   # PNGs + vector <carousel>.pdf (LinkedIn document post)
 node scripts/hf.mjs lint projects/<name>           # HyperFrames lint
+python3 scripts/asr-check.py projects/<reel>       # transcribe the voice per scene vs the script (Mandarin QA)
 node scripts/new.mjs reel <name>                   # start from the sample reel
 ```
 
@@ -64,5 +66,7 @@ at them before rendering.
 - Keep content out of Instagram's UI: top ~150 px, bottom ~330 px, right ~110 px below y=1050.
 - Captions: 2–4 words per line in `script.json`, punctuation is dropped on screen (`R.captions(el, { clean: "light" })` keeps commas, quotes and `?`).
 - LinkedIn 4:5 (1080×1350) has no Instagram overlay; keep a 64 px margin and captions above the progress bar.
+- RedNote (Xiaohongshu): 3:4 (1080×1440), Simplified Chinese, captions clear of the bottom ~160 px, and no web addresses or other platforms' handles on screen (logo only).
+- Chinese headlines need `line-height` ≈ 1.18; the Latin 1.02 crowds the glyphs. Preload every Chinese glyph (`document.fonts.load(font, text)`) before building, typed text included.
 - Client facts: use only the numbers and names the brief allows; never invent per-item values to fill a chart (show a band instead).
 - Always use the owner's cartoon host (`kit/brand.js`); don't draw a new character unless asked. The image host has no separate arm, so arm wobble is skipped automatically; bob, blink and slide it in instead.

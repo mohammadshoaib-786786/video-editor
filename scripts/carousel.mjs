@@ -33,6 +33,10 @@ vm.runInNewContext(readFileSync(join(proj, "slides.js"), "utf8"), ctx);
 const total = ctx.window.DECK.slides.length;
 const pick = opt("slides") ? opt("slides").split(",").map(Number) : Array.from({ length: total }, (_, i) => i + 1);
 const pad = (n) => String(n).padStart(2, "0");
+// frame size from the composition root (1080×1350 carousels, 1080×1440 RedNote covers)
+const html = readFileSync(join(proj, "index.html"), "utf8");
+const W = +(html.match(/id="root"[^>]*data-width="(\d+)"/) || [])[1] || 1080;
+const H = +(html.match(/id="root"[^>]*data-height="(\d+)"/) || [])[1] || 1350;
 
 // ---- PNG stills (seek the timeline to `at`, screenshot) ----
 const browser = await puppeteer.launch({
@@ -42,7 +46,7 @@ const browser = await puppeteer.launch({
 });
 try {
   const page = await browser.newPage();
-  await page.setViewport({ width: 1080, height: 1350, deviceScaleFactor: 1 });
+  await page.setViewport({ width: W, height: H, deviceScaleFactor: 1 });
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   for (const n of pick) {
@@ -52,11 +56,11 @@ try {
       window.__reel.timeline.seek(t, false);
     }, at);
     const file = join(outDir, `slide-${pad(n)}.png`);
-    await page.screenshot({ path: file, clip: { x: 0, y: 0, width: 1080, height: 1350 } });
+    await page.screenshot({ path: file, clip: { x: 0, y: 0, width: W, height: H } });
     console.log(`png  ${file}`);
     if (wantPdf) {
       // vector page, same pixels: text stays sharp when LinkedIn readers zoom
-      await page.pdf({ path: join(outDir, `.page-${pad(n)}.pdf`), width: "1080px", height: "1350px", printBackground: true, pageRanges: "1" });
+      await page.pdf({ path: join(outDir, `.page-${pad(n)}.pdf`), width: `${W}px`, height: `${H}px`, printBackground: true, pageRanges: "1" });
     }
   }
   if (errors.length) console.error("page errors:\n  " + errors.join("\n  "));

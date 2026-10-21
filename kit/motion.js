@@ -37,7 +37,8 @@
       // time of a specific word (by index within the line, or by text match)
       word(sid, line, w = 0, which = "s") {
         const l = R.scene(sid).lines[line];
-        const idx = typeof w === "number" ? w : l.words.findIndex((x) => x.w.toLowerCase().replace(/\W/g, "") === w.toLowerCase());
+        const key = (x) => x.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+        const idx = typeof w === "number" ? w : l.words.findIndex((x) => key(x.w) === key(w));
         return l.words[Math.max(0, idx)][which];
       },
 
@@ -271,7 +272,7 @@
 
   // calmer styles keep inner commas and question marks, drop only end stops
   function lightCaption(text) {
-    return text.replace(/[.,;:]+$/g, "");
+    return text.replace(/[.,;:。，；：、]+$/g, "");
   }
 
   function escapeHtml(s) {

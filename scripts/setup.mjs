@@ -40,17 +40,19 @@ for (const [src, dest] of files) {
   cpSync(from, join(VENDOR, dest));
 }
 
-// Simplified Chinese (Noto Sans SC 500): fontsource splits it into unicode-range
-// chunks; copy them all with a rewritten stylesheet and the browser loads only
-// the chunks a page actually uses.
+// Simplified Chinese (Noto Sans SC 500 body, 700 headlines): fontsource splits
+// it into unicode-range chunks; copy them all with a rewritten stylesheet and
+// the browser loads only the chunks a page actually uses.
 const scDir = join(NM, "@fontsource/noto-sans-sc");
 if (existsSync(scDir)) {
   mkdirSync(join(VENDOR, "fonts", "noto-sc"), { recursive: true });
-  const css = readFileSync(join(scDir, "500.css"), "utf8").replace(/url\(\.\/files\/([^)]+)\)/g, (_, f) => {
-    if (f.endsWith(".woff2")) cpSync(join(scDir, "files", f), join(VENDOR, "fonts", "noto-sc", f));
-    return `url(noto-sc/${f})`;
-  });
-  writeFileSync(join(VENDOR, "fonts", "noto-sans-sc-500.css"), css.replace(/,\s*url\(noto-sc\/[^)]+\.woff\) format\('woff'\)/g, ""));
+  for (const weight of [500, 700]) {
+    const css = readFileSync(join(scDir, `${weight}.css`), "utf8").replace(/url\(\.\/files\/([^)]+)\)/g, (_, f) => {
+      if (f.endsWith(".woff2")) cpSync(join(scDir, "files", f), join(VENDOR, "fonts", "noto-sc", f));
+      return `url(noto-sc/${f})`;
+    });
+    writeFileSync(join(VENDOR, "fonts", `noto-sans-sc-${weight}.css`), css.replace(/,\s*url\(noto-sc\/[^)]+\.woff\) format\('woff'\)/g, ""));
+  }
 }
 
 const projectsDir = join(ROOT, "projects");

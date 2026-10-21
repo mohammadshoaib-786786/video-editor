@@ -48,7 +48,7 @@ def load_kokoro():
     return Kokoro(str(model), str(voices))
 
 
-STRESS = set("ˈˌːˑ")
+STRESS = set("ˈˌːˑ↓↗→↘")  # stress and length marks, plus Mandarin tone arrows
 PUNCT = set(",.!?;:—…\"'")
 
 
@@ -146,6 +146,56 @@ def respell(word, say):
     return m.group(1) + say.get(core, core) + m.group(3) if core in say else word
 
 
+CJK = r"\u4E00-\u9FFF"
+
+
+def zh_words(line):
+    """Split a Chinese caption line into words (jieba), punctuation attached:
+    opening marks to the next word, everything else to the previous one."""
+    import jieba
+
+    out, lead = [], ""
+    for tok in jieba.lcut(line):
+        if not tok.strip():
+            continue
+        if re.fullmatch(r"[^\w]+", tok):
+            if re.fullmatch(r"[“‘《（(]+", tok) or not out:
+                lead += tok
+            else:
+                out[-1] += tok
+            continue
+        out.append(lead + tok)
+        lead = ""
+    if lead and out:
+        out[-1] += lead
+    return out
+
+
+def zh_phonemizer(k, say):
+    """Mandarin phonemes for Kokoro's z voices (misaki's pinyin IPA with tone
+    arrows). misaki leaves Latin words untouched, so engine names and other
+    English words go through the English phonemizer, after voice.say respells."""
+    import cn2an
+    import jieba
+    from misaki.zh import ZHG2P
+
+    def en(m):
+        return " " + k.tokenizer.phonemize(say.get(m.group(0), m.group(0)), "en-us") + " "
+
+    def phonemize(text):
+        text = ZHG2P.map_punctuation(cn2an.transform(text, "an2cn"))
+        out = []
+        for seg in re.findall(f"[{CJK}]+|[^{CJK}]+", text):
+            if re.match(f"[{CJK}]", seg):
+                out.append(" " + " ".join(ZHG2P.word2ipa(w) for w in jieba.lcut(seg)) + " ")
+            else:
+                out.append(re.sub(r"[A-Za-z][A-Za-z0-9'’-]*", en, seg))
+        text = re.sub(r"\s+", " ", "".join(out)).replace(chr(815), "")
+        return re.sub(r"\s+([,.!?;:])", r"\1", text).strip()
+
+    return phonemize
+
+
 def write_srt(path: Path, scenes, total):
     """Caption file for platforms that take uploaded subtitles (LinkedIn, YouTube)."""
     lines = [l for sc in scenes for l in sc["lines"]]
@@ -190,6 +240,7 @@ def main():
     speed = args.speed or vcfg.get("speed", 1.1)
     gap = vcfg.get("sceneGap", 0.15)
     say = vcfg.get("say", {})
+    zh = vcfg.get("lang", "en-us").startswith("zh")  # "zh": Mandarin z voices, Chinese script
     sent_pause = vcfg.get("sentencePause", 0.25)
     clause_pause = vcfg.get("clausePause", 0.1)
     lead = vcfg.get("leadIn", 0.12)
@@ -198,14 +249,28 @@ def main():
     build.mkdir(exist_ok=True)
 
     k = None if args.from_wav else load_kokoro()
+    zh_phon = zh_phonemizer(k, say) if zh and k else None
     pieces = []
     scenes = []
     cursor = 0.0
     for i, sc in enumerate(spec["scenes"]):
         lines = sc["lines"]
-        text = " ".join(lines)
-        text_words = text.split()
-        if k:
+        line_words = [zh_words(l) if zh else l.split() for l in lines]
+        text = ("" if zh else " ").join(lines)
+        text_words = [w for ws in line_words for w in ws]
+        if zh_phon:
+            # a leading pause mark gives the first syllable a run-up; without it the
+            # z voices soften a scene's opening consonant (引擎 heard as 阴晴)
+            audio, sr, timings = k.create_timed("… " + zh_phon(text), voice=voice, speed=speed, is_phonemes=True, sentence_pause=sent_pause, clause_pause=clause_pause)
+            assert sr == SR
+            words = words_from_timings(timings, text_words, zh_phon)
+            # ...then drop the run-up's silence, keeping 60 ms before the first sound
+            off = max(0.0, min(w["s"] for w in words) - 0.06)
+            audio = audio[int(off * SR) :]
+            for w in words:
+                w["s"] -= off
+                w["e"] -= off
+        elif k:
             # voice.say respells words for the TTS only ({"Qwen": "Kwen"}); captions
             # keep the written form and timings still map word for word
             spoken = " ".join(respell(w, say) for w in text_words)
@@ -225,8 +290,8 @@ def main():
             w["s"] = round(w["s"] + cursor, 3)
             w["e"] = round(w["e"] + cursor, 3)
         line_objs, wi = [], 0
-        for line in lines:
-            n = len(line.split())
+        for line, lw in zip(lines, line_words):
+            n = len(lw)
             ws = words[wi : wi + n]
             wi += n
             line_objs.append({"text": line, "start": ws[0]["s"], "end": ws[-1]["e"], "words": ws})

@@ -1,0 +1,137 @@
+/* RedNote cover for the Chinese cut (1080×1440, 3:4 like the video). The
+   headline carries the cover in RedNote's two-column feed; no web address. */
+
+:root {
+  --geo-head: "Inter Tight", "Noto Sans SC", sans-serif;
+  --geo-body: "Inter", "Noto Sans SC", sans-serif;
+  --geo-data: "IBM Plex Mono", "Noto Sans SC", monospace;
+}
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--geo-cloud);
+  font-family: var(--geo-body);
+  color: var(--geo-text);
+}
+
+#logo {
+  position: absolute;
+  left: 64px;
+  top: 56px;
+  height: 46px;
+}
+
+#kick {
+  position: absolute;
+  left: 64px;
+  top: 158px;
+}
+
+#title {
+  position: absolute;
+  left: 64px;
+  top: 206px;
+  --size: 100px;
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+}
+#title div {
+  white-space: nowrap;
+}
+
+#alleged {
+  position: absolute;
+  left: 830px;
+  top: 486px;
+  font: 500 24px var(--geo-data);
+  color: var(--geo-text-2);
+  transform: rotate(-6deg);
+}
+
+#chips {
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  top: 608px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+#chips .geo-chip {
+  font: 600 24px var(--geo-head);
+  padding: 9px 18px 9px 12px;
+}
+#chips .robot {
+  display: block;
+  width: 36px;
+  height: 26px;
+}
+#chips .robot svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+#chips .is-next {
+  padding-left: 18px;
+  border: 2px dashed var(--geo-grey);
+  background: transparent;
+  color: var(--geo-text-2);
+}
+
+#book {
+  left: 64px;
+  top: 880px;
+  width: 470px;
+  height: 290px;
+  padding: 30px 32px;
+  box-shadow: none;
+}
+#book h4 {
+  margin: 0 0 6px;
+  font: 700 32px var(--geo-head);
+  letter-spacing: -0.02em;
+}
+#book .geo-kicker {
+  font-size: 18px;
+}
+#book .skel-rows {
+  margin: 26px 0 22px;
+}
+#book .skel-rows .geo-skel {
+  margin-bottom: 14px;
+}
+#book .tags {
+  display: flex;
+  gap: 10px;
+}
+#book .tags .geo-chip {
+  font-size: 18px;
+  padding: 7px 14px;
+}
+
+#rip {
+  position: absolute;
+  left: 220px;
+  top: 1010px;
+  padding: 10px 26px;
+  border: 6px solid var(--geo-warning);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #c47a06;
+  font: 800 64px var(--geo-head);
+  letter-spacing: 0.02em;
+  transform: rotate(-10deg);
+}
+
+#host {
+  position: absolute;
+  left: 520px;
+  top: 832px;
+  width: 600px;
+}
+#host .flip {
+  transform: scaleX(-1);
+}
