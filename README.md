@@ -19,6 +19,7 @@ employees", chunky offset-shadow cards, word-synced captions.
 | Carousel, 4:5, 10 slides | (capability sample) | `projects/ai-meta-ads-team` | `samples/ai-meta-ads-team/slide-01…10.png` and `.mp4` |
 | LinkedIn reel, 4:5, 34 s | Geoneo (`geoneo.ai`) | `projects/geoneo-engines` (+ `projects/geoneo-engines-thumb`) | `samples/geoneo-engines.mp4` + `.srt` + `geoneo-engines-thumbnail.png` |
 | LinkedIn carousel, 4:5, 9 slides | Geoneo (`geoneo.ai`) | `projects/geoneo-hk-mortgage` | `samples/geoneo-hk-mortgage/geoneo-hk-mortgage.pdf` + PNGs |
+| RedNote reel, 3:4, 36 s, Mandarin voice, Simplified Chinese | Geoneo (`geoneo.ai`) | `projects/geoneo-engines-zh` (+ `-zh-cover`) | `samples/geoneo-engines-zh.mp4` + `geoneo-engines-zh-cover.png` |
 
 Two accounts: **Praxcia** (`@sho.praxcia`, Pixel Crew look) and **Geoneo**
 (`geoneo.ai`, its own brand layer). Your cartoon host appears on both. Handles
