@@ -1,0 +1,131 @@
+1
+00:00:00,060 --> 00:00:00,835
+We asked AI
+
+2
+00:00:00,860 --> 00:00:01,335
+the same question
+
+3
+00:00:01,385 --> 00:00:02,409
+50 times.
+
+4
+00:00:02,459 --> 00:00:04,134
+One major financial category.
+
+5
+00:00:04,184 --> 00:00:04,959
+Three engines:
+
+6
+00:00:05,009 --> 00:00:07,099
+ChatGPT, Gemini, Perplexity.
+
+7
+00:00:07,149 --> 00:00:08,748
+50 neutral buyer questions.
+
+8
+00:00:08,798 --> 00:00:09,298
+First:
+
+9
+00:00:09,348 --> 00:00:09,998
+one brand showed up
+
+10
+00:00:10,023 --> 00:00:11,736
+in 92% of the answers.
+
+11
+00:00:11,786 --> 00:00:12,186
+Then:
+
+12
+00:00:12,236 --> 00:00:12,911
+four brands fought
+
+13
+00:00:12,961 --> 00:00:13,386
+over a spread
+
+14
+00:00:13,411 --> 00:00:14,665
+of just 5 points.
+
+15
+00:00:14,715 --> 00:00:15,015
+And three
+
+16
+00:00:15,065 --> 00:00:15,865
+market-leading platforms
+
+17
+00:00:15,915 --> 00:00:17,840
+scored 0.0%.
+
+18
+00:00:17,890 --> 00:00:19,115
+Billions in assets,
+
+19
+00:00:19,165 --> 00:00:20,390
+decades of brand awareness,
+
+20
+00:00:20,440 --> 00:00:21,577
+and not named once.
+
+21
+00:00:21,627 --> 00:00:22,127
+Why?
+
+22
+00:00:22,177 --> 00:00:22,852
+Their public pages
+
+23
+00:00:22,902 --> 00:00:23,927
+didn't give AI facts
+
+24
+00:00:23,952 --> 00:00:24,802
+that it could check:
+
+25
+00:00:24,852 --> 00:00:27,127
+pricing, eligibility, licensing.
+
+26
+00:00:27,177 --> 00:00:27,952
+So the engines named
+
+27
+00:00:27,977 --> 00:00:29,469
+the brands they could verify.
+
+28
+00:00:29,519 --> 00:00:30,144
+Brand awareness
+
+29
+00:00:30,194 --> 00:00:31,569
+gets you remembered by people.
+
+30
+00:00:31,619 --> 00:00:32,444
+Verifiable facts
+
+31
+00:00:32,469 --> 00:00:33,866
+get you named by AI.
+
+32
+00:00:33,916 --> 00:00:35,101
+Comment GEO
+
+33
+00:00:35,151 --> 00:00:37,189
+to get your free scan.
