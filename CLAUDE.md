@@ -13,7 +13,7 @@ cartoon, `kit/brand.js`) appears on both.
 | Account | Handle | Look | Sample |
 | --- | --- | --- | --- |
 | Praxcia | `@sho.praxcia` | Pixel Crew (`kit/pixel-crew.css`, pixel robots, chiptune, keyword CTA); employee scenes/slides tinted to their robot's colour | `projects/ai-delivery-team` (reel), `projects/praxcia-delivery-team` (carousel) |
-| Geoneo | `geoneo.ai` | Geoneo brand layer (`kit/brands/geoneo/`), calm, no sales pitch, LinkedIn 4:5 | `projects/geoneo-engines` (+ `-thumb`, its LinkedIn thumbnail), `projects/geoneo-hk-mortgage`; RedNote: `projects/geoneo-engines-zh` (+ `-zh-cover`) |
+| Geoneo | `geoneo.ai` | Geoneo brand layer (`kit/brands/geoneo/`), calm, no sales pitch, LinkedIn 4:5 | `projects/geoneo-engines` (+ `-thumb`, its LinkedIn thumbnail), `projects/geoneo-two-speeds` (+ `-thumb`), `projects/geoneo-hk-mortgage`; RedNote: `projects/geoneo-engines-zh` (+ `-zh-cover`) |
 
 Keep them apart: no Pixel Crew colours, fonts or handle in Geoneo work, and no
 Geoneo branding in Praxcia work. `projects/ai-meta-ads-team` is a capability
@@ -64,6 +64,7 @@ at them before rendering.
 - Never return GSAP objects from `page.evaluate` (puppeteer hangs serialising them).
 - Root `data-duration` is read from static HTML: `voice.py` stamps it; don't hand-edit it in reels.
 - Keep content out of Instagram's UI: top ~150 px, bottom ~330 px, right ~110 px below y=1050.
+- Class names: pixel-crew.css is loaded everywhere and owns `.step`, `.title`, `.dots`, `.cap`, `.tag`, `.card`; prefix project classes that might clash (e.g. `.todo`, `.pdots`).
 - Captions: 2–4 words per line in `script.json`, punctuation is dropped on screen (`R.captions(el, { clean: "light" })` keeps commas, quotes and `?`).
 - LinkedIn 4:5 (1080×1350) has no Instagram overlay; keep a 64 px margin and captions above the progress bar.
 - RedNote (Xiaohongshu): 3:4 (1080×1440), Simplified Chinese, captions clear of the bottom ~160 px, and no web addresses or other platforms' handles on screen (logo only).

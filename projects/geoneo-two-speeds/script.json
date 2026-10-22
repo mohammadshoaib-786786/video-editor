@@ -1,0 +1,87 @@
+{
+  "title": "Fix your website today. AI catches up later.",
+  "format": {
+    "width": 1080,
+    "height": 1350,
+    "fps": 30,
+    "platform": "LinkedIn feed, 4:5"
+  },
+  "brand": {
+    "name": "Geoneo",
+    "handle": "geoneo.ai"
+  },
+  "voice": {
+    "engine": "kokoro",
+    "voice": "am_michael",
+    "speed": 1.35,
+    "sceneGap": 0.15,
+    "leadIn": 0.14,
+    "tail": 1.9,
+    "sentencePause": 0.16,
+    "clausePause": 0.05,
+    "say": {
+      "Geoneo's": "Jee-oh-nee-oh's",
+      "GEO": "G.E.O.",
+      "Comment": "Kom-ment"
+    }
+  },
+  "music": {
+    "style": "ambient",
+    "bpm": 84,
+    "seed": 7,
+    "level": 0.14
+  },
+  "sfx": {
+    "level": 0.45
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "lines": ["Fix your website today.", "AI catches up later."]
+    },
+    {
+      "id": "two",
+      "lines": ["There are two kinds", "of AI engine,", "and they learn", "at different speeds."]
+    },
+    {
+      "id": "search",
+      "lines": [
+        "Search-grounded engines",
+        "look things up",
+        "on the live web",
+        "when someone asks.",
+        "They pick up",
+        "changes fastest.",
+        "In Geoneo's",
+        "6-month plan,",
+        "early movement shows up",
+        "around week 8."
+      ]
+    },
+    {
+      "id": "training",
+      "lines": [
+        "Training-based engines",
+        "answer from what",
+        "the model already learned.",
+        "They only catch up",
+        "when a newer model",
+        "is trained on newer content.",
+        "Real shifts come",
+        "around month 4 to 6."
+      ]
+    },
+    {
+      "id": "turn",
+      "lines": ["So if you update", "your fees page today", "and nothing moves", "next week,", "that's normal."]
+    },
+    {
+      "id": "takeaway",
+      "lines": ["Fix the right facts first,", "then ask the same", "buyer questions every month", "to see which engines", "have caught up."]
+    },
+    {
+      "id": "cta",
+      "lines": ["Comment GEO", "to get your free scan."]
+    }
+  ]
+}

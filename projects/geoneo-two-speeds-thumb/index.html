@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <title>Geoneo — Fix your website today (thumbnail)</title>
+    <link rel="stylesheet" href="kit/fonts.css" />
+    <link rel="stylesheet" href="kit/pixel-crew.css" />
+    <link rel="stylesheet" href="kit/brands/geoneo/brand.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="kit/vendor/gsap.min.js"></script>
+    <script src="kit/sprites.js"></script>
+    <script src="kit/brand.js"></script>
+    <script src="kit/brands/geoneo/logo.js"></script>
+    <script src="kit/motion.js"></script>
+    <script src="slides.js"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1350" data-fps="30" data-duration="1">
+      <div class="geo-bg"></div>
+      <span class="geo-logo" id="logo" data-logo></span>
+      <h1 class="geo-h1" id="title">
+        <div>Fix your website</div>
+        <div>today.</div>
+        <div><em>AI catches up</em></div>
+        <div><em>later.</em></div>
+      </h1>
+      <div class="geo-card" id="plan">
+        <div class="geo-kicker">Two engines, two speeds</div>
+        <div class="row" style="top: 84px"><b>Search-grounded</b><i class="track"></i><i class="fill"></i><i class="mark"></i><span class="val is-teal">Week 8</span></div>
+        <div class="row" style="top: 184px"><b>Training-based</b><i class="track"></i><i class="band"></i><span class="val is-band">Month 4&ndash;6</span></div>
+      </div>
+      <div id="host"><div class="flip" data-presenter></div></div>
+    </div>
+    <script>
+      document.querySelectorAll("[data-logo]").forEach((el) => (el.innerHTML = window.GEONEO_LOGO));
+      Sprites.hydrate(document);
+      const fonts = ["700 104px 'Inter Tight'", "600 26px 'Inter Tight'", "500 22px 'IBM Plex Mono'"].map((f) => document.fonts.load(f));
+      Promise.all([...fonts, window.AVATAR_READY]).then(() => {
+        const R = Reel.create({ timing: { total: 1, scenes: [] } });
+        R.register();
+        window.__timelines["main"] = R.tl;
+      });
+    </script>
+  </body>
+</html>

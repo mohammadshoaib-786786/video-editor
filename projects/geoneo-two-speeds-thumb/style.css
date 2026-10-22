@@ -1,0 +1,111 @@
+/* LinkedIn thumbnail for "Fix your website today" (1080×1350, matches the 4:5 reel).
+   The feed draws a play button over the centre, so nothing essential sits there. */
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--geo-cloud);
+  font-family: var(--geo-body);
+  color: var(--geo-text);
+}
+
+#logo {
+  position: absolute;
+  left: 64px;
+  top: 56px;
+  height: 46px;
+}
+
+#title {
+  position: absolute;
+  left: 64px;
+  top: 136px;
+  --size: 112px;
+}
+#title div {
+  white-space: nowrap;
+}
+
+/* a mini version of the reel's plan timeline: months 0–6 over 420 px */
+#plan {
+  left: 64px;
+  top: 760px;
+  width: 500px;
+  height: 300px;
+  padding: 28px 30px;
+  box-shadow: none;
+}
+#plan .geo-kicker {
+  font-size: 18px;
+}
+#plan .row {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  height: 90px;
+}
+#plan .row b {
+  display: block;
+  font: 600 26px var(--geo-head);
+  letter-spacing: -0.01em;
+}
+#plan .track {
+  position: absolute;
+  left: 0;
+  width: 420px;
+  top: 58px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--geo-border);
+}
+#plan .fill {
+  position: absolute;
+  left: 0;
+  width: 129px; /* week 8 of 26 */
+  top: 56px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--geo-teal);
+}
+#plan .mark {
+  position: absolute;
+  left: 129px;
+  top: 60px;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border-radius: 50%;
+  background: var(--geo-teal);
+  box-shadow: 0 0 0 4px var(--geo-surface);
+}
+#plan .band {
+  position: absolute;
+  left: 280px; /* months 4–6 */
+  width: 140px;
+  top: 46px;
+  height: 28px;
+  border-radius: 4px;
+  background: var(--geo-blue);
+}
+#plan .val {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font: 600 22px var(--geo-data);
+  white-space: nowrap;
+}
+#plan .val.is-teal {
+  color: var(--geo-teal);
+}
+
+#host {
+  position: absolute;
+  left: 540px;
+  top: 742px;
+  width: 600px;
+}
+#host .flip {
+  transform: scaleX(-1);
+}

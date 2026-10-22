@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <title>Geoneo — Fix your website today. AI catches up later.</title>
+    <link rel="stylesheet" href="kit/fonts.css" />
+    <link rel="stylesheet" href="kit/pixel-crew.css" />
+    <link rel="stylesheet" href="kit/brands/geoneo/brand.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="kit/vendor/gsap.min.js"></script>
+    <script src="kit/sprites.js"></script>
+    <script src="kit/brand.js"></script>
+    <script src="kit/brands/geoneo/logo.js"></script>
+    <script src="kit/motion.js"></script>
+    <script src="build/timing.js"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1350" data-fps="30" data-duration="35.85">
+      <audio id="soundtrack" src="build/mix.wav" data-start="0" data-duration="35.85" data-volume="1"></audio>
+
+      <!-- 1 · hook: on screen from the first frame -->
+      <section class="scene" id="s-hook">
+        <div class="geo-bg"></div>
+        <h1 class="geo-h1 abs" id="h-title">
+          <div>Fix your website</div>
+          <div>today.</div>
+          <div><em>AI catches up</em></div>
+          <div><em>later.</em></div>
+        </h1>
+        <div class="geo-card page abs" id="h-site">
+          <div class="bar"><span class="pdots"><i></i><i></i><i></i></span><span class="url">yourbrand.com/fees</span></div>
+          <h4>Fees</h4>
+          <span class="geo-skel" style="width: 88%"></span><span class="geo-skel" style="width: 70%"></span><span class="geo-skel" style="width: 80%"></span>
+          <span class="geo-chip is-ok" id="h-updated"><i data-icon="check" data-stroke="3"></i>Updated today</span>
+        </div>
+        <div class="geo-card abs" id="h-ai">
+          <div class="hd"><span class="robot" data-engine="grey"></span>AI answer</div>
+          <span class="geo-skel" style="width: 86%"></span><span class="geo-skel" style="width: 62%"></span>
+          <span class="geo-chip is-warn" id="h-old"><i class="clock" data-icon="clock" data-stroke="2.6"></i>Not updated yet</span>
+        </div>
+        <div class="abs" id="h-host"><div class="flip" data-presenter></div></div>
+      </section>
+
+      <!-- 2 · two kinds, two speeds -->
+      <section class="scene" id="s-two">
+        <div class="geo-bg is-white"></div>
+        <div class="geo-kicker is-teal kick">Why it takes time</div>
+        <h2 class="geo-h2 abs ttl"><div>Two kinds of AI engine.</div><div><em>Two learning speeds.</em></div></h2>
+        <div class="geo-card lane abs" id="w-a" style="top: 440px">
+          <div class="lbl"><b>Search-grounded</b><span>looks it up live</span></div>
+          <i class="track"></i>
+          <span class="flag"><i data-icon="check" data-stroke="3"></i>Up to date</span>
+          <span class="runner" data-engine="teal"></span>
+          <span class="speed"><i></i><i></i><i></i></span>
+        </div>
+        <div class="geo-card lane abs" id="w-b" style="top: 700px">
+          <div class="lbl"><b>Training-based</b><span>answers from training</span></div>
+          <i class="track"></i>
+          <span class="flag is-far"><i data-icon="check" data-stroke="3"></i>Up to date</span>
+          <span class="runner" data-engine="grey"></span>
+        </div>
+      </section>
+
+      <!-- 3 · search-grounded -->
+      <section class="scene" id="s-search">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker is-teal kick">Engine type 1</div>
+        <h2 class="geo-h2 abs ttl"><div>Search-grounded engines</div><div><em>look it up live.</em></div></h2>
+        <div class="geo-card node abs" id="s-n1" style="left: 64px"><span class="geo-ic"><i data-icon="user" data-stroke="2.2"></i></span><b>Buyer asks</b><span>a question</span></div>
+        <div class="geo-card node abs" id="s-n2" style="left: 410px"><span class="robot" data-engine="teal"></span><b>AI engine</b><span>searches now</span></div>
+        <div class="geo-card node abs" id="s-n3" style="left: 756px"><span class="geo-ic"><i data-icon="globe" data-stroke="2.2"></i></span><b>Live web</b><span class="geo-chip is-ok" id="s-found"><i data-icon="check" data-stroke="3"></i>your new page</span></div>
+        <svg class="wires abs" viewBox="0 0 1080 1350"><path d="M332 520 H402" /><path d="M390 508 L404 520 L390 532" /><path d="M678 520 H748" /><path d="M736 508 L750 520 L736 532" /></svg>
+      </section>
+
+      <!-- 4 · training-based -->
+      <section class="scene" id="s-train">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker is-teal kick">Engine type 2</div>
+        <h2 class="geo-h2 abs ttl"><div>Training-based engines</div><div>answer from <em>training.</em></div></h2>
+        <div class="geo-card model abs" id="t-m1" style="left: 64px">
+          <div class="hd"><span class="robot" data-engine="grey"></span>Today&rsquo;s model</div>
+          <span>Trained on older content</span>
+          <span class="geo-chip">your old page</span>
+        </div>
+        <svg class="wires abs" viewBox="0 0 1080 1350"><path d="M498 518 H582" /><path d="M568 504 L584 518 L568 532" /></svg>
+        <div class="geo-card model abs" id="t-m2" style="left: 596px">
+          <div class="hd"><span class="robot" data-engine="blue"></span>A newer model</div>
+          <span>Trained on newer content</span>
+          <span class="geo-chip is-ok" id="t-new"><i data-icon="check" data-stroke="3"></i>your new page</span>
+        </div>
+      </section>
+
+      <!-- 5 · the turn -->
+      <section class="scene" id="s-turn">
+        <div class="geo-bg is-white"></div>
+        <div class="geo-kicker is-teal kick">Next week</div>
+        <h2 class="geo-h2 abs ttl" id="u-title"><div>Updated your fees page today?</div><div id="u-l2">Nothing moved next week?</div><div id="u-l3"><em>That&rsquo;s normal.</em></div></h2>
+        <div class="geo-card page abs" id="u-site">
+          <div class="bar"><span class="pdots"><i></i><i></i><i></i></span><span class="url">yourbrand.com/fees</span></div>
+          <h4>Fees</h4>
+          <span class="geo-skel" style="width: 88%"></span><span class="geo-skel" style="width: 70%"></span><span class="geo-skel" style="width: 80%"></span>
+          <span class="geo-chip is-ok"><i data-icon="check" data-stroke="3"></i>Updated today</span>
+        </div>
+        <div class="geo-card abs" id="u-week">
+          <div class="geo-kicker">AI answers &middot; next week</div>
+          <div class="days" id="u-days"></div>
+          <span class="geo-chip is-teal" id="u-ok"><i data-icon="check" data-stroke="3"></i>Normal &middot; still catching up</span>
+        </div>
+      </section>
+
+      <!-- 6 · the takeaway -->
+      <section class="scene" id="s-take">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker is-teal kick">What to do</div>
+        <h2 class="geo-h2 abs ttl"><div>Fix the right facts first,</div><div><em>then check every month.</em></div></h2>
+        <div class="geo-card todo abs" id="k-fix">
+          <span class="geo-ic"><i data-icon="file" data-stroke="2.2"></i></span>
+          <div><b>Fix the right facts first</b><div class="chips"><span class="geo-chip is-teal">Fees</span><span class="geo-chip is-teal">Pricing</span><span class="geo-chip is-teal">Eligibility</span><span class="geo-chip is-teal">Licensing</span></div></div>
+        </div>
+        <div class="geo-card todo abs" id="k-ask">
+          <span class="geo-ic"><i data-icon="chat" data-stroke="2.2"></i></span>
+          <div><b>Ask the same buyer questions every month</b><span>See which engines have caught up.</span></div>
+          <div class="grid" id="k-grid"></div>
+        </div>
+      </section>
+
+      <!-- 7 · end card -->
+      <section class="scene" id="s-cta">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker is-teal kick">Free GEO scan</div>
+        <h1 class="geo-h1 abs ttl" id="c-title"><div>Comment <em>&ldquo;GEO&rdquo;</em></div><div>to get your FREE scan.</div></h1>
+        <div class="geo-card abs" id="c-box"><span class="face" data-face></span><span class="kw" id="c-kw"></span><span class="cur" id="c-cur"></span><span class="send"><i data-icon="send" data-stroke="2.4"></i></span></div>
+        <div class="abs" id="c-host"><div class="flip" data-presenter></div></div>
+        <div class="abs" id="c-sign"><span class="geo-logo" data-logo></span><span>geoneo.ai</span></div>
+      </section>
+
+      <!-- the plan timeline stays put across the two engine scenes -->
+      <div class="geo-card abs" id="plan">
+        <div class="geo-kicker">Geoneo 6-month plan</div>
+        <div class="row" id="p-a" style="top: 104px"><b>Search-grounded</b><i class="track"></i><i class="fill" id="p-a-fill"></i><i class="mark" id="p-a-dot"></i><span class="val" id="p-a-lab">Week 8 &middot; early movement</span></div>
+        <div class="row" id="p-b" style="top: 204px"><b>Training-based</b><i class="track"></i><i class="band" id="p-b-band"></i><span class="val" id="p-b-lab">Month 4&ndash;6 &middot; real shifts</span></div>
+        <div class="axis" id="p-axis"></div>
+      </div>
+
+      <span class="geo-logo" id="logo" data-logo></span>
+      <i id="progress"></i>
+      <div class="captions geo-captions" id="captions"></div>
+    </div>
+    <script src="scenes.js"></script>
+    <script>
+      // build once fonts and the host image are in, then register
+      const fonts = ["700 100px 'Inter Tight'", "600 30px 'Inter Tight'", "500 22px 'IBM Plex Mono'", "500 22px Inter"].map((f) => document.fonts.load(f));
+      Promise.all([document.fonts.ready, ...fonts, window.AVATAR_READY]).then(() => {
+        const R = window.buildReel();
+        window.__timelines["main"] = R.tl;
+      });
+    </script>
+  </body>
+</html>

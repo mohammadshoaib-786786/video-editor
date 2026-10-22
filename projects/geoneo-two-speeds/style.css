@@ -1,0 +1,663 @@
+/* "Fix your website today. AI catches up later." — Geoneo, LinkedIn 4:5 (1080×1350).
+   Brand atoms come from kit/brands/geoneo/brand.css; this file places things. */
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--geo-cloud);
+  font-family: var(--geo-body);
+  color: var(--geo-text);
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+}
+
+.abs {
+  position: absolute;
+}
+
+.kick {
+  position: absolute;
+  left: 64px;
+  top: 148px;
+}
+
+.ttl {
+  left: 64px;
+  top: 190px;
+  --size: 72px;
+}
+.ttl div {
+  white-space: nowrap;
+}
+
+#logo {
+  position: absolute;
+  left: 64px;
+  top: 54px;
+  height: 46px;
+  z-index: 5;
+}
+
+#progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1080px;
+  height: 6px;
+  background: var(--geo-teal);
+  transform-origin: 0 50%;
+  z-index: 5;
+}
+
+.captions.geo-captions {
+  left: 40px;
+  right: 40px;
+  top: 1176px;
+  height: 96px;
+  z-index: 6;
+}
+
+.robot {
+  display: block;
+}
+.robot svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* flat cards, like the carousel: no soft drop shadow */
+.geo-card {
+  box-shadow: none;
+}
+
+.geo-chip.is-ok {
+  border-color: var(--geo-success);
+  background: #effbf3;
+  color: #15803d;
+}
+.geo-chip .icon {
+  width: 20px;
+  height: 20px;
+}
+.geo-chip .clock {
+  display: inline-flex;
+}
+.lane .flag.is-far {
+  border-color: var(--geo-grey);
+  background: transparent;
+  color: var(--geo-text-2);
+}
+
+/* a web page card (hook, turn) */
+.page {
+  overflow: hidden;
+}
+.page .bar {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 22px;
+  border-bottom: 1.5px solid var(--geo-border);
+}
+.page .pdots {
+  display: flex;
+  gap: 7px;
+}
+.page .pdots i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--geo-border);
+}
+.page .url {
+  font: 500 20px var(--geo-data);
+  color: var(--geo-text-2);
+}
+.page h4 {
+  margin: 24px 28px 18px;
+  font: 700 34px var(--geo-head);
+  letter-spacing: -0.02em;
+}
+.page .geo-skel {
+  margin: 0 28px 14px;
+}
+.page .geo-chip {
+  position: absolute;
+  left: 28px;
+  bottom: 24px;
+  font-size: 20px;
+}
+
+/* ---------- 1 · hook ---------- */
+#h-title {
+  left: 64px;
+  top: 136px;
+  --size: 104px;
+}
+#h-title div {
+  white-space: nowrap;
+}
+#h-site {
+  left: 64px;
+  top: 600px;
+  width: 470px;
+  height: 290px;
+}
+#h-ai {
+  left: 64px;
+  top: 916px;
+  width: 470px;
+  height: 200px;
+  padding: 24px 28px;
+}
+#h-ai .hd,
+.model .hd {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  font: 600 26px var(--geo-head);
+}
+#h-ai .robot,
+.model .robot {
+  width: 42px;
+  height: 30px;
+}
+#h-ai .geo-skel {
+  margin-bottom: 14px;
+}
+#h-ai .geo-chip {
+  position: absolute;
+  left: 28px;
+  bottom: 22px;
+  font-size: 20px;
+}
+#h-host {
+  left: 540px;
+  top: 742px;
+  width: 600px;
+}
+#h-host .flip,
+#c-host .flip {
+  transform: scaleX(-1);
+}
+
+/* ---------- 2 · two speeds ---------- */
+.lane {
+  left: 64px;
+  width: 952px;
+  height: 220px;
+}
+.lane .lbl {
+  position: absolute;
+  left: 32px;
+  top: 26px;
+}
+.lane .lbl b {
+  font: 700 32px var(--geo-head);
+  letter-spacing: -0.02em;
+}
+.lane .lbl span {
+  margin-left: 14px;
+  font: 500 20px var(--geo-data);
+  color: var(--geo-text-2);
+}
+.lane .track {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  top: 164px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--geo-border);
+}
+.lane .flag {
+  position: absolute;
+  right: 32px;
+  top: 98px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--geo-teal);
+  background: var(--geo-teal-soft);
+  color: var(--geo-teal);
+  font: 600 20px var(--geo-data);
+}
+.lane .flag .icon {
+  width: 20px;
+  height: 20px;
+}
+.lane .runner {
+  position: absolute;
+  left: 40px;
+  top: 100px;
+  width: 84px;
+  height: 60px;
+}
+.lane .speed {
+  position: absolute;
+  left: 40px;
+  top: 112px;
+  width: 70px;
+  height: 40px;
+}
+.lane .speed i {
+  display: block;
+  height: 4px;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  background: var(--geo-blue);
+}
+.lane .speed i:nth-child(2) {
+  margin-left: 18px;
+}
+
+/* ---------- 3 · search-grounded ---------- */
+.node {
+  top: 420px;
+  width: 260px;
+  height: 200px;
+  padding: 26px 26px;
+}
+.node .geo-ic {
+  width: 64px;
+  height: 64px;
+}
+.node .geo-ic .icon {
+  width: 34px;
+  height: 34px;
+}
+.node .robot {
+  width: 64px;
+  height: 46px;
+  margin: 9px 0;
+}
+.node b {
+  display: block;
+  margin-top: 16px;
+  font: 700 30px var(--geo-head);
+  letter-spacing: -0.02em;
+}
+.node > span:last-child {
+  display: inline-flex;
+  margin-top: 6px;
+  font: 500 20px var(--geo-data);
+  color: var(--geo-text-2);
+}
+.node .geo-chip.is-ok {
+  color: #15803d;
+  font-size: 18px;
+  padding: 6px 12px;
+}
+.wires {
+  inset: 0;
+  width: 1080px;
+  height: 1350px;
+  pointer-events: none;
+}
+.wires path {
+  fill: none;
+  stroke: var(--geo-teal);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* the plan timeline (scenes 3–4) */
+#plan {
+  left: 64px;
+  top: 690px;
+  width: 952px;
+  height: 400px;
+  padding: 30px 32px;
+  opacity: 0;
+  z-index: 2;
+}
+#plan .row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 90px;
+}
+#plan .row b {
+  position: absolute;
+  left: 32px;
+  top: 22px;
+  font: 600 26px var(--geo-head);
+  letter-spacing: -0.01em;
+}
+#plan .track {
+  position: absolute;
+  left: 300px;
+  width: 600px;
+  top: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--geo-border);
+}
+#plan .fill {
+  position: absolute;
+  left: 300px;
+  width: 185px; /* week 8 of 26 */
+  top: 34px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--geo-teal);
+  transform-origin: 0 50%;
+}
+#plan .mark {
+  position: absolute;
+  left: 485px;
+  top: 38px;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-radius: 50%;
+  background: var(--geo-teal);
+  box-shadow: 0 0 0 4px var(--geo-surface);
+}
+#plan .band {
+  position: absolute;
+  left: 700px; /* months 4–6 */
+  width: 200px;
+  top: 22px;
+  height: 32px;
+  border-radius: 4px;
+  background: var(--geo-blue);
+  transform-origin: 0 50%;
+}
+#plan .val {
+  position: absolute;
+  top: 60px;
+  font: 600 21px var(--geo-data);
+  color: var(--geo-text);
+  white-space: nowrap;
+}
+#p-a-lab {
+  left: 470px;
+  color: var(--geo-teal);
+}
+#p-b-lab {
+  left: 640px;
+}
+#plan .axis {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 300px;
+  height: 60px;
+}
+#plan .axis .base {
+  position: absolute;
+  left: 300px;
+  width: 600px;
+  top: 0;
+  height: 1.5px;
+  background: var(--geo-grey);
+}
+#plan .axis .tk {
+  position: absolute;
+  top: 0;
+  width: 1.5px;
+  height: 10px;
+  background: var(--geo-grey);
+}
+#plan .axis .n {
+  position: absolute;
+  top: 16px;
+  width: 40px;
+  margin-left: -20px;
+  text-align: center;
+  font: 500 20px var(--geo-data);
+  color: var(--geo-text-2);
+}
+#plan .axis .axcap {
+  position: absolute;
+  left: 32px;
+  top: 14px;
+  font: 500 20px var(--geo-data);
+  color: var(--geo-text-2);
+}
+
+/* ---------- 4 · training-based ---------- */
+.model {
+  top: 400px;
+  width: 420px;
+  height: 236px;
+  padding: 26px 28px;
+}
+.model > span:not(.geo-chip) {
+  display: block;
+  font: 500 24px var(--geo-body);
+  color: var(--geo-text-2);
+}
+.model .geo-chip {
+  position: absolute;
+  left: 28px;
+  bottom: 24px;
+  font-size: 20px;
+}
+#t-m2 {
+  border-color: var(--geo-teal);
+  border-width: 2.5px;
+}
+
+/* ---------- 5 · the turn ---------- */
+#u-title {
+  --size: 62px;
+}
+#u-site {
+  left: 64px;
+  top: 470px;
+  width: 440px;
+  height: 330px;
+}
+#u-week {
+  left: 540px;
+  top: 470px;
+  width: 476px;
+  height: 330px;
+  padding: 26px 28px;
+}
+#u-week .geo-kicker {
+  font-size: 18px;
+}
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 52px);
+  gap: 8px;
+  margin-top: 26px;
+}
+.days .d {
+  text-align: center;
+  font: 500 18px var(--geo-data);
+  color: var(--geo-text-2);
+}
+.days .d i {
+  display: grid;
+  place-items: center;
+  height: 64px;
+  margin-top: 8px;
+  border-radius: 12px;
+  background: #f1f4f6;
+  font: 600 22px var(--geo-data);
+  font-style: normal;
+  color: var(--geo-grey);
+}
+#u-ok {
+  position: absolute;
+  left: 28px;
+  bottom: 26px;
+  font-size: 20px;
+}
+
+/* ---------- 6 · takeaway ---------- */
+#s-take .ttl {
+  --size: 66px;
+}
+.todo {
+  left: 64px;
+  width: 952px;
+  padding: 30px 34px 30px 132px;
+}
+.todo > .geo-ic {
+  position: absolute;
+  left: 34px;
+  top: 30px;
+  width: 72px;
+  height: 72px;
+}
+.todo > .geo-ic .icon {
+  width: 38px;
+  height: 38px;
+}
+.todo b {
+  display: block;
+  font: 700 34px/1.2 var(--geo-head);
+  letter-spacing: -0.02em;
+}
+.todo > div > span {
+  display: block;
+  margin-top: 8px;
+  font: 400 24px var(--geo-body);
+  color: var(--geo-text-2);
+}
+.todo .chips {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+.todo .chips .geo-chip {
+  font-size: 20px;
+}
+#k-fix {
+  top: 380px;
+  height: 180px;
+}
+#k-ask {
+  top: 590px;
+  height: 430px;
+}
+#k-grid {
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  top: 150px;
+}
+#k-grid .gr {
+  display: grid;
+  grid-template-columns: 236px repeat(6, 1fr);
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+#k-grid .gh {
+  text-align: center;
+  font: 500 19px var(--geo-data);
+  color: var(--geo-text-2);
+}
+#k-grid .gl {
+  font: 600 24px var(--geo-head);
+}
+#k-grid .c {
+  height: 74px;
+  border-radius: 12px;
+  border: 1.5px solid var(--geo-border);
+  background: var(--geo-surface);
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+#k-grid .c .icon {
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+}
+#k-grid .legend {
+  display: flex;
+  gap: 24px;
+  margin-top: 6px;
+  font: 500 19px var(--geo-data);
+  color: var(--geo-text-2);
+}
+#k-grid .legend i {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: -3px;
+  border-radius: 5px;
+}
+
+/* ---------- 7 · end card ---------- */
+#c-title {
+  --size: 84px;
+}
+#c-box {
+  left: 64px;
+  top: 440px;
+  width: 640px;
+  height: 128px;
+  border-radius: 64px;
+  border: 2.5px solid var(--geo-teal);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 38px 0 20px;
+}
+#c-box .face {
+  width: 88px;
+  height: 88px;
+  flex: none;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--geo-teal-soft);
+}
+#c-box .kw {
+  font: 600 62px var(--geo-data);
+  letter-spacing: 0.02em;
+  color: var(--geo-teal);
+}
+#c-box .cur {
+  width: 5px;
+  height: 64px;
+  margin-left: -16px;
+  background: var(--geo-text);
+}
+#c-box .send {
+  margin-left: auto;
+  width: 56px;
+  height: 56px;
+  color: var(--geo-teal);
+}
+#c-box .send .icon {
+  width: 100%;
+  height: 100%;
+}
+#c-host {
+  left: 520px;
+  top: 742px;
+  width: 600px;
+}
+#c-sign {
+  left: 64px;
+  top: 1004px;
+}
+#c-sign .geo-logo {
+  height: 52px;
+}
+#c-sign span {
+  display: block;
+  margin-top: 10px;
+  font: 500 24px var(--geo-data);
+  color: var(--geo-teal);
+}
