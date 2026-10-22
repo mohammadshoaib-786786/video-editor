@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1350" />
+    <title>Geoneo — We asked AI the same question 50 times</title>
+    <link rel="stylesheet" href="kit/fonts.css" />
+    <link rel="stylesheet" href="kit/pixel-crew.css" />
+    <link rel="stylesheet" href="kit/brands/geoneo/brand.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="kit/vendor/gsap.min.js"></script>
+    <script src="kit/sprites.js"></script>
+    <script src="kit/brand.js"></script>
+    <script src="kit/brands/geoneo/logo.js"></script>
+    <script src="kit/motion.js"></script>
+    <script src="build/timing.js"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1350" data-fps="30" data-duration="38.09">
+      <audio id="soundtrack" src="build/mix.wav" data-start="0" data-duration="38.09" data-volume="1"></audio>
+
+      <!-- 1 · hook: on screen from the first frame -->
+      <section class="scene" id="s-hook">
+        <div class="geo-bg"></div>
+        <h1 class="geo-h1 abs" id="h-title">
+          <div>We asked AI</div>
+          <div>the same question</div>
+          <div><em>50 times.</em></div>
+        </h1>
+        <div class="abs" id="h-stack">
+          <div class="geo-card ghost" style="--i: 4"></div>
+          <div class="geo-card ghost" style="--i: 3"></div>
+          <div class="geo-card ghost" style="--i: 2"></div>
+          <div class="geo-card ghost" style="--i: 1"></div>
+          <div class="geo-card q" id="h-q"><span class="geo-ic"><i data-icon="user" data-stroke="2.2"></i></span><p>&ldquo;Which provider would you recommend?&rdquo;</p></div>
+          <span class="geo-chip is-teal" id="h-x50">&times;50</span>
+        </div>
+        <div class="abs" id="h-host"><div class="flip" data-presenter></div></div>
+      </section>
+
+      <!-- 2 · the test -->
+      <section class="scene" id="s-test">
+        <div class="geo-bg is-white"></div>
+        <div class="geo-kicker is-teal kick">The test</div>
+        <h2 class="geo-h2 abs ttl"><div>Same questions,</div><div><em>three engines.</em></div></h2>
+        <div class="geo-card abs" id="t-cat"><span class="geo-ic"><i data-icon="lock" data-stroke="2.2"></i></span><div><b>One major financial category</b><span>Category and brands kept anonymous</span></div></div>
+        <div class="geo-card tile abs" id="t-eng" style="left: 64px">
+          <b class="big">3</b><span class="what">AI engines</span>
+          <div class="engs"><span class="geo-chip"><i class="robot" data-engine="teal"></i>ChatGPT</span><span class="geo-chip"><i class="robot" data-engine="blue"></i>Gemini</span><span class="geo-chip"><i class="robot" data-engine="grey"></i>Perplexity</span></div>
+        </div>
+        <div class="geo-card tile abs" id="t-qs" style="left: 552px">
+          <b class="big">50</b><span class="what">neutral buyer questions</span>
+          <div class="bubbles"><i data-icon="chat" data-stroke="2"></i><i data-icon="chat" data-stroke="2"></i><i data-icon="chat" data-stroke="2"></i><i data-icon="chat" data-stroke="2"></i><i data-icon="chat" data-stroke="2"></i></div>
+        </div>
+      </section>
+
+      <!-- 3 · result one -->
+      <section class="scene" id="s-r1">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker is-teal kick">First result</div>
+        <h2 class="geo-h2 abs ttl"><div>One brand showed up</div><div>in <em>92%</em> of the answers.</div></h2>
+        <div class="geo-card chart abs" id="r1-chart">
+          <div class="geo-kicker">Share of answers naming the brand</div>
+          <div class="crow" style="top: 120px"><b>Brand A</b><i class="track"></i><i class="bar" id="r1-bar"></i><span class="val is-teal" id="r1-val">92%</span></div>
+          <div class="axis"><i class="base"></i><span class="n" style="left: 300px">0</span><span class="n" style="left: 900px">100</span></div>
+        </div>
+        <span class="geo-chip abs" id="r1-note"><i data-icon="lock" data-stroke="2.4"></i>Brand names withheld</span>
+      </section>
+
+      <!-- 4 · result two -->
+      <section class="scene" id="s-r2">
+        <div class="geo-bg is-white"></div>
+        <div class="geo-kicker is-teal kick">Second result</div>
+        <h2 class="geo-h2 abs ttl"><div>Four brands,</div><div><em>a 5-point spread.</em></div></h2>
+        <div class="geo-card abs" id="r2-card">
+          <div class="geo-kicker">Four brands, neck and neck</div>
+          <div class="toks"><span class="tok">B</span><span class="tok">C</span><span class="tok">D</span><span class="tok">E</span></div>
+          <div class="brace" id="r2-brace"><i></i><span>within 5 points</span></div>
+        </div>
+      </section>
+
+      <!-- 5 · result three -->
+      <section class="scene" id="s-r3">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker is-teal kick">Third result</div>
+        <h2 class="geo-h2 abs ttl"><div>Three market leaders:</div><div><em>0.0%.</em></div></h2>
+        <div class="geo-card chart abs" id="r3-chart">
+          <div class="geo-kicker">Share of answers naming the brand</div>
+          <div class="crow is-ref" style="top: 100px"><b>Brand A</b><i class="track"></i><i class="bar" style="width: 552px"></i><span class="val" style="left: 864px">92%</span></div>
+          <div class="crow lead" style="top: 180px"><b>Market leader F</b><i class="track"></i><i class="zero"></i><span class="val zv">0.0%</span></div>
+          <div class="crow lead" style="top: 250px"><b>Market leader G</b><i class="track"></i><i class="zero"></i><span class="val zv">0.0%</span></div>
+          <div class="crow lead" style="top: 320px"><b>Market leader H</b><i class="track"></i><i class="zero"></i><span class="val zv">0.0%</span></div>
+          <div class="axis" style="top: 392px"><i class="base"></i><span class="n" style="left: 300px">0</span><span class="n" style="left: 900px">100</span></div>
+        </div>
+        <div class="abs" id="r3-tags">
+          <span class="geo-chip" id="r3-assets"><i data-icon="bank" data-stroke="2.2"></i>Billions in assets</span>
+          <span class="geo-chip" id="r3-aware"><i data-icon="megaphone" data-stroke="2.2"></i>Decades of brand awareness</span>
+          <span class="geo-chip is-warn" id="r3-none"><i data-icon="x" data-stroke="2.8"></i>Not named once</span>
+        </div>
+      </section>
+
+      <!-- 6 · why -->
+      <section class="scene" id="s-why">
+        <div class="geo-bg is-white"></div>
+        <div class="geo-kicker is-teal kick">Why</div>
+        <h2 class="geo-h2 abs ttl"><div>AI names the brands</div><div><em>it can verify.</em></div></h2>
+        <div class="geo-card col abs is-empty" id="y-a" style="left: 64px">
+          <h5>Their public pages</h5>
+          <div class="it"><span>Pricing</span><i class="q">?</i></div>
+          <div class="it"><span>Eligibility</span><i class="q">?</i></div>
+          <div class="it"><span>Licensing</span><i class="q">?</i></div>
+          <span class="geo-chip" id="y-a-note">No facts AI can check</span>
+        </div>
+        <div class="geo-card col abs" id="y-b" style="left: 552px">
+          <h5>Brands AI named</h5>
+          <div class="it"><span>Pricing</span><i class="ok"><i data-icon="check" data-stroke="3"></i></i></div>
+          <div class="it"><span>Eligibility</span><i class="ok"><i data-icon="check" data-stroke="3"></i></i></div>
+          <div class="it"><span>Licensing</span><i class="ok"><i data-icon="check" data-stroke="3"></i></i></div>
+          <span class="geo-chip is-teal" id="y-b-note"><i data-icon="check" data-stroke="3"></i>Verifiable</span>
+        </div>
+      </section>
+
+      <!-- 7 · closing line -->
+      <section class="scene" id="s-close">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker is-teal kick">The takeaway</div>
+        <div class="geo-card say abs" id="z-a" style="top: 200px">
+          <span class="geo-ic"><i data-icon="users" data-stroke="2.2"></i></span>
+          <h2 class="geo-h2">Brand awareness</h2>
+          <p id="z-a2">gets you remembered by <b>people.</b></p>
+        </div>
+        <div class="geo-card say abs is-ai" id="z-b" style="top: 560px">
+          <span class="robot" data-engine="teal"></span>
+          <h2 class="geo-h2">Verifiable facts</h2>
+          <p id="z-b2">get you <em>named by AI.</em></p>
+        </div>
+      </section>
+
+      <!-- 8 · end card -->
+      <section class="scene" id="s-cta">
+        <div class="geo-bg"></div>
+        <div class="geo-kicker is-teal kick">Free GEO scan</div>
+        <h1 class="geo-h1 abs ttl" id="c-title"><div>Comment <em>&ldquo;GEO&rdquo;</em></div><div>to get your FREE scan.</div></h1>
+        <div class="geo-card abs" id="c-box"><span class="face" data-face></span><span class="kw" id="c-kw"></span><span class="cur" id="c-cur"></span><span class="send"><i data-icon="send" data-stroke="2.4"></i></span></div>
+        <div class="abs" id="c-host"><div class="flip" data-presenter></div></div>
+        <div class="abs" id="c-sign"><span class="geo-logo" data-logo></span><span>geoneo.ai</span></div>
+      </section>
+
+      <span class="geo-logo" id="logo" data-logo></span>
+      <i id="progress"></i>
+      <div class="captions geo-captions" id="captions"></div>
+    </div>
+    <script src="scenes.js"></script>
+    <script>
+      // build once fonts and the host image are in, then register
+      const fonts = ["700 100px 'Inter Tight'", "600 30px 'Inter Tight'", "500 22px 'IBM Plex Mono'", "600 26px 'IBM Plex Mono'", "500 22px Inter"].map((f) => document.fonts.load(f));
+      Promise.all([document.fonts.ready, ...fonts, window.AVATAR_READY]).then(() => {
+        const R = window.buildReel();
+        window.__timelines["main"] = R.tl;
+      });
+    </script>
+  </body>
+</html>

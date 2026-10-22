@@ -19,6 +19,7 @@ employees", chunky offset-shadow cards, word-synced captions.
 | Carousel, 4:5, 10 slides | (capability sample) | `projects/ai-meta-ads-team` | `samples/ai-meta-ads-team/slide-01…10.png` and `.mp4` |
 | LinkedIn reel, 4:5, 34 s | Geoneo (`geoneo.ai`) | `projects/geoneo-engines` (+ `projects/geoneo-engines-thumb`) | `samples/geoneo-engines.mp4` + `.srt` + `geoneo-engines-thumbnail.png` |
 | LinkedIn carousel, 4:5, 9 slides | Geoneo (`geoneo.ai`) | `projects/geoneo-hk-mortgage` | `samples/geoneo-hk-mortgage/geoneo-hk-mortgage.pdf` + PNGs |
+| LinkedIn reel, 4:5, 38 s: the same question 50 times | Geoneo (`geoneo.ai`) | `projects/geoneo-50-asks` (+ `-thumb`) | `samples/geoneo-50-asks.mp4` + `.srt` + `geoneo-50-asks-thumbnail.png` |
 | LinkedIn reel, 4:5, 36 s: two engine speeds | Geoneo (`geoneo.ai`) | `projects/geoneo-two-speeds` (+ `-thumb`) | `samples/geoneo-two-speeds.mp4` + `.srt` + `geoneo-two-speeds-thumbnail.png` |
 | RedNote reel, 3:4, 36 s, Mandarin voice, Simplified Chinese | Geoneo (`geoneo.ai`) | `projects/geoneo-engines-zh` (+ `-zh-cover`) | `samples/geoneo-engines-zh.mp4` + `geoneo-engines-zh-cover.png` |
 

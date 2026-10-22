@@ -258,25 +258,27 @@ def main():
         line_words = [zh_words(l) if zh else l.split() for l in lines]
         text = ("" if zh else " ").join(lines)
         text_words = [w for ws in line_words for w in ws]
+        # a leading pause mark gives each scene's first syllable a run-up; without
+        # it the voice softens the opening consonant (引擎 heard as 阴晴, "Brand"
+        # as "Rand"). The run-up's silence is cut again below.
         if zh_phon:
-            # a leading pause mark gives the first syllable a run-up; without it the
-            # z voices soften a scene's opening consonant (引擎 heard as 阴晴)
             audio, sr, timings = k.create_timed("… " + zh_phon(text), voice=voice, speed=speed, is_phonemes=True, sentence_pause=sent_pause, clause_pause=clause_pause)
             assert sr == SR
             words = words_from_timings(timings, text_words, zh_phon)
-            # ...then drop the run-up's silence, keeping 60 ms before the first sound
+        elif k:
+            # voice.say respells words for the TTS only ({"Qwen": "Kwen"}); captions
+            # keep the written form and timings still map word for word
+            spoken = " ".join(respell(w, say) for w in text_words)
+            audio, sr, timings = k.create_timed("… " + spoken, voice=voice, speed=speed, sentence_pause=sent_pause, clause_pause=clause_pause)
+            assert sr == SR
+            words = words_from_timings(timings, text_words, lambda w: k.tokenizer.phonemize(respell(w, say), "en-us"))
+        if k:
+            # keep 60 ms before the first sound
             off = max(0.0, min(w["s"] for w in words) - 0.06)
             audio = audio[int(off * SR) :]
             for w in words:
                 w["s"] -= off
                 w["e"] -= off
-        elif k:
-            # voice.say respells words for the TTS only ({"Qwen": "Kwen"}); captions
-            # keep the written form and timings still map word for word
-            spoken = " ".join(respell(w, say) for w in text_words)
-            audio, sr, timings = k.create_timed(spoken, voice=voice, speed=speed, sentence_pause=sent_pause, clause_pause=clause_pause)
-            assert sr == SR
-            words = words_from_timings(timings, text_words, lambda w: k.tokenizer.phonemize(respell(w, say), "en-us"))
         else:
             # rough reading-speed layout for an external recording
             dur = 0.36 * len(text_words) / speed

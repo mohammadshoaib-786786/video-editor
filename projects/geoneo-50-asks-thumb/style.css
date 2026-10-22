@@ -1,0 +1,105 @@
+/* LinkedIn thumbnail for "We asked AI the same question 50 times" (1080×1350, 4:5).
+   The feed draws a play button over the centre, so nothing essential sits there. */
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--geo-cloud);
+  font-family: var(--geo-body);
+  color: var(--geo-text);
+}
+
+#logo {
+  position: absolute;
+  left: 64px;
+  top: 56px;
+  height: 46px;
+}
+
+#title {
+  position: absolute;
+  left: 64px;
+  top: 136px;
+  --size: 112px;
+}
+#title em {
+  font-style: normal;
+}
+#title div {
+  white-space: nowrap;
+}
+
+/* a mini version of the reel's results, on a full 0–100 scale over 420 px */
+#plan {
+  left: 64px;
+  top: 760px;
+  width: 500px;
+  height: 300px;
+  padding: 28px 30px;
+  box-shadow: none;
+}
+#plan .geo-kicker {
+  font-size: 18px;
+}
+#plan .row {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  height: 90px;
+}
+#plan .row b {
+  display: block;
+  font: 600 26px var(--geo-head);
+  letter-spacing: -0.01em;
+}
+#plan .track {
+  position: absolute;
+  left: 0;
+  width: 420px;
+  top: 58px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--geo-border);
+}
+#plan .bar {
+  position: absolute;
+  left: 0;
+  width: 386px; /* 92 of 100 */
+  top: 46px;
+  height: 28px;
+  border-radius: 4px;
+  background: var(--geo-teal);
+}
+#plan .dot {
+  position: absolute;
+  left: 0;
+  top: 60px;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border-radius: 50%;
+  background: var(--geo-text-2);
+  box-shadow: 0 0 0 4px var(--geo-surface);
+}
+#plan .val {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font: 600 22px var(--geo-data);
+  white-space: nowrap;
+}
+#plan .val.is-teal {
+  color: var(--geo-teal);
+}
+
+#host {
+  position: absolute;
+  left: 540px;
+  top: 742px;
+  width: 600px;
+}
+#host .flip {
+  transform: scaleX(-1);
+}

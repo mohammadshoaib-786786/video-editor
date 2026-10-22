@@ -1,0 +1,70 @@
+{
+  "title": "We asked AI the same question 50 times.",
+  "format": {
+    "width": 1080,
+    "height": 1350,
+    "fps": 30,
+    "platform": "LinkedIn feed, 4:5"
+  },
+  "brand": {
+    "name": "Geoneo",
+    "handle": "geoneo.ai"
+  },
+  "voice": {
+    "engine": "kokoro",
+    "voice": "am_michael",
+    "speed": 1.35,
+    "sceneGap": 0.15,
+    "leadIn": 0.14,
+    "tail": 1.9,
+    "sentencePause": 0.16,
+    "clausePause": 0.05,
+    "say": {
+      "GEO": "G.E.O.",
+      "Comment": "Kom-ment"
+    }
+  },
+  "music": {
+    "style": "ambient",
+    "bpm": 84,
+    "seed": 7,
+    "level": 0.14
+  },
+  "sfx": {
+    "level": 0.45
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "lines": ["We asked AI", "the same question", "50 times."]
+    },
+    {
+      "id": "test",
+      "lines": ["One major financial category.", "Three engines:", "ChatGPT, Gemini, Perplexity.", "50 neutral buyer questions."]
+    },
+    {
+      "id": "r1",
+      "lines": ["First:", "one brand showed up", "in 92% of the answers."]
+    },
+    {
+      "id": "r2",
+      "lines": ["Then:", "four brands fought", "over a spread", "of just 5 points."]
+    },
+    {
+      "id": "r3",
+      "lines": ["And three", "market-leading platforms", "scored 0.0%.", "Billions in assets,", "decades of brand awareness,", "and not named once."]
+    },
+    {
+      "id": "why",
+      "lines": ["Why?", "Their public pages", "didn't give AI facts", "that it could check:", "pricing, eligibility, licensing.", "So the engines named", "the brands they could verify."]
+    },
+    {
+      "id": "close",
+      "lines": ["Brand awareness", "gets you remembered by people.", "Verifiable facts", "get you named by AI."]
+    },
+    {
+      "id": "cta",
+      "lines": ["Comment GEO", "to get your free scan."]
+    }
+  ]
+}
