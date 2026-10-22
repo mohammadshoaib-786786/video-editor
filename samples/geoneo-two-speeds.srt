@@ -1,0 +1,143 @@
+1
+00:00:00,090 --> 00:00:01,215
+Fix your website today.
+
+2
+00:00:01,265 --> 00:00:02,644
+AI catches up later.
+
+3
+00:00:02,694 --> 00:00:03,244
+There are two kinds
+
+4
+00:00:03,269 --> 00:00:04,409
+of AI engine,
+
+5
+00:00:04,459 --> 00:00:04,859
+and they learn
+
+6
+00:00:04,884 --> 00:00:06,062
+at different speeds.
+
+7
+00:00:06,112 --> 00:00:06,987
+Search-grounded engines
+
+8
+00:00:07,037 --> 00:00:07,487
+look things up
+
+9
+00:00:07,512 --> 00:00:08,087
+on the live web
+
+10
+00:00:08,112 --> 00:00:09,112
+when someone asks.
+
+11
+00:00:09,162 --> 00:00:09,487
+They pick up
+
+12
+00:00:09,537 --> 00:00:10,762
+changes fastest.
+
+13
+00:00:10,812 --> 00:00:11,612
+In Geoneo's
+
+14
+00:00:11,662 --> 00:00:12,637
+6-month plan,
+
+15
+00:00:12,687 --> 00:00:13,487
+early movement shows up
+
+16
+00:00:13,512 --> 00:00:14,461
+around week 8.
+
+17
+00:00:14,511 --> 00:00:15,511
+Training-based engines
+
+18
+00:00:15,561 --> 00:00:16,011
+answer from what
+
+19
+00:00:16,036 --> 00:00:17,486
+the model already learned.
+
+20
+00:00:17,536 --> 00:00:18,261
+They only catch up
+
+21
+00:00:18,286 --> 00:00:18,911
+when a newer model
+
+22
+00:00:18,961 --> 00:00:20,561
+is trained on newer content.
+
+23
+00:00:20,611 --> 00:00:21,336
+Real shifts come
+
+24
+00:00:21,361 --> 00:00:22,735
+around month 4 to 6.
+
+25
+00:00:22,785 --> 00:00:23,335
+So if you update
+
+26
+00:00:23,360 --> 00:00:24,535
+your fees page today
+
+27
+00:00:24,585 --> 00:00:25,185
+and nothing moves
+
+28
+00:00:25,210 --> 00:00:25,810
+next week,
+
+29
+00:00:25,860 --> 00:00:26,806
+that's normal.
+
+30
+00:00:26,856 --> 00:00:28,111
+Fix the right facts first,
+
+31
+00:00:28,161 --> 00:00:28,886
+then ask the same
+
+32
+00:00:28,936 --> 00:00:30,011
+buyer questions every month
+
+33
+00:00:30,036 --> 00:00:30,786
+to see which engines
+
+34
+00:00:30,811 --> 00:00:31,637
+have caught up.
+
+35
+00:00:31,687 --> 00:00:32,862
+Comment GEO
+
+36
+00:00:32,912 --> 00:00:34,951
+to get your free scan.
