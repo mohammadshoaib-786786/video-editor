@@ -1,0 +1,67 @@
+{
+  "title": "10:40pm",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "platform": "Instagram reel 9:16 (Tue 3 Nov); 4:5 crop 1080x1350 for the LinkedIn feed (Thu 5 Nov)"
+  },
+  "brand": {
+    "name": "Praxcia",
+    "handle": "@sho.praxcia",
+    "site": "wiphk.com",
+    "keyword": "AUDIT"
+  },
+  "voice": { "engine": "none" },
+  "duration": 25.0,
+  "music": { "style": "ambient", "bpm": 72, "seed": 3, "level": 0.22, "dips": [[14.95, 16.05]] },
+  "sfx": { "level": 0.7 },
+  "ambience": [
+    { "type": "rain", "from": 0, "to": 10.0, "gain": 0.35 },
+    { "type": "street", "from": 10.0, "to": 15.0, "gain": 0.32 },
+    { "type": "rain", "from": 16.0, "to": 19.0, "gain": 0.22 },
+    { "type": "street", "from": 19.0, "to": 21.0, "gain": 0.12 }
+  ],
+  "scenes": [
+    {
+      "id": "enquiry", "start": 0, "end": 4.6,
+      "lines": [
+        { "text": "10:40pm. A new enquiry.", "at": 0.1, "end": 2.0 },
+        { "text": "“Do you have a slot this Saturday? 🙏”", "at": 2.0, "end": 5.0 }
+      ]
+    },
+    {
+      "id": "unanswered", "start": 4.6, "end": 10.0,
+      "lines": [{ "text": "Nobody's awake to reply.", "at": 5.2, "end": 9.9 }]
+    },
+    {
+      "id": "late", "start": 10.0, "end": 15.0,
+      "lines": [
+        { "text": "11:00am. Seen.", "at": 10.3, "end": 12.2 },
+        { "text": "“Sorry, already booked another place.”", "at": 12.2, "end": 14.9 }
+      ]
+    },
+    {
+      "id": "rewind", "start": 15.0, "end": 16.0,
+      "lines": [{ "text": "Same night. With a system:", "at": 15.05, "end": 16.3 }]
+    },
+    {
+      "id": "system", "start": 16.0, "end": 19.0,
+      "lines": [
+        { "text": "Auto-reply in 5 seconds.", "at": 16.3, "end": 17.4 },
+        { "text": "“Booked ✓ Sat 3pm. Reminder sent the day before.”", "at": 17.4, "end": 19.0 }
+      ]
+    },
+    {
+      "id": "booked", "start": 19.0, "end": 21.0,
+      "lines": [{ "text": "She slept. It booked.", "at": 19.2, "end": 20.9 }]
+    },
+    {
+      "id": "end", "start": 21.0, "end": 25.0,
+      "lines": [
+        { "text": "Most HK businesses don't need a new website. They need a follow-up system.", "at": 21.0, "end": 23.0 },
+        { "text": "Comment “AUDIT” 👇", "at": 23.0, "end": 25.0 }
+      ]
+    }
+  ]
+}

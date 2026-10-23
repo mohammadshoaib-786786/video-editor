@@ -212,6 +212,12 @@
           tl.set(el, { opacity: 0 }, 0);
           const t = s.start;
           const prev = sceneEls[i - 1];
+          if (o.style === "hard") {
+            // film cut: one frame to the next, no move, no sound
+            tl.set(prev, { opacity: 0 }, t);
+            tl.set(el, { opacity: 1 }, t);
+            return;
+          }
           if (o.style === "soft") {
             // calm cut: outgoing drifts up and fades, incoming rises in
             tl.to(prev, { y: -40, opacity: 0, duration: 0.32, ease: "power2.in" }, t - 0.3);

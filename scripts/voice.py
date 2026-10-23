@@ -225,6 +225,31 @@ def stamp_duration(index_html: Path, total: float):
     index_html.write_text(html)
 
 
+def edit_plan(proj: Path, spec):
+    """No voiceover: scenes and lines carry their own times from an edit plan
+    ({"start", "end"} per scene, {"text", "at", "end"} per line). Words share
+    their line evenly, so R.at()/R.word() and the captions work as usual."""
+    build = proj / "build"
+    build.mkdir(exist_ok=True)
+    scenes = []
+    for sc in spec["scenes"]:
+        lines = []
+        for l in sc["lines"]:
+            ws = l["text"].split()
+            step = (l["end"] - l["at"]) / max(1, len(ws))
+            words = [{"w": w, "s": round(l["at"] + i * step, 3), "e": round(l["at"] + (i + 1) * step, 3)} for i, w in enumerate(ws)]
+            lines.append({"text": l["text"], "start": l["at"], "end": l["end"], "words": words})
+        scenes.append({"id": sc["id"], "start": sc["start"], "end": sc["end"], "voiceStart": lines[0]["start"], "voiceEnd": lines[-1]["end"], "lines": lines})
+    total = spec.get("duration", scenes[-1]["end"])
+    (build / "voice.wav").unlink(missing_ok=True)
+    timing = {"total": total, "fps": spec.get("format", {}).get("fps", 30), "voice": None, "brand": spec.get("brand", {}), "scenes": scenes}
+    (build / "timing.json").write_text(json.dumps(timing, indent=1))
+    (build / "timing.js").write_text("window.TIMING = " + json.dumps(timing) + ";\n")
+    write_srt(build / "captions.srt", scenes, total)
+    stamp_duration(proj / "index.html", total)
+    print(f"edit plan: no voiceover · total {total:.2f}s → {build / 'timing.json'}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("project")
@@ -247,6 +272,9 @@ def main():
     tail = vcfg.get("tail", 1.0)
     build = proj / "build"
     build.mkdir(exist_ok=True)
+
+    if vcfg.get("engine") == "none":
+        return edit_plan(proj, spec)
 
     k = None if args.from_wav else load_kokoro()
     zh_phon = zh_phonemizer(k, say) if zh and k else None

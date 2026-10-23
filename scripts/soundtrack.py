@@ -283,9 +283,66 @@ def sfx(kind, seed=0):
         d = 0.25
         t = t_axis(d)
         return fft_filter(noise(d, seed + 7), lo=600, hi=3000) * np.sin(np.pi * t / d) * 0.5
+    if kind == "ping":
+        # a generic two-note message chime (not any app's own sound)
+        out = np.zeros(int(0.42 * SR))
+        for i, f in enumerate((1568.0, 2093.0)):
+            d = 0.3
+            t = t_axis(d)
+            place(out, (np.sin(2 * np.pi * f * t) + 0.3 * np.sin(4 * np.pi * f * t)) * np.exp(-t * 14), i * 0.09, 0.3)
+        return out
+    if kind == "buzz":
+        # a phone vibrating on wood: a low motor hum in two pulses, with rattle
+        d = 0.5
+        t = t_axis(d)
+        gate = ((t % 0.25) < 0.17).astype(float)
+        hum = np.sin(2 * np.pi * 165 * t) * (0.7 + 0.3 * np.sign(np.sin(2 * np.pi * 33 * t)))
+        rattle = fft_filter(noise(d, seed + 11), lo=120, hi=900)
+        return (hum * 0.5 + rattle * 0.35) * gate * 0.6
+    if kind == "rewind":
+        # tape rewind: a rising, warbling squeal over a hiss, cut short
+        d = 0.9
+        t = t_axis(d)
+        f = 300 + 2400 * (t / d) ** 1.6 + 60 * np.sin(2 * np.pi * 23 * t)
+        squeal = np.sin(2 * np.pi * np.cumsum(f) / SR) * 0.35
+        hiss = fft_filter(noise(d, seed + 13), lo=1500, hi=9000) * 0.5
+        env = np.minimum(1, t / 0.05) * np.minimum(1, (d - t) / 0.08)
+        return (squeal + hiss) * env * 0.8
+    if kind == "shutter":
+        # a metal roller shutter rolling up: ribbed rattle with a rising wobble
+        d = 1.1
+        t = t_axis(d)
+        clicks = np.zeros_like(t)
+        rate = 18 + 10 * t / d
+        phase = np.cumsum(rate) / SR
+        clicks[np.flatnonzero(np.diff(np.floor(phase)) > 0)] = 1
+        rattle = np.convolve(clicks, fft_filter(noise(0.03, seed + 17), lo=900, hi=6000), mode="same")
+        body = fft_filter(noise(d, seed + 19), lo=150, hi=1200) * 0.25
+        env = np.minimum(1, t / 0.08) * np.minimum(1, (d - t) / 0.2)
+        return (rattle * 0.9 + body) * env * 0.7
     if kind == "heart":
         return sfx("pop", seed) + np.pad(sfx("blip", seed), (0, int(0.09 * SR) - int(0.07 * SR)))[: int(0.09 * SR)] * 0.6
     return np.zeros(1)
+
+
+# ---------------------------------------------------------------- ambience
+def ambience(kind, dur, seed=0):
+    """Room tone beds for an edit: "rain" (night drizzle on a street) and
+    "street" (daytime traffic murmur)."""
+    n = noise(dur, seed + 31)
+    t = t_axis(dur)
+    if kind == "rain":
+        hiss = fft_filter(n, lo=500, hi=7000) * (0.8 + 0.2 * np.sin(2 * np.pi * 0.13 * t))
+        drops = np.zeros_like(t)
+        rng = np.random.default_rng(seed + 37)
+        for at in rng.uniform(0, dur, int(dur * 14)):
+            place(drops, sfx("tick", int(at * 1000)) * rng.uniform(0.2, 0.6), at, 1.0)
+        return hiss * 0.5 + drops * 0.4
+    if kind == "street":
+        rumble = fft_filter(n, lo=40, hi=380) * (0.85 + 0.15 * np.sin(2 * np.pi * 0.21 * t))
+        air = fft_filter(noise(dur, seed + 41), lo=1500, hi=6000) * 0.15
+        return rumble * 0.9 + air
+    return np.zeros_like(t)
 
 
 # ---------------------------------------------------------------- mix
@@ -347,6 +404,15 @@ def main():
         else:
             calm = [(s["start"], s["end"]) for s in timing["scenes"] if s["id"] in mcfg.get("calmScenes", [])]
             music = chiptune(total, mcfg.get("bpm", 120), mcfg.get("seed", 4), calm)
+    # music.dips: [[from, to], ...] windows where the bed drops out (a rewind, a beat of silence)
+    for a, b in mcfg.get("dips", []):
+        env = np.ones(n)
+        i0, i1 = int(a * SR), int(b * SR)
+        ramp = int(0.2 * SR)
+        env[max(0, i0 - ramp) : i0] = np.linspace(1, 0, min(ramp, i0))
+        env[i0:i1] = 0
+        env[i1 : i1 + ramp] = np.linspace(0, 1, len(env[i1 : i1 + ramp]))
+        music = music * env
     sf.write(build / "music.wav", (music * 0.8).astype(np.float32), SR)
 
     fx = np.zeros(n)
@@ -355,6 +421,15 @@ def main():
     for i, c in enumerate(cues):
         clip = sfx(c["type"], seed=i)
         place(fx, clip, c["t"], c.get("gain", 1.0) * 0.55 * spec.get("sfx", {}).get("level", 1.0))
+
+    # ambience: [{"type": "rain", "from": 0, "to": 10, "gain": 0.5}, ...], each faded in and out
+    for i, a in enumerate(spec.get("ambience", [])):
+        d = a["to"] - a["from"]
+        bed = ambience(a["type"], d, seed=i)
+        f = min(int(0.25 * SR), len(bed) // 2)
+        bed[:f] *= np.linspace(0, 1, f)
+        bed[-f:] *= np.linspace(1, 0, f)
+        place(fx, bed, a["from"], a.get("gain", 0.4))
 
     level = mcfg.get("level", 0.16)
     mix = voice * 1.0 + music * level * duck_curve(voice) + fx

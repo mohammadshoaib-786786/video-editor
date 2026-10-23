@@ -1,0 +1,934 @@
+/* "10:40pm" — Praxcia, 9:16 master (1080×1920) with a 4:5 crop (y 285–1635)
+   for LinkedIn. Everything that must read sits inside that band and inside
+   Instagram's safe area (below 150, above 1590). Words: Inter Bold, white,
+   orange #FF5A36 highlight. Illustrated stand-ins for the brief's shots. */
+
+:root {
+  --hl: #ff5a36;
+  --ink: #0e1116;
+}
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #05070b;
+  font-family: Inter, "Noto Color Emoji", sans-serif;
+}
+
+#film,
+.shot {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.abs {
+  position: absolute;
+}
+
+/* ---------- the street (night and day) ---------- */
+.street {
+  position: absolute;
+  inset: 0;
+}
+.street .sky {
+  position: absolute;
+  inset: 0;
+}
+.night .sky {
+  background: linear-gradient(#04070c, #0a111b 55%, #0c141e);
+}
+.day .sky {
+  background: linear-gradient(#a9c9da, #dfeaee 50%, #d9dcd6);
+}
+.bld {
+  position: absolute;
+}
+.night .bld {
+  background: linear-gradient(90deg, #0b111a, #0e1620 60%, #0a1018);
+}
+.night .bld.mid {
+  background: linear-gradient(#0d141e, #111a25);
+}
+.day .bld {
+  background: linear-gradient(90deg, #bdb6aa, #cbc4b8 60%, #b7b0a4);
+}
+.day .bld.mid {
+  background: linear-gradient(#d3cdc2, #c7c0b4);
+}
+.wins i {
+  position: absolute;
+  width: 34px;
+  height: 46px;
+  border-radius: 3px;
+}
+
+.neon {
+  position: absolute;
+  padding: 14px 12px;
+  border: 4px solid currentColor;
+  border-radius: 12px;
+  font: 700 84px/1.06 "Noto Sans SC", sans-serif;
+  text-align: center;
+  text-shadow:
+    0 0 8px currentColor,
+    0 0 26px currentColor;
+  box-shadow:
+    0 0 18px currentColor,
+    inset 0 0 18px currentColor;
+}
+.neon span {
+  display: block;
+  color: #fff6f2;
+  -webkit-text-stroke: 0;
+}
+.neon.h {
+  font-size: 48px;
+  padding: 8px 14px;
+}
+.neon.red {
+  color: #ff4b5c;
+}
+.neon.teal {
+  color: #3de0d0;
+}
+.neon.pink {
+  color: #ff6fae;
+}
+
+.front {
+  position: absolute;
+  left: 220px;
+  top: 760px;
+  width: 640px;
+  height: 540px;
+}
+.lightbox {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 80px;
+  border-radius: 6px;
+}
+.night .lightbox {
+  background: #111923;
+  border: 3px solid #1d2733;
+}
+.day .lightbox {
+  background: #ece7dc;
+  border: 3px solid #c9c2b5;
+}
+.glass {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 80px;
+  bottom: 0;
+  overflow: hidden;
+  border: 8px solid #19212a;
+  background: radial-gradient(ellipse at 50% 85%, #182129, #07090c 70%);
+}
+.glass.lit {
+  border-color: #8f8576;
+  background: radial-gradient(ellipse at 50% 70%, #fff3dc, #f0dbb8 60%, #dcc29a);
+}
+.shutter {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 80px;
+  z-index: 2;
+  border-bottom: 14px solid #3a4552;
+  background: repeating-linear-gradient(#2b3541 0 10px, #222b35 10px 12px, #1b232c 12px 22px);
+}
+.day .shutter {
+  border-bottom-color: #7d858c;
+  background: repeating-linear-gradient(#a7aeb4 0 10px, #959ca3 10px 12px, #8b9299 12px 22px);
+}
+.counter {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(#3d2718 0 10px, #24170e 10px);
+}
+.lit .counter {
+  background: linear-gradient(#a8743f 0 10px, #8a5c31 10px);
+}
+.plant {
+  position: absolute;
+  right: 100px;
+  bottom: 118px;
+  width: 70px;
+  height: 120px;
+}
+.plant::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  bottom: 0;
+  width: 42px;
+  height: 38px;
+  border-radius: 4px 4px 12px 12px;
+  background: #3b2a20;
+}
+.plant i {
+  position: absolute;
+  left: 22px;
+  bottom: 30px;
+  width: 26px;
+  height: 70px;
+  border-radius: 50%;
+  background: #1f3a2a;
+  transform-origin: 50% 100%;
+}
+.lit .plant i {
+  background: #3f7d4f;
+}
+.plant i:nth-child(1) {
+  rotate: -40deg;
+}
+.plant i:nth-child(2) {
+  rotate: -12deg;
+}
+.plant i:nth-child(3) {
+  rotate: 16deg;
+}
+.plant i:nth-child(4) {
+  rotate: 42deg;
+}
+.phone-sm {
+  position: absolute;
+  left: 270px;
+  bottom: 118px;
+  width: 84px;
+  height: 12px;
+  border-radius: 4px;
+  background: #050506;
+  box-shadow: 0 -2px 0 #7dffc8;
+}
+.lit .phone-sm {
+  box-shadow: none;
+}
+.glow {
+  position: absolute;
+  left: 162px;
+  bottom: 70px;
+  width: 300px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(185, 255, 220, 0.75), rgba(120, 255, 190, 0.25) 55%, transparent);
+  opacity: 0.25;
+}
+.sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.05) 38%, transparent 46%, transparent 60%, rgba(255, 255, 255, 0.04) 66%, transparent 72%);
+}
+.pave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1300px;
+  bottom: 0;
+}
+.night .pave {
+  background: linear-gradient(#0d141c, #06090d);
+  border-top: 6px solid #18212b;
+}
+.day .pave {
+  background: linear-gradient(#bab5ab, #a19c92);
+  border-top: 6px solid #8f8a80;
+}
+.reflect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1306px;
+  height: 614px;
+}
+.reflect i {
+  position: absolute;
+  top: 0;
+  height: 520px;
+  border-radius: 40px;
+  filter: blur(16px);
+  opacity: 0.5;
+  transform-origin: 50% 0;
+}
+.rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.rain.r1 {
+  opacity: 0.55;
+}
+.rain.r2 {
+  opacity: 0.3;
+  background-size: 640px 640px;
+}
+.minibus {
+  position: absolute;
+  left: -900px;
+  top: 1360px;
+  width: 820px;
+  height: 340px;
+  border-radius: 70px 70px 26px 26px;
+  background: #ede5cf;
+  filter: blur(14px);
+  opacity: 0.9;
+}
+.minibus .roof {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 80px;
+  border-radius: 70px 70px 0 0;
+  background: #c9302c;
+}
+.minibus .win {
+  position: absolute;
+  left: 60px;
+  right: 120px;
+  top: 100px;
+  height: 90px;
+  border-radius: 14px;
+  background: #1a2026;
+}
+.minibus .lamp {
+  position: absolute;
+  right: -30px;
+  top: 210px;
+  width: 120px;
+  height: 70px;
+  border-radius: 50%;
+  background: #fff3c4;
+  box-shadow: 0 0 60px 30px rgba(255, 240, 190, 0.6);
+}
+.tram {
+  position: absolute;
+  left: 1300px;
+  top: 1150px;
+  width: 980px;
+  height: 640px;
+  border-radius: 40px 40px 16px 16px;
+  background: #2f7d4d;
+  filter: blur(16px);
+  opacity: 0.92;
+}
+.tram .deck {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 300px;
+  height: 22px;
+  background: #e9e1c9;
+}
+.tram .win {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  height: 120px;
+  border-radius: 14px;
+  background: #d7e6dc;
+}
+.tram .win.a {
+  top: 100px;
+}
+.tram .win.b {
+  top: 380px;
+}
+.walker {
+  position: absolute;
+  left: -200px;
+  top: 1180px;
+  width: 170px;
+  height: 600px;
+  border-radius: 90px 90px 30px 30px;
+  background: #3b3f46;
+  filter: blur(18px);
+  opacity: 0.75;
+}
+
+/* ---------- the counter close-up (shots 2 and 2-green) ---------- */
+.desk {
+  position: absolute;
+  inset: -40px;
+  background:
+    radial-gradient(ellipse at 50% 46%, transparent 30%, rgba(0, 0, 0, 0.72) 75%),
+    repeating-linear-gradient(93deg, rgba(0, 0, 0, 0.22) 0 3px, transparent 3px 26px),
+    repeating-linear-gradient(87deg, rgba(255, 220, 180, 0.05) 0 2px, transparent 2px 47px),
+    linear-gradient(#3a2517, #24160d);
+}
+.desk.green::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 255, 150, 0.1);
+  mix-blend-mode: color;
+}
+.deskglow {
+  position: absolute;
+  left: 40px;
+  top: 220px;
+  width: 1080px;
+  height: 1440px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(190, 255, 225, 0.32), transparent);
+  opacity: 0.6;
+}
+.desk.green .deskglow {
+  background: radial-gradient(closest-side, rgba(90, 255, 160, 0.42), transparent);
+}
+.leaf {
+  position: absolute;
+  right: 20px;
+  top: 120px;
+  width: 360px;
+  height: 360px;
+  filter: blur(14px);
+}
+.leaf i {
+  position: absolute;
+  left: 140px;
+  top: 120px;
+  width: 90px;
+  height: 230px;
+  border-radius: 50%;
+  background: #173323;
+  transform-origin: 50% 100%;
+}
+.leaf i:nth-child(1) {
+  rotate: -50deg;
+}
+.leaf i:nth-child(3) {
+  rotate: 40deg;
+}
+.dust i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(230, 255, 240, 0.7);
+  filter: blur(1px);
+}
+.phone {
+  position: absolute;
+  left: 310px;
+  top: 420px;
+  width: 500px;
+  height: 1000px;
+  border-radius: 72px;
+  background: #0b0b0d;
+  border: 10px solid #1b1c20;
+  box-shadow:
+    0 0 160px rgba(180, 255, 220, 0.3),
+    0 40px 80px rgba(0, 0, 0, 0.6);
+}
+.screen {
+  position: absolute;
+  inset: 14px;
+  border-radius: 56px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 20%, #24363a, #0b1215 70%);
+}
+.clock {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 110px;
+  height: 90px;
+  border-radius: 45px;
+  background: rgba(255, 255, 255, 0.5);
+  filter: blur(6px);
+}
+.notes {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  top: 280px;
+}
+.notes .n {
+  position: relative;
+  height: 112px;
+  margin-bottom: 14px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.16);
+  filter: blur(1.4px);
+}
+.notes .n::before {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: #3ecf8e;
+}
+.notes .n i {
+  position: absolute;
+  left: 98px;
+  height: 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.55);
+}
+.notes .n i:nth-of-type(1) {
+  top: 34px;
+  width: 180px;
+}
+.notes .n i:nth-of-type(2) {
+  top: 64px;
+  width: 280px;
+  background: rgba(255, 255, 255, 0.35);
+}
+.notes .n.ok::before {
+  background: var(--hl);
+}
+
+/* ---------- the morning salon (shot 4) ---------- */
+.room {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#f3eadb, #ecdfca 60%, #e3d2b6);
+}
+.beams i {
+  position: absolute;
+  top: -200px;
+  width: 260px;
+  height: 2400px;
+  background: linear-gradient(rgba(255, 252, 235, 0.55), rgba(255, 248, 225, 0));
+  rotate: 28deg;
+  filter: blur(10px);
+}
+.beams i:nth-child(1) {
+  left: 120px;
+}
+.beams i:nth-child(2) {
+  left: 470px;
+  width: 160px;
+}
+.beams i:nth-child(3) {
+  left: 760px;
+  width: 220px;
+}
+.shelf {
+  position: absolute;
+  left: 80px;
+  right: 380px;
+  top: 520px;
+  height: 18px;
+  border-radius: 4px;
+  background: #b98a5a;
+  box-shadow: 0 12px 0 -6px rgba(0, 0, 0, 0.08);
+}
+.bigplant {
+  position: absolute;
+  right: 40px;
+  top: 340px;
+  width: 360px;
+  height: 760px;
+}
+.bigplant::after {
+  content: "";
+  position: absolute;
+  left: 110px;
+  bottom: 0;
+  width: 150px;
+  height: 160px;
+  border-radius: 10px 10px 40px 40px;
+  background: #c76f4f;
+}
+.bigplant i {
+  position: absolute;
+  left: 150px;
+  bottom: 140px;
+  width: 80px;
+  height: 330px;
+  border-radius: 50%;
+  background: #4f8f5a;
+  transform-origin: 50% 100%;
+}
+.bigplant i:nth-child(1) {
+  rotate: -46deg;
+}
+.bigplant i:nth-child(2) {
+  rotate: -20deg;
+  background: #5fa06a;
+}
+.bigplant i:nth-child(4) {
+  rotate: 22deg;
+  background: #5fa06a;
+}
+.bigplant i:nth-child(5) {
+  rotate: 48deg;
+}
+.bench {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1100px;
+  bottom: 0;
+  background: linear-gradient(#d7aa76 0 18px, #c48f5a 18px, #b07c4b);
+}
+.tablet {
+  position: absolute;
+  left: 110px;
+  top: 760px;
+  width: 640px;
+  height: 460px;
+  border-radius: 34px;
+  background: #18191c;
+  box-shadow: 0 30px 60px rgba(80, 50, 20, 0.35);
+}
+.cal {
+  position: absolute;
+  inset: 18px;
+  border-radius: 18px;
+  background: #fbfaf7;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 34px repeat(6, 1fr);
+  gap: 7px;
+  padding: 16px;
+  filter: blur(1.2px);
+}
+.cal i {
+  border-radius: 7px;
+}
+.cup {
+  position: absolute;
+  left: 790px;
+  top: 990px;
+  width: 170px;
+  height: 140px;
+}
+.cup::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px 8px 70px 70px;
+  background: linear-gradient(90deg, #fffefb, #ebe6dc);
+}
+.cup .tea {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 4px;
+  height: 30px;
+  border-radius: 50%;
+  background: #c3966a;
+  z-index: 1;
+}
+.cup .handle {
+  position: absolute;
+  right: -46px;
+  top: 30px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 14px solid #f1ede5;
+}
+.cup .saucer {
+  position: absolute;
+  left: -40px;
+  right: -40px;
+  bottom: -26px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f4f1ea;
+  z-index: -1;
+}
+.steam {
+  position: absolute;
+  left: 30px;
+  top: -190px;
+  width: 110px;
+  height: 180px;
+}
+.steam i {
+  position: absolute;
+  bottom: 0;
+  width: 18px;
+  height: 150px;
+  border-radius: 9px;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75));
+  filter: blur(6px);
+}
+.steam i:nth-child(1) {
+  left: 10px;
+}
+.steam i:nth-child(2) {
+  left: 46px;
+}
+.steam i:nth-child(3) {
+  left: 82px;
+}
+
+/* ---------- rewind ---------- */
+#rw-street {
+  position: absolute;
+  inset: 0;
+}
+#rw-street .street {
+  filter: saturate(1.4) contrast(1.15) drop-shadow(8px 0 0 rgba(255, 40, 60, 0.45)) drop-shadow(-8px 0 0 rgba(40, 220, 255, 0.45));
+}
+.scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(rgba(255, 255, 255, 0.07) 0 2px, transparent 2px 6px);
+}
+.glitch i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0.3));
+  mix-blend-mode: screen;
+}
+.rew {
+  position: absolute;
+  left: 90px;
+  top: 330px;
+  font: 700 48px "JetBrains Mono", monospace;
+  color: #fff;
+  letter-spacing: 0.06em;
+  text-shadow:
+    3px 0 0 rgba(255, 40, 60, 0.8),
+    -3px 0 0 rgba(40, 220, 255, 0.8);
+}
+
+/* ---------- end card ---------- */
+.endbg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(255, 90, 54, 0.16), transparent 60%),
+    #0d1015;
+}
+.card-a,
+.card-b {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.card-a {
+  top: 560px;
+}
+.card-a p {
+  margin: 0;
+  font-size: 80px;
+  line-height: 1.1;
+}
+.card-a p.gap {
+  margin-top: 46px;
+}
+.card-b {
+  top: 500px;
+  text-align: center;
+}
+.card-b p {
+  margin: 0;
+  font-size: 96px;
+  line-height: 1.05;
+}
+.card-b p.kw {
+  margin-top: 8px;
+  font-size: 140px;
+}
+.card-a em,
+.card-b em {
+  font-style: normal;
+  color: var(--hl);
+}
+.card-b .who {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 70px;
+  padding: 14px 34px 14px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+}
+.card-b .face {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #2a2f38;
+}
+.card-b .who b {
+  font-size: 40px;
+  font-weight: 700;
+}
+.card-b .site {
+  display: block;
+  margin-top: 26px;
+  font: 600 36px "JetBrains Mono", monospace;
+  color: #aab1bd;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- film texture ---------- */
+#grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+#vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 48%, transparent 52%, rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+}
+
+/* ---------- words and chat ---------- */
+#ui {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+.ov {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  top: 1370px;
+  margin: 0;
+  text-align: center;
+  font-size: 70px;
+  font-weight: 800;
+  line-height: 1.32;
+  letter-spacing: -0.02em;
+  color: #fff;
+  opacity: 0;
+}
+.ov span {
+  padding: 4px 22px;
+  border-radius: 18px;
+  background: rgba(8, 10, 14, 0.62);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.ov em,
+.bub .who {
+  font-style: normal;
+  color: var(--hl);
+}
+.bub {
+  max-width: 760px;
+  padding: 22px 30px 16px;
+  border-radius: 30px;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.28;
+  color: #111;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+.bub.in {
+  background: #fff;
+  border-top-left-radius: 8px;
+}
+.bub.out {
+  margin-left: auto;
+  background: #d9fdd3;
+  border-top-right-radius: 8px;
+}
+.bub .who {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 26px;
+  font-weight: 700;
+}
+.bub .t {
+  display: block;
+  margin-top: 6px;
+  text-align: right;
+  font-size: 22px;
+  font-weight: 500;
+  color: #667085;
+}
+#b1 {
+  left: 110px;
+  top: 560px;
+  opacity: 0;
+}
+.chat {
+  left: 100px;
+  top: 470px;
+  width: 880px;
+  padding-bottom: 30px;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #efeae2;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+}
+.chat .hd {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 110px;
+  padding: 0 30px;
+  margin-bottom: 26px;
+  background: #1f2c33;
+  color: #fff;
+  font-size: 34px;
+}
+.chat .av {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #8696a0;
+}
+.chat .bub {
+  margin: 0 30px 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+.chat .bub.out {
+  margin-left: auto;
+}
+.chat .seen {
+  width: max-content;
+  margin: 0 auto 18px;
+  padding: 8px 22px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  font-size: 26px;
+  font-weight: 600;
+  color: #54656f;
+}
+.chat .auto {
+  margin-left: auto;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--hl);
+  font-size: 24px;
+  font-weight: 700;
+}
+.typing {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  margin: 0 30px 18px auto;
+  padding: 24px 30px;
+  border-radius: 30px 8px 30px 30px;
+  background: #d9fdd3;
+}
+.typing i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #4c6b52;
+}

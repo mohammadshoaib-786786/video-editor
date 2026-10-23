@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Praxcia — 10:40pm</title>
+    <link rel="stylesheet" href="kit/fonts.css" />
+    <link rel="stylesheet" href="kit/vendor/fonts/noto-sans-sc-700.css" />
+    <link rel="stylesheet" href="kit/pixel-crew.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="kit/vendor/gsap.min.js"></script>
+    <script src="kit/sprites.js"></script>
+    <script src="kit/brand.js"></script>
+    <script src="kit/motion.js"></script>
+    <script src="build/timing.js"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-fps="30" data-duration="25.00">
+      <audio id="soundtrack" src="build/mix.wav" data-start="0" data-duration="25.00" data-volume="1"></audio>
+
+      <div id="film">
+        <!-- shot 1 · 10:40pm, Sheung Wan side street, drizzle, push-in to the counter -->
+        <section class="shot" id="s-enquiry">
+          <div class="street night" id="street">
+            <div class="sky"></div>
+            <div class="bld" style="left: 0; width: 300px; top: 0; height: 1300px"></div>
+            <div class="bld" style="left: 790px; width: 290px; top: 60px; height: 1240px"></div>
+            <div class="bld mid" style="left: 210px; width: 660px; top: 120px; height: 1180px"></div>
+            <div class="wins" id="wins"></div>
+            <div class="neon v red" style="left: 70px; top: 300px"><span>髮</span><span>型</span><span>屋</span></div>
+            <div class="neon v teal" style="left: 922px; top: 330px"><span>茶</span><span>餐</span><span>廳</span></div>
+            <div class="neon h pink" style="left: 812px; top: 860px"><span>藥房</span></div>
+            <div class="front">
+              <div class="lightbox"></div>
+              <div class="shutter" style="height: 250px"></div>
+              <div class="glass">
+                <div class="counter"></div>
+                <div class="plant"><i></i><i></i><i></i><i></i></div>
+                <div class="phone-sm"></div>
+                <div class="glow" id="s1-glow"></div>
+                <div class="sheen"></div>
+              </div>
+            </div>
+            <div class="pave"></div>
+            <div class="reflect" id="reflect"></div>
+            <div class="rain r1"></div>
+            <div class="rain r2"></div>
+            <div class="minibus" id="minibus"><i class="roof"></i><i class="win"></i><i class="lamp"></i></div>
+          </div>
+        </section>
+
+        <!-- shot 2 · unanswered: the phone on the counter, notifications stacking -->
+        <section class="shot" id="s-unanswered">
+          <div class="desk"><div class="deskglow"></div><div class="leaf"><i></i><i></i><i></i></div><div class="dust" id="dust2"></div>
+            <div class="phone" id="p2"><div class="screen"><div class="clock"></div><div class="notes" id="notes2"></div></div></div>
+          </div>
+        </section>
+
+        <!-- shot 3 · 11:00am next morning: shutter up, tram, the reply comes too late -->
+        <section class="shot" id="s-late">
+          <div class="street day">
+            <div class="sky"></div>
+            <div class="bld" style="left: 0; width: 300px; top: 0; height: 1300px"></div>
+            <div class="bld" style="left: 790px; width: 290px; top: 60px; height: 1240px"></div>
+            <div class="bld mid" style="left: 210px; width: 660px; top: 120px; height: 1180px"></div>
+            <div class="front">
+              <div class="lightbox"></div>
+              <div class="glass lit">
+                <div class="counter"></div>
+                <div class="plant"><i></i><i></i><i></i><i></i></div>
+                <div class="phone-sm"></div>
+              </div>
+              <div class="shutter" id="s3-shutter" style="height: 460px"></div>
+            </div>
+            <div class="pave"></div>
+            <div class="tram" id="tram"><i class="deck"></i><i class="win a"></i><i class="win b"></i></div>
+            <div class="walker" id="w1"></div>
+            <div class="walker" id="w2" style="height: 520px"></div>
+          </div>
+        </section>
+
+        <!-- 15s · rewind to the same night -->
+        <section class="shot" id="s-rewind">
+          <div id="rw-street"></div>
+          <div class="scan"></div>
+          <div class="glitch" id="glitch"><i></i><i></i><i></i></div>
+          <div class="rew">&#9664;&#9664; REW</div>
+        </section>
+
+        <!-- shot 2 again, re-graded green: the system answers -->
+        <section class="shot" id="s-system">
+          <div class="desk green"><div class="deskglow"></div><div class="leaf"><i></i><i></i><i></i></div><div class="dust" id="dust5"></div>
+            <div class="phone" id="p5"><div class="screen"><div class="clock"></div><div class="notes" id="notes5"></div></div></div>
+          </div>
+        </section>
+
+        <!-- shot 4 · the next morning: a full calendar and a milk tea -->
+        <section class="shot" id="s-booked">
+          <div class="room" id="room">
+            <div class="beams"><i></i><i></i><i></i></div>
+            <div class="shelf"></div>
+            <div class="bigplant"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="bench"></div>
+            <div class="tablet"><div class="cal" id="cal"></div></div>
+            <div class="cup"><i class="tea"></i><i class="handle"></i><i class="saucer"></i><div class="steam"><i></i><i></i><i></i></div></div>
+          </div>
+        </section>
+
+        <!-- end card -->
+        <section class="shot" id="s-end">
+          <div class="endbg"></div>
+          <div class="card-a" id="e-a">
+            <p>Most HK businesses</p>
+            <p>don&rsquo;t need a new website.</p>
+            <p class="gap">They need a</p>
+            <p><em>follow-up system.</em></p>
+          </div>
+          <div class="card-b" id="e-b">
+            <p>Comment</p>
+            <p class="kw"><em>&ldquo;AUDIT&rdquo;</em> &#128071;</p>
+            <div class="who"><span class="face" data-face></span><b>@sho.praxcia</b></div>
+            <span class="site">wiphk.com</span>
+          </div>
+        </section>
+
+        <div id="grain"></div>
+        <div id="vignette"></div>
+      </div>
+
+      <!-- words on screen (burned-in captions) and chat bubbles -->
+      <div id="ui">
+        <div class="bub in abs" id="b1"><span class="who">New customer</span>Do you have a slot this Saturday? &#128591;<span class="t">10:40pm</span></div>
+
+        <div class="chat abs" id="chat3">
+          <div class="hd"><span class="av"></span><b>New customer</b></div>
+          <div class="bub in">Do you have a slot this Saturday? &#128591;<span class="t">10:40pm</span></div>
+          <div class="seen" id="c3-seen">Seen 11:00am</div>
+          <div class="bub in" id="c3-sorry">Sorry, already booked another place.<span class="t">11:02am</span></div>
+        </div>
+
+        <div class="chat abs" id="chat5">
+          <div class="hd"><span class="av"></span><b>New customer</b><span class="auto" id="c5-auto">&#9889; Auto-reply &middot; 5 sec</span></div>
+          <div class="bub in" id="c5-q">Do you have a slot this Saturday? &#128591;<span class="t">10:40pm</span></div>
+          <div class="typing" id="c5-typing"><i></i><i></i><i></i></div>
+          <div class="bub out" id="c5-a">Booked &#10003; Sat 3pm.<br />Reminder sent the day before.<span class="t">10:40pm &#10003;&#10003;</span></div>
+        </div>
+
+        <p class="ov" id="o1"><em>10:40pm.</em> A new enquiry.</p>
+        <p class="ov" id="o2"><em>Nobody&rsquo;s</em> awake to reply.</p>
+        <p class="ov" id="o3"><em>11:00am.</em> Seen.</p>
+        <p class="ov" id="o4">Same night. <em>With a system:</em></p>
+        <p class="ov" id="o5">Auto-reply in <em>5 seconds.</em></p>
+        <p class="ov" id="o6">She slept. <em>It booked.</em></p>
+      </div>
+    </div>
+    <script src="scenes.js"></script>
+    <script>
+      // build once fonts (Latin, the neon's Chinese, emoji) and the host image are in, then register
+      const fonts = ["800 72px Inter", "500 38px Inter", "700 90px 'Noto Sans SC'"].map((f) => document.fonts.load(f, f.includes("Noto") ? "髮型屋茶餐廳藥房" : "A"));
+      Promise.all([document.fonts.ready, ...fonts, window.AVATAR_READY]).then(() => {
+        const R = window.buildReel();
+        window.__timelines["main"] = R.tl;
+      });
+    </script>
+  </body>
+</html>
