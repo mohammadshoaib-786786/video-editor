@@ -12,7 +12,7 @@ cartoon, `kit/brand.js`) appears on both.
 
 | Account | Handle | Look | Sample |
 | --- | --- | --- | --- |
-| Praxcia | `@sho.praxcia` | Pixel Crew (`kit/pixel-crew.css`, pixel robots, chiptune, keyword CTA); employee scenes/slides tinted to their robot's colour | `projects/ai-delivery-team` (reel), `projects/praxcia-delivery-team` (carousel) |
+| Praxcia | `@sho.praxcia` · wiphk.com | Pixel Crew (`kit/pixel-crew.css`, pixel robots, chiptune, keyword CTA); employee scenes/slides tinted to their robot's colour | `projects/ai-delivery-team` (reel), `projects/praxcia-delivery-team` (carousel), `projects/praxcia-1040pm` (cinematic story reel, no VO, 9:16 + 4:5 crop) |
 | Geoneo | `geoneo.ai` | Geoneo brand layer (`kit/brands/geoneo/`), calm, no sales pitch, LinkedIn 4:5 | `projects/geoneo-engines` (+ `-thumb`, its LinkedIn thumbnail), `projects/geoneo-two-speeds` (+ `-thumb`), `projects/geoneo-50-asks` (+ `-thumb`), `projects/geoneo-hk-mortgage`; RedNote: `projects/geoneo-engines-zh` (+ `-zh-cover`) |
 
 Keep them apart: no Pixel Crew colours, fonts or handle in Geoneo work, and no
@@ -32,6 +32,7 @@ sample from the original references and doesn't belong to either account.
   - Reel: `script.json` (lines per scene, voice, brand), `index.html` (markup), `style.css` (placement), `scenes.js` (choreography), `build/` (generated voice, timing, cues, mix, `captions.srt`).
     - `voice`: `speed` (1.35 is the owner's usual), `sentencePause` / `clausePause` (seconds after `.?!` / `,;:`), `say` (respellings, e.g. `{ "Qwen": "Kwen" }`).
     - Chinese: `"lang": "zh"` with a `zm_*`/`zf_*` voice (`zm_yunyang` reads cleanest). Write lines in natural Chinese, no spaces; jieba splits words for `R.word()` (look words up by their characters, e.g. `R.word("hook", 2, "终结")`). Latin words (engine names) go through the English phonemizer, respelled by `say`. Avoid a soft initial like 买家 opening a scene; `voice.py` already gives each scene a run-up.
+    - No voiceover: `"voice": { "engine": "none" }` with an edit plan, scenes `{ "start", "end" }` and lines `{ "text", "at", "end" }`; R.at() works as usual. `ambience`: `[{ "type": "rain" | "street", "from", "to", "gain" }]`; `music.dips`: `[[from, to]]`; sfx `ping`, `buzz`, `shutter`, `rewind`; `R.cuts(..., { style: "hard" })` for film cuts.
     - `music.style`: `"chiptune"` (default) or `"ambient"` (calm B2B); `music.seed` picks the chiptune's chord progression and arp pattern, `music.bpm` its tempo; `sfx.level` scales every effect.
   - Carousel: `slides.js` (content), `slide.js` (layouts + motion), `index.html` (template with a `slide` variable).
 - `scripts/` — `build.mjs` (pipeline), `voice.py`, `cues.mjs`, `soundtrack.py`, `carousel.mjs`, `new.mjs`, `hf.mjs` (HyperFrames CLI with the local browser), `setup.mjs`, `get-models.sh`.
@@ -64,6 +65,7 @@ at them before rendering.
 - Never return GSAP objects from `page.evaluate` (puppeteer hangs serialising them).
 - Root `data-duration` is read from static HTML: `voice.py` stamps it; don't hand-edit it in reels.
 - Keep content out of Instagram's UI: top ~150 px, bottom ~330 px, right ~110 px below y=1050.
+- 9:16 master with a 4:5 LinkedIn crop: keep everything that must read inside y 285–1635 (`ffmpeg -vf crop=1080:1350:0:285`).
 - Class names: pixel-crew.css is loaded everywhere and owns `.step`, `.title`, `.dots`, `.cap`, `.tag`, `.card`; prefix project classes that might clash (e.g. `.todo`, `.pdots`).
 - Captions: 2–4 words per line in `script.json`, punctuation is dropped on screen (`R.captions(el, { clean: "light" })` keeps commas, quotes and `?`).
 - LinkedIn 4:5 (1080×1350) has no Instagram overlay; keep a 64 px margin and captions above the progress bar.
