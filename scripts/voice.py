@@ -103,8 +103,8 @@ def align_words(timings, text_words, phonemize):
     spoken = [t for t in timings if t.phoneme not in STRESS and t.phoneme not in PUNCT and t.phoneme != " "]
     expected, owner = [], []
     for wi, w in enumerate(text_words):
-        clean = re.sub(r"[^\w'’-]", "", w)
-        ph = phonemize(clean) if clean else ""
+        # phonemize the word as written: respellings can key on punctuation ("10:40pm")
+        ph = phonemize(w) if re.search(r"\w", w) else ""
         for ch in ph:
             if ch in STRESS or ch in PUNCT or ch == " ":
                 continue
@@ -137,6 +137,13 @@ def align_words(timings, text_words, phonemize):
         out.append({"w": w, "s": s, "e": e})
         last = s
     return out
+
+
+def lead_in(audio, keep=0.06):
+    """Seconds of silence before the first sound (-40 dB of the peak), less `keep`."""
+    env = np.abs(np.asarray(audio))
+    loud = np.flatnonzero(env > (env.max() or 1) * 10 ** (-40 / 20))
+    return max(0.0, (loud[0] if len(loud) else 0) / SR - keep)
 
 
 def respell(word, say):
@@ -196,8 +203,9 @@ def zh_phonemizer(k, say):
     return phonemize
 
 
-def write_srt(path: Path, scenes, total):
-    """Caption file for platforms that take uploaded subtitles (LinkedIn, YouTube)."""
+def write_srt(path: Path, scenes, total, hold=None):
+    """Caption file for platforms that take uploaded subtitles (LinkedIn, YouTube).
+    Lines run until the next one starts; with `hold`, at most that long past their end."""
     lines = [l for sc in scenes for l in sc["lines"]]
 
     def ts(sec):
@@ -207,6 +215,8 @@ def write_srt(path: Path, scenes, total):
     out = []
     for i, l in enumerate(lines):
         end = lines[i + 1]["start"] - 0.05 if i + 1 < len(lines) else min(total, l["end"] + 1.0)
+        if hold is not None:
+            end = min(end, l["end"] + hold)
         out.append(f"{i + 1}\n{ts(l['start'])} --> {ts(max(end, l['end']))}\n{l['text']}\n")
     path.write_text("\n".join(out))
 
@@ -241,13 +251,47 @@ def edit_plan(proj: Path, spec):
             lines.append({"text": l["text"], "start": l["at"], "end": l["end"], "words": words})
         scenes.append({"id": sc["id"], "start": sc["start"], "end": sc["end"], "voiceStart": lines[0]["start"], "voiceEnd": lines[-1]["end"], "lines": lines})
     total = spec.get("duration", scenes[-1]["end"])
-    (build / "voice.wav").unlink(missing_ok=True)
     timing = {"total": total, "fps": spec.get("format", {}).get("fps", 30), "voice": None, "brand": spec.get("brand", {}), "scenes": scenes}
+
+    # an optional voiceover laid over the plan: [{"text", "at"}, ...], each phrase
+    # spoken from its "at" second; the visuals keep the plan's times
+    vo = spec.get("voiceover", [])
+    if vo:
+        vcfg = {"voice": "am_michael", "speed": 1.35, "sentencePause": 0.16, "clausePause": 0.05, **spec.get("voice", {})}
+        say = vcfg.get("say", {})
+        k = load_kokoro()
+        track = np.zeros(int((total + 1) * SR), dtype=np.float32)
+        timing["voice"] = vcfg["voice"]
+        timing["vo"] = []
+        for v in vo:
+            ws = v["text"].split()
+            spoken = " ".join(respell(w, say) for w in ws)
+            audio, sr, timings = k.create_timed("… " + spoken, voice=vcfg["voice"], speed=vcfg["speed"], sentence_pause=vcfg["sentencePause"], clause_pause=vcfg["clausePause"])
+            words = words_from_timings(timings, ws, lambda w: k.tokenizer.phonemize(respell(w, say), "en-us"))
+            off = lead_in(audio)
+            audio = np.asarray(audio[int(off * SR) :], dtype=np.float32)
+            i0 = int(v["at"] * SR)
+            track[i0 : i0 + len(audio)] += audio[: len(track) - i0]
+            for w in words:
+                w["s"] = round(w["s"] - off + v["at"], 3)
+                w["e"] = round(w["e"] - off + v["at"], 3)
+            timing["vo"].append({"text": v["text"], "start": words[0]["s"], "end": words[-1]["e"], "words": words})
+            if v["at"] + len(audio) / SR > total:
+                print(f"  ! voiceover runs past the end: {v['text']}")
+        peak = float(np.max(np.abs(track))) or 1.0
+        sf.write(build / "voice.wav", track[: int(total * SR)] * (0.89 / peak), SR)
+    else:
+        (build / "voice.wav").unlink(missing_ok=True)
+
     (build / "timing.json").write_text(json.dumps(timing, indent=1))
     (build / "timing.js").write_text("window.TIMING = " + json.dumps(timing) + ";\n")
-    write_srt(build / "captions.srt", scenes, total)
+    # subtitles follow the voice when there is one, else the on-screen lines
+    if vo:
+        write_srt(build / "captions.srt", [{"lines": timing["vo"]}], total, hold=0.8)
+    else:
+        write_srt(build / "captions.srt", scenes, total)
     stamp_duration(proj / "index.html", total)
-    print(f"edit plan: no voiceover · total {total:.2f}s → {build / 'timing.json'}")
+    print(f"edit plan: {len(vo)} voiceover phrases · total {total:.2f}s → {build / 'timing.json'}")
 
 
 def main():
@@ -302,7 +346,7 @@ def main():
             words = words_from_timings(timings, text_words, lambda w: k.tokenizer.phonemize(respell(w, say), "en-us"))
         if k:
             # keep 60 ms before the first sound
-            off = max(0.0, min(w["s"] for w in words) - 0.06)
+            off = lead_in(audio)
             audio = audio[int(off * SR) :]
             for w in words:
                 w["s"] -= off

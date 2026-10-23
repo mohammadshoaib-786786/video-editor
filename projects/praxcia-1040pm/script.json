@@ -12,15 +12,24 @@
     "site": "wiphk.com",
     "keyword": "AUDIT"
   },
-  "voice": { "engine": "none" },
-  "duration": 25.0,
+  "voice": { "engine": "none", "voice": "am_michael", "speed": 1.35, "say": { "10:40pm": "Ten forty PM" } },
+  "duration": 26.8,
   "music": { "style": "ambient", "bpm": 72, "seed": 3, "level": 0.22, "dips": [[14.95, 16.05]] },
   "sfx": { "level": 0.7 },
   "ambience": [
     { "type": "rain", "from": 0, "to": 10.0, "gain": 0.35 },
     { "type": "street", "from": 10.0, "to": 15.0, "gain": 0.32 },
     { "type": "rain", "from": 16.0, "to": 19.0, "gain": 0.22 },
-    { "type": "street", "from": 19.0, "to": 21.0, "gain": 0.12 }
+    { "type": "street", "from": 19.0, "to": 20.6, "gain": 0.12 }
+  ],
+  "voiceover": [
+    { "text": "10:40pm. A customer wants to book.", "at": 0.35 },
+    { "text": "Nobody's awake to reply.", "at": 5.25 },
+    { "text": "By morning, they've booked somewhere else.", "at": 12.2 },
+    { "text": "Same night, with a system:", "at": 15.1 },
+    { "text": "answered in five seconds, booked, reminded.", "at": 16.6 },
+    { "text": "Most Hong Kong businesses don't need a new website.", "at": 20.7 },
+    { "text": "They need a follow-up system.", "at": 23.35 }
   ],
   "scenes": [
     {
@@ -53,14 +62,14 @@
       ]
     },
     {
-      "id": "booked", "start": 19.0, "end": 21.0,
-      "lines": [{ "text": "She slept. It booked.", "at": 19.2, "end": 20.9 }]
+      "id": "booked", "start": 19.0, "end": 20.6,
+      "lines": [{ "text": "She slept. It booked.", "at": 19.15, "end": 20.5 }]
     },
     {
-      "id": "end", "start": 21.0, "end": 25.0,
+      "id": "end", "start": 20.6, "end": 26.8,
       "lines": [
-        { "text": "Most HK businesses don't need a new website. They need a follow-up system.", "at": 21.0, "end": 23.0 },
-        { "text": "Comment “AUDIT” 👇", "at": 23.0, "end": 25.0 }
+        { "text": "Most HK businesses don't need a new website. They need a follow-up system.", "at": 20.6, "end": 24.8 },
+        { "text": "Comment “AUDIT” 👇", "at": 24.8, "end": 26.8 }
       ]
     }
   ]

@@ -192,7 +192,11 @@ window.buildReel = function () {
   // ---- end card --------------------------------------------------------------------
   {
     const s = S("end");
-    R.rise("#e-a p", R.at("end", 0) + 0.05, { y: 30, stagger: 0.12, dur: 0.4 });
+    // the second half lands with the voiceover's "They need a follow-up system."
+    const ps = $$("#e-a p");
+    const tNeed = T.vo && T.vo[6] ? T.vo[6].start - 0.1 : R.at("end", 0) + 0.3;
+    R.rise(ps.slice(0, 2), R.at("end", 0) + 0.05, { y: 30, stagger: 0.12, dur: 0.4 });
+    R.rise(ps.slice(2), tNeed, { y: 30, stagger: 0.12, dur: 0.4 });
     tl.to("#e-a", { opacity: 0, duration: 0.2 }, R.at("end", 1) - 0.2);
     tl.fromTo("#e-b", { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)", immediateRender: true }, R.at("end", 1));
     R.cue(R.at("end", 1), "pop", 0.4);
