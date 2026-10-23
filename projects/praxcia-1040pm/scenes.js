@@ -19,6 +19,8 @@ window.buildReel = function () {
     }
   });
   $("#wins").innerHTML = wins.join("");
+  // the same windows by day: glass, not lamps
+  $("#wins-day").innerHTML = wins.map((w) => w.replace(/background:[^"]+/, "background:rgba(96,118,134,.45)")).join("");
 
   // rain: a tile of short streaks, two layers at different speeds
   let streaks = "";
