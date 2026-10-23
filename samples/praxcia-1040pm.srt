@@ -1,0 +1,43 @@
+1
+00:00:00,100 --> 00:00:02,000
+10:40pm. A new enquiry.
+
+2
+00:00:02,000 --> 00:00:05,150
+“Do you have a slot this Saturday? 🙏”
+
+3
+00:00:05,200 --> 00:00:10,250
+Nobody's awake to reply.
+
+4
+00:00:10,300 --> 00:00:12,200
+11:00am. Seen.
+
+5
+00:00:12,200 --> 00:00:15,000
+“Sorry, already booked another place.”
+
+6
+00:00:15,050 --> 00:00:16,300
+Same night. With a system:
+
+7
+00:00:16,300 --> 00:00:17,400
+Auto-reply in 5 seconds.
+
+8
+00:00:17,400 --> 00:00:19,150
+“Booked ✓ Sat 3pm. Reminder sent the day before.”
+
+9
+00:00:19,200 --> 00:00:20,950
+She slept. It booked.
+
+10
+00:00:21,000 --> 00:00:23,000
+Most HK businesses don't need a new website. They need a follow-up system.
+
+11
+00:00:23,000 --> 00:00:25,000
+Comment “AUDIT” 👇

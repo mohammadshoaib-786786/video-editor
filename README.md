@@ -15,6 +15,7 @@ employees", chunky offset-shadow cards, word-synced captions.
 | | Account | Project | Output |
 | --- | --- | --- | --- |
 | Reel, 9:16, 38.6 s, voice + music + SFX | Praxcia (`@sho.praxcia`) | `projects/ai-delivery-team` | `samples/ai-delivery-team.mp4` |
+| Story reel "10:40pm", 25 s, no voiceover: 9:16 (Instagram) + 4:5 crop (LinkedIn) | Praxcia (`@sho.praxcia`) | `projects/praxcia-1040pm` | `samples/praxcia-1040pm.mp4`, `praxcia-1040pm-4x5.mp4` + `.srt` |
 | Carousel, 4:5, 10 slides | Praxcia (`@sho.praxcia`) | `projects/praxcia-delivery-team` | `samples/praxcia-delivery-team/slide-01…10.png` and `.mp4` |
 | Carousel, 4:5, 10 slides | (capability sample) | `projects/ai-meta-ads-team` | `samples/ai-meta-ads-team/slide-01…10.png` and `.mp4` |
 | LinkedIn reel, 4:5, 34 s | Geoneo (`geoneo.ai`) | `projects/geoneo-engines` (+ `projects/geoneo-engines-thumb`) | `samples/geoneo-engines.mp4` + `.srt` + `geoneo-engines-thumbnail.png` |
